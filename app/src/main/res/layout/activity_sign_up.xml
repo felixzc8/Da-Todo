@@ -54,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/userIcon_imageView_SignUpActivity" />
 
     <EditText
         android:id="@+id/password_EditText_SignUpActivity"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/email_EditText_SignUpActivity" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/userIcon_imageView_SignUpActivity"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_marginTop="50dp"

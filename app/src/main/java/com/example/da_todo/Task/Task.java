@@ -1,6 +1,9 @@
 package com.example.da_todo.Task;
 
+import android.widget.ImageView;
+
 public class Task {
+    private ImageView taskImage;
     private String taskName;
     private String taskDescription;
     private int timeRequired;
@@ -11,11 +14,20 @@ public class Task {
 
     }
 
-    public Task(String taskName, String taskDescription, int timeRequired, int pointsRewarded) {
+    public Task(ImageView taskImage, String taskName, String taskDescription, int timeRequired, int pointsRewarded) {
+        this.taskImage = taskImage;
         this.taskName = taskName;
         this.taskDescription = taskDescription;
         this.timeRequired = timeRequired;
         this.pointsRewarded = pointsRewarded;
+    }
+
+    public ImageView getTaskImage() {
+        return taskImage;
+    }
+
+    public void setTaskImage(ImageView taskImage) {
+        this.taskImage = taskImage;
     }
 
     public String getTaskName() {
@@ -53,6 +65,7 @@ public class Task {
     @Override
     public String toString() {
         return "Task:" +
+                "\nTask Image = " + taskImage +
                 "\nTask Name = " + taskName +
                 "\nTask Description = " + taskDescription +
                 "\nTime Required = " + timeRequired +

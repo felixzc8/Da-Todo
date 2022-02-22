@@ -13,7 +13,7 @@
             android:name=".Controllers.TimerActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.TasksAcvitiy"
+            android:name=".Controllers.TasksActivity"
             android:exported="false" />
         <activity
             android:name=".Controllers.SignUpActivity"

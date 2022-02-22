@@ -18,8 +18,17 @@ public class SignInActivity extends AppCompatActivity
         setContentView(R.layout.activity_sign_in);
     }
 
+    public void logIn(View v){
+        goToSignInActivity();
+    }
+
     public void goToSignUpActivity(View view){
         Intent goToSignUpActivity = new Intent(this, SignUpActivity.class);
         startActivity(goToSignUpActivity);
+    }
+
+    public void goToSignInActivity(){
+        Intent goToTasksActivity = new Intent(this, TasksActivity.class);
+        startActivity(goToTasksActivity);
     }
 }
