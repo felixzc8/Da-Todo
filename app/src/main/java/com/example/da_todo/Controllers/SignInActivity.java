@@ -1,5 +1,18 @@
 package com.example.da_todo.Controllers;
 
-public class SignInActivity
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.example.da_todo.R;
+
+public class SignInActivity extends AppCompatActivity
 {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_in);
+    }
 }

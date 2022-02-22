@@ -6,13 +6,13 @@ import android.os.Bundle;
 
 import com.example.da_todo.R;
 
-public class AddTaskActivity extends AppCompatActivity
+public class TasksAcvitiy extends AppCompatActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_task);
+        setContentView(R.layout.activity_tasks_acvitiy);
     }
 }
