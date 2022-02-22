@@ -7,7 +7,7 @@ public class User
     private String userID;
     private String userName;
     private String parentEmail;
-    private String parentPassword;
+    private String parentPin;
     private String petID;
     ArrayList<String> taskIDs;
 
@@ -16,11 +16,11 @@ public class User
 
     }
 
-    public User(String userID, String userName, String parentEmail, String parentPassword, String petID, ArrayList<String> taskIDs) {
+    public User(String userID, String userName, String parentEmail, String parentPin, String petID, ArrayList<String> taskIDs) {
         this.userID = userID;
         this.userName = userName;
         this.parentEmail = parentEmail;
-        this.parentPassword = parentPassword;
+        this.parentPin = parentPin;
         this.petID = petID;
         this.taskIDs = taskIDs;
     }
@@ -49,12 +49,12 @@ public class User
         this.parentEmail = parentEmail;
     }
 
-    public String getParentPassword() {
-        return parentPassword;
+    public String getParentPin() {
+        return parentPin;
     }
 
-    public void setParentPassword(String parentPassword) {
-        this.parentPassword = parentPassword;
+    public void setParentPin(String parentPassword) {
+        this.parentPin = parentPin;
     }
 
     public String getPetID() {
@@ -79,7 +79,7 @@ public class User
                 "User ID = " + userID +
                 "\nUser Name = " + userName +
                 "\nParent Email = " + parentEmail +
-                "\nParent Password = " + parentPassword +
+                "\nParent Pin = " + parentPin +
                 "\nPet ID = " + petID +
                 "\nTask IDs = " + taskIDs;
     }
