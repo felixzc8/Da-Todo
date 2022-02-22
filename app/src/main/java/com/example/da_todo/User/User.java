@@ -1,8 +1,9 @@
 package com.example.da_todo.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User
+public class User implements Serializable
 {
     private String userID;
     private String userName;

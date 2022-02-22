@@ -1,6 +1,8 @@
 package com.example.da_todo.Reward;
 
-public class Pet
+import java.io.Serializable;
+
+public class Pet implements Serializable
 {
     private String petName;
     private int totalPoints;

@@ -19,7 +19,7 @@ public class SignInActivity extends AppCompatActivity
     }
 
     public void logIn(View v){
-        goToSignInActivity();
+        goTaskActivity();
     }
 
     public void goToSignUpActivity(View view){
@@ -27,7 +27,7 @@ public class SignInActivity extends AppCompatActivity
         startActivity(goToSignUpActivity);
     }
 
-    public void goToSignInActivity(){
+    public void goTaskActivity(){
         Intent goToTasksActivity = new Intent(this, TasksActivity.class);
         startActivity(goToTasksActivity);
     }

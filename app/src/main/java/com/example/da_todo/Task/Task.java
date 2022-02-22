@@ -2,7 +2,10 @@ package com.example.da_todo.Task;
 
 import android.widget.ImageView;
 
-public class Task {
+import java.io.Serializable;
+
+public class Task implements Serializable
+{
     private ImageView taskImage;
     private String taskName;
     private String taskDescription;
