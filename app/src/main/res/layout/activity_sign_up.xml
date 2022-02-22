@@ -23,7 +23,7 @@
         android:id="@+id/signUp_Button_SignUpActivity"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="25dp"
         android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -71,8 +71,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_marginTop="50dp"
         android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
