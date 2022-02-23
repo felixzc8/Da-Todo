@@ -7,11 +7,11 @@
     tools:context=".Controllers.TasksActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:text="Button"
+        android:id="@+id/addActivity_Button_TasksActivity"
+        android:layout_width="114dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="32dp"
+        android:text="Add Task"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         android:layout_height="500dp"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/addActivity_Button_TasksActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
