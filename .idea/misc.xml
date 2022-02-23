@@ -3,17 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/ic_pause_button.xml" value="0.2125" />
-        <entry key="app/src/main/res/drawable/ic_play_button.xml" value="0.2125" />
-        <entry key="app/src/main/res/drawable/ic_stop_button.xml" value="0.2125" />
-        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.3124519016431725" />
+        <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.19894561767578128" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.14771038552989124" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_tasks_acvitiy.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_timer.xml" value="0.2296195652173913" />
-        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.16304347826086957" />
+        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.33518676757812504" />
       </map>
     </option>
   </component>
