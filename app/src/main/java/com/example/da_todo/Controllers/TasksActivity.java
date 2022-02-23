@@ -5,7 +5,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.da_todo.R;
 import com.example.da_todo.Task.Task;
@@ -44,6 +46,11 @@ public class TasksActivity extends AppCompatActivity
         taskList.add(new Task(null, "Shower", "Save water", 10, 1));
         taskList.add(new Task(null, "Brush Teeth", "Right before bed", 5, 3));
         taskList.add(new Task(null, "Pack bag", "Check schedule beforehand", 10, 5));
+    }
+
+    public void goToAddTaskActivity(View view){
+        Intent goToAddTaskActivity = new Intent(this, AddTaskActivity.class);
+        startActivity(goToAddTaskActivity);
     }
 
 }

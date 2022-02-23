@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="400dp"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    android:outlineAmbientShadowColor="#E91E63"
+    android:outlineSpotShadowColor="#E91E63">
 
     <ImageView
         android:id="@+id/taskImage_ImageView_tasksItems"
