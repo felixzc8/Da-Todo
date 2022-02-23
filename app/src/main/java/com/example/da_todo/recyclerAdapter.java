@@ -1,6 +1,5 @@
 package com.example.da_todo;
 
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +33,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
              imageView = view.findViewById(R.id.taskImage_ImageView_tasksItems);
              taskName = view.findViewById(R.id.taskName_TextView_TasksItems);
              taskTime = view.findViewById(R.id.taskTime_TextView_TasksItems);
-             taskReward = view.findViewById(R.id.taskReward_TextView_TasksItems);
+             taskReward = view.findViewById(R.id.points_TextView_TasksItems);
         }
     }
 
