@@ -25,7 +25,6 @@ public class SignUpActivity extends AppCompatActivity
 
     User user;
 
-    String userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
