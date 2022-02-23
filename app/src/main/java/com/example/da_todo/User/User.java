@@ -17,13 +17,11 @@ public class User implements Serializable
 
     }
 
-    public User(String userID, String userName, String parentEmail, String parentPin, String petID, ArrayList<String> taskIDs) {
+    public User(String userID, String userName, String parentEmail, String parentPin) {
         this.userID = userID;
         this.userName = userName;
         this.parentEmail = parentEmail;
         this.parentPin = parentPin;
-        this.petID = petID;
-        this.taskIDs = taskIDs;
     }
 
     public String getUserID() {
