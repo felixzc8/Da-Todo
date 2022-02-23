@@ -10,11 +10,11 @@
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_tasks_acvitiy.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_timer.xml" value="0.2296195652173913" />
-        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.16304347826086957" />
+        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.33518676757812504" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
