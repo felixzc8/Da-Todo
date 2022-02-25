@@ -77,16 +77,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have an account?"
-            app:layout_constraintEnd_toStartOf="@+id/signUpButton"
+            app:layout_constraintEnd_toStartOf="@+id/goSignInButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/signUpButton"
+            android:id="@+id/goSignInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="goToSignUpActivity"
-            android:text="Sign in"
+            android:text="Sign Up"
             android:textColor="@color/teal_200"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/signInMsgTextView"
@@ -106,7 +106,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/signIn_Button_signInActivity"
+        android:id="@+id/signInButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:onClick="logIn"
