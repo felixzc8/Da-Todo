@@ -3,16 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/felix/AndroidStudioProjects/Da-Todo/app/src/main/res/layout/activity_sign_in.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/felix/AndroidStudioProjects/Da-Todo/app/src/main/res/layout/activity_sign_up.xml" value="0.358695652173913" />
         <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.28229166666666666" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.14771038552989124" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.4220222141431724" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_tasks_acvitiy.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_timer.xml" value="0.2296195652173913" />
-        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.26922302246093754" />
+        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.16304347826086957" />
       </map>
     </option>
   </component>
