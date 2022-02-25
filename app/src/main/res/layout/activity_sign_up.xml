@@ -20,10 +20,11 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordInputEditText" />
 
     <Button
-        android:id="@+id/signUp_Button_SignUpActivity"
+        android:id="@+id/signUpButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginTop="25dp"
+        android:onClick="signUp"
         android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -47,14 +48,14 @@
         android:id="@+id/nameInputEditText"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginTop="25dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/userIcon_imageView_SignUpActivity" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/passwordInputEditText"
@@ -68,18 +69,6 @@
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailInputEditText" />
-
-    <ImageView
-        android:id="@+id/userIcon_imageView_SignUpActivity"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_marginTop="50dp"
-        android:contentDescription="TODO"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/create_profile_image" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -96,12 +85,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="0dp"
             android:text="Already have an account?"
-            app:layout_constraintEnd_toStartOf="@+id/signUpButton"
+            app:layout_constraintEnd_toStartOf="@+id/goSignInButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/signUpButton"
+            android:id="@+id/goSignInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="goSignInActivity"
