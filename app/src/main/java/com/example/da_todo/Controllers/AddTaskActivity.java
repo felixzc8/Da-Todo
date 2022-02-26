@@ -88,7 +88,7 @@ public class AddTaskActivity extends AppCompatActivity
     }
 
     private void uploadPicture() {
-        final ProgressBar progressBar = new ProgressBar(AddTaskActivity.this, null, android.R.attr.progressBarStyleLarge);
+        final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
         progressBar.setVisibility(View.VISIBLE);
 
         final String randomKey = UUID.randomUUID().toString();
@@ -98,20 +98,23 @@ public class AddTaskActivity extends AppCompatActivity
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        progressBar.setVisibility(View.INVISIBLE);
                         Snackbar.make(findViewById(android.R.id.content), "Image Uploaded.", Snackbar.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(getApplicationContext(), "Failed to upload", Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                     @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        double progressPercent = (100.00 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-//                        progressBar.setProgress(progressPercent.to, true);
+                        double progressPercent = (100 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                        int progress = (int) progressPercent;
+                        progressBar.setProgress(progress, true);
                     }
                 });
     }
