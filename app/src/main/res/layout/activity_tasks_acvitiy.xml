@@ -8,42 +8,44 @@
 
     <Button
         android:id="@+id/addActivity_Button_TasksActivity"
-        android:layout_width="114dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
         android:onClick="goToAddTaskActivity"
         android:text="Add Task"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_tasksActivity" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_tasksActivity"
         android:layout_width="350dp"
-        android:layout_height="500dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/addActivity_Button_TasksActivity"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="450dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintTop_toBottomOf="@+id/petButton"
+        tools:layout_editor_absoluteX="31dp" />
 
     <Button
         android:id="@+id/petButton"
         android:layout_width="112dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="25dp"
         android:onClick="goToRewardsActivity"
         android:text="visit pet"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/signOut_Button_ActivityTasksActivity"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
         android:onClick="signOut"
         android:text="Sign out"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -76,10 +76,13 @@
             android:id="@+id/signInMsgTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:text="Don't have an account?"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/goSignInButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/goSignInButton"
@@ -88,6 +91,7 @@
             android:onClick="goToSignUpActivity"
             android:text=" Sign Up"
             android:textColor="@color/teal_200"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/signInMsgTextView"
             app:layout_constraintTop_toTopOf="parent"
@@ -109,11 +113,12 @@
         android:id="@+id/signInButton"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
         android:onClick="logIn"
         android:text="Sign In"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
 
