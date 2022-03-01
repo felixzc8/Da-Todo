@@ -11,10 +11,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.da_todo.R;
+import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.User.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.UUID;
 
 public class SignUpActivity extends AppCompatActivity
 {
@@ -24,6 +27,7 @@ public class SignUpActivity extends AppCompatActivity
     EditText nameInput, emailInput, passwordInput, pinInput;
 
     User user;
+    Pet userPet;
 
 
     @Override
@@ -51,6 +55,7 @@ public class SignUpActivity extends AppCompatActivity
         String email = emailInput.getText().toString();
         String password = passwordInput.getText().toString();
         String pin = pinInput.getText().toString();
+        String petID = UUID.randomUUID().toString();
         System.out.println(String.format("Sign Up - Email: %s, Password: %s", email, password));
 
         if (!name.equals("") && !email.equals("") && !password.equals(""))
@@ -68,6 +73,9 @@ public class SignUpActivity extends AppCompatActivity
 
                                 user = new User(uid, name, email, pin);
                                 firestore.collection("/users").document(uid).set(user);
+
+                                userPet = new Pet("", 0, 0, petID);
+                                user.setPetID(petID);
 
                                 goTaskActivity(user);
                             }
@@ -99,8 +107,9 @@ public class SignUpActivity extends AppCompatActivity
 
     public void goTaskActivity(User user)
     {
-        Intent intent = new Intent(this, TasksActivity.class);
+        Intent intent = new Intent(this, PetNamingActivity.class);
         intent.putExtra("user", user);
+        intent.putExtra("pet", userPet);
         startActivity(intent);
     }
 }
