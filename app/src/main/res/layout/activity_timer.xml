@@ -15,7 +15,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/pauseTimer_Button_TimerActivity"
@@ -25,7 +26,8 @@
         android:layout_marginBottom="96dp"
         android:src="@drawable/ic_pause_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/startTimer_Button_TimerActivity" />
+        app:layout_constraintEnd_toStartOf="@+id/startTimer_Button_TimerActivity"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/stopTimer_Button_TimerActivity"
@@ -36,7 +38,8 @@
         android:src="@drawable/ic_stop_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/startTimer_Button_TimerActivity" />
+        app:layout_constraintStart_toEndOf="@+id/startTimer_Button_TimerActivity"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/timeDisplay_TextView_TimerActivity"
