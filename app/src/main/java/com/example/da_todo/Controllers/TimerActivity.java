@@ -32,7 +32,7 @@ public class TimerActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_timer);
         start_button = findViewById(R.id.startTimer_Button_TimerActivity);
         pause_button = findViewById(R.id.pauseTimer_Button_TimerActivity);
         stop_button = findViewById(R.id.stopTimer_Button_TimerActivity);

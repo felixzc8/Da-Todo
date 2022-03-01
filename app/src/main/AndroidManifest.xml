@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DaTodo">
         <activity
+            android:name=".Controllers.PetNamingActivity"
+            android:exported="false" />
+        <activity
             android:name=".Controllers.TimerActivity"
             android:exported="false" />
         <activity
@@ -22,8 +25,9 @@
             android:name=".Controllers.SignInActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
