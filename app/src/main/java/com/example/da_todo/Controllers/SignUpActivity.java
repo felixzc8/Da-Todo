@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -40,7 +39,7 @@ public class SignUpActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
-        nameInput = findViewById(R.id.nameInputEditText);
+        nameInput = findViewById(R.id.emailInputEditText);
         emailInput = findViewById(R.id.emailInputEditText);
         passwordInput = findViewById(R.id.passwordInputEditText);
         pinInput = findViewById(R.id.pinInputEditText);

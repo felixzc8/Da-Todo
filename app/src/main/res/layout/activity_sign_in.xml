@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="goToSignUpActivity"
-            android:text="Sign Up"
+            android:text=" Sign Up"
             android:textColor="@color/teal_200"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/signInMsgTextView"
