@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.da_todo.R;
+import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.Task.Task;
 import com.example.da_todo.recyclerAdapter;
 
@@ -20,6 +21,7 @@ public class TasksActivity extends AppCompatActivity
     private ArrayList<Task> taskList;
     private RecyclerView recyclerView;
     private RecyclerView recyclerAdapter;
+    Pet userPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,6 +30,8 @@ public class TasksActivity extends AppCompatActivity
         setContentView(R.layout.activity_tasks_acvitiy);
         taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_tasksActivity);
+
+        userPet = (Pet) getIntent().getSerializableExtra("pet");
 
         setTaskInfo();
         setAdapter();
@@ -51,6 +55,12 @@ public class TasksActivity extends AppCompatActivity
     public void goToAddTaskActivity(View view){
         Intent goToAddTaskActivity = new Intent(this, AddTaskActivity.class);
         startActivity(goToAddTaskActivity);
+    }
+
+    public void goToRewardsActivity(View view) {
+        Intent goToRewardsActivity = new Intent(this, RewardsActivity.class);
+        goToRewardsActivity.putExtra("pet", userPet);
+        startActivity(goToRewardsActivity);
     }
 
 }
