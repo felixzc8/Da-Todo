@@ -39,4 +39,9 @@ public class PetNamingActivity extends AppCompatActivity {
         intent.putExtra("pet", userPet);
         startActivity(intent);
     }
+
+    public void backButton(View view){
+        Intent backButton = new Intent(this, RewardsActivity.class);
+        startActivity(backButton);
+    }
 }

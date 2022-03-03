@@ -118,4 +118,9 @@ public class AddTaskActivity extends AppCompatActivity
                     }
                 });
     }
+
+    public void backButton(View v){
+        Intent goBackIntent = new Intent(this, TasksActivity.class);
+        startActivity(goBackIntent);
+    }
 }

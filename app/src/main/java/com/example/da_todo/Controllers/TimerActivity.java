@@ -2,6 +2,7 @@ package com.example.da_todo.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -198,5 +199,11 @@ public class TimerActivity extends AppCompatActivity
                 stop_button.setEnabled(false);
                 break;
         }
+    }
+
+    public void goBack(View v)
+    {
+        Intent goBack = new Intent(this, TasksActivity.class);
+        startActivity(goBack);
     }
 }

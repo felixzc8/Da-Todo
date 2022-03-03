@@ -58,6 +58,7 @@
             android:id="@+id/nameInputEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:textColor="@color/cyan"
             android:textColorHint="@color/cyan" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -142,19 +143,24 @@
             android:id="@+id/signInMsgTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_marginBottom="25dp"
             android:text="Already have an account?"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/goSignInButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/goSignInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:onClick="goSignInActivity"
             android:text=" Sign in"
             android:textColor="@color/teal_200"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/signInMsgTextView"
             app:layout_constraintTop_toTopOf="parent"
