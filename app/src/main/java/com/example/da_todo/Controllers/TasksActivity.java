@@ -37,7 +37,8 @@ public class TasksActivity extends AppCompatActivity
         setAdapter();
     }
 
-    private void setAdapter() {
+    private void setAdapter()
+    {
         recyclerAdapter adapter = new recyclerAdapter(taskList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -45,19 +46,22 @@ public class TasksActivity extends AppCompatActivity
         recyclerView.setAdapter(adapter);
     }
 
-    private void setTaskInfo() {
+    private void setTaskInfo()
+    {
         taskList.add(new Task(null, "Eat Dinner", "Eat at 8pm, 1 bowl", 30, 5));
         taskList.add(new Task(null, "Shower", "Save water", 10, 1));
         taskList.add(new Task(null, "Brush Teeth", "Right before bed", 5, 3));
         taskList.add(new Task(null, "Pack bag", "Check schedule beforehand", 10, 5));
     }
 
-    public void goToAddTaskActivity(View view){
+    public void goToAddTaskActivity(View view)
+    {
         Intent goToAddTaskActivity = new Intent(this, AddTaskActivity.class);
         startActivity(goToAddTaskActivity);
     }
 
-    public void goToRewardsActivity(View view) {
+    public void goToRewardsActivity(View view)
+    {
         Intent goToRewardsActivity = new Intent(this, RewardsActivity.class);
         goToRewardsActivity.putExtra("pet", userPet);
         startActivity(goToRewardsActivity);
