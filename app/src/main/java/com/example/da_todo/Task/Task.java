@@ -17,11 +17,10 @@ public class Task implements Serializable
 
     }
 
-    public Task(ImageView taskImage, String taskName, String taskDescription, int timeRequired, int pointsRewarded)
+    public Task(ImageView taskImage, String taskName, int timeRequired, int pointsRewarded)
     {
         this.taskImage = taskImage;
         this.taskName = taskName;
-        this.taskDescription = taskDescription;
         this.timeRequired = timeRequired;
         this.pointsRewarded = pointsRewarded;
     }
@@ -82,7 +81,6 @@ public class Task implements Serializable
         return "Task:" +
                 "\nTask Image = " + taskImage +
                 "\nTask Name = " + taskName +
-                "\nTask Description = " + taskDescription +
                 "\nTime Required = " + timeRequired +
                 "\nPoints Rewarded = " + pointsRewarded;
     }
