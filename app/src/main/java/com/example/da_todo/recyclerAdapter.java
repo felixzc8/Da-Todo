@@ -13,15 +13,18 @@ import com.example.da_todo.Task.Task;
 
 import java.util.ArrayList;
 
-public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder> {
+public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
+{
     private ArrayList<Task> taskList;
+    private RecyclerViewClickListener listener;
 
     public recyclerAdapter(ArrayList<Task> taskList)
     {
         this.taskList = taskList;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+    {
         private ImageView imageView;
         private TextView taskName;
         private TextView taskTime;
@@ -29,23 +32,32 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
 
         public MyViewHolder(final View view)
         {
-             super(view);
-             imageView = view.findViewById(R.id.taskImage_ImageView_tasksItems);
-             taskName = view.findViewById(R.id.taskName_TextView_TasksItems);
-             taskTime = view.findViewById(R.id.taskTime_TextView_TasksItems);
-             taskReward = view.findViewById(R.id.points_TextView_TasksItems);
+            super(view);
+            imageView = view.findViewById(R.id.taskImage_ImageView_tasksItems);
+            taskName = view.findViewById(R.id.taskName_TextView_TasksItems);
+            taskTime = view.findViewById(R.id.taskTime_TextView_TasksItems);
+            taskReward = view.findViewById(R.id.points_TextView_TasksItems);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view)
+        {
+
         }
     }
 
     @NonNull
     @Override
-    public recyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public recyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.tasks_items, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull recyclerAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull recyclerAdapter.MyViewHolder holder, int position)
+    {
         ImageView taskImage = taskList.get(position).getTaskImage();
         String taskName = taskList.get(position).getTaskName();
         String taskDescription = taskList.get(position).getTaskDescription();
@@ -58,8 +70,14 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return taskList.size();
+    }
+
+    public interface RecyclerViewClickListener
+    {
+        void onClick(View v, int position);
     }
 
     public void openTimerActivity(View v)

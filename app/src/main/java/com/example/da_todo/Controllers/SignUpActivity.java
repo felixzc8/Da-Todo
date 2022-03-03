@@ -35,7 +35,6 @@ public class SignUpActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
@@ -44,6 +43,22 @@ public class SignUpActivity extends AppCompatActivity
         passwordInput = findViewById(R.id.passwordInputEditText);
         pinInput = findViewById(R.id.pinInputEditText);
 
+    }
+
+    @Override
+    public void onStart()
+    {
+        super.onStart();
+//         Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null)
+        {
+            String email = currentUser.getEmail();
+
+            System.out.println(String.format("Current User - email: %s", email));
+            goTaskActivity();
+        }
     }
 
 
@@ -76,7 +91,7 @@ public class SignUpActivity extends AppCompatActivity
                                 userPet = new Pet("", 0, 0, petID);
                                 user.setPetID(petID);
 
-                                goTaskActivity(user);
+                                goTaskActivity();
                             }
                             else
                             {
@@ -104,11 +119,9 @@ public class SignUpActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void goTaskActivity(User user)
+    public void goTaskActivity()
     {
         Intent intent = new Intent(this, PetNamingActivity.class);
-        intent.putExtra("user", user);
-        intent.putExtra("pet", userPet);
         startActivity(intent);
     }
 }

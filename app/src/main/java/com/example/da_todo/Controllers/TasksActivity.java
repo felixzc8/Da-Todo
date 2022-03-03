@@ -7,12 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.Task.Task;
+import com.example.da_todo.User.User;
 import com.example.da_todo.recyclerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
@@ -23,11 +30,18 @@ public class TasksActivity extends AppCompatActivity
     private RecyclerView recyclerAdapter;
     Pet userPet;
 
+    FirebaseAuth mAuth;
+    FirebaseFirestore firestore;
+    FirebaseUser mUser;
+
+    User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks_acvitiy);
+
         taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_tasksActivity);
 
@@ -35,6 +49,28 @@ public class TasksActivity extends AppCompatActivity
 
         setTaskInfo();
         setAdapter();
+    }
+
+    public void getUser()
+    {
+        try
+        {
+            firestore.collection("/users").document(mUser.getUid()).get()
+                    .addOnCompleteListener(task ->
+                    {
+                        DocumentSnapshot ds = task.getResult();
+                        if (task.isSuccessful())
+                        {
+                            user = ds.toObject(User.class);
+                            Log.d("USER OBJECT", "user name: " + user.getUserName());
+                        }
+                    });
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            Toast.makeText(this, "error getting user", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void setAdapter()
