@@ -14,14 +14,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.da_todo.R;
+import com.example.da_todo.Task.Task;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -32,6 +35,15 @@ import java.util.UUID;
 
 public class AddTaskActivity extends AppCompatActivity
 {
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    private EditText taskName;
+    private EditText taskTime;
+    private EditText taskPoints;
+
+    private String userID;
+
     private ImageView taskPhoto;
     public Uri imageUri;
     private FirebaseStorage storage;
@@ -42,6 +54,10 @@ public class AddTaskActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
+
+        taskName = findViewById(R.id.taskName_EditText_AddTaskActivity);
+        taskTime = findViewById(R.id.taskTime_EditText_AddTaskActivity);
+        taskPoints = findViewById(R.id.taskReward_EditText_AddTaskActivity);
 
         taskPhoto = findViewById(R.id.uploadPhoto_imageView_AddTaskActivity);
 
@@ -54,6 +70,14 @@ public class AddTaskActivity extends AppCompatActivity
                 choosePicture();
             }
         });
+    }
+
+    public void addTask(){
+        String nameString = taskName.toString();
+        int timeInt = Integer.parseInt(taskTime.getText().toString());
+        int rewardInt = Integer.parseInt(taskPoints.getText().toString());
+
+        Task task = new Task(null, nameString, timeInt, rewardInt);
     }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
