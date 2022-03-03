@@ -42,6 +42,7 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:hint="name"
         android:textColorHint="@color/cyan"
         app:boxStrokeColor="@color/cyan"
@@ -49,19 +50,11 @@
         app:endIconTint="@color/dark_blue"
         app:hintTextColor="@color/cyan"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/ic_baseline_person_24"
         app:startIconTint="@color/dark_blue">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameInputEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:textColor="@color/cyan"
-            android:textColorHint="@color/cyan" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
