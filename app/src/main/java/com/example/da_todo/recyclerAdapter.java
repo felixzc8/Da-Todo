@@ -61,4 +61,9 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
     public int getItemCount() {
         return taskList.size();
     }
+
+    public void openTimerActivity(View v)
+    {
+
+    }
 }

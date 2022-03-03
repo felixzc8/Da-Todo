@@ -155,6 +155,7 @@ public class TimerActivity extends AppCompatActivity
 
     private void setNewTimerLength()
     {
+        //time here
         int lengthInMinutes = PrefUtil.getTimerLength(this);
         timerLengthSeconds = (lengthInMinutes * 60L);
         progress_countdown.setMax(timerLengthSeconds.intValue());
