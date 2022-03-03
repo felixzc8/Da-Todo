@@ -6,9 +6,9 @@ import java.io.Serializable;
 
 public class Task implements Serializable
 {
-    private ImageView taskImage;
-    private String taskName;
-    private String taskDescription;
+    private ImageView image;
+    private String name;
+    private String description;
     private int timeRequired;
     private int pointsRewarded;
 
@@ -19,41 +19,41 @@ public class Task implements Serializable
 
     public Task(ImageView taskImage, String taskName, String taskDescription, int timeRequired, int pointsRewarded)
     {
-        this.taskImage = taskImage;
-        this.taskName = taskName;
-        this.taskDescription = taskDescription;
+        this.image = taskImage;
+        this.name = taskName;
+        this.description = taskDescription;
         this.timeRequired = timeRequired;
         this.pointsRewarded = pointsRewarded;
     }
 
     public ImageView getTaskImage()
     {
-        return taskImage;
+        return image;
     }
 
-    public void setTaskImage(ImageView taskImage)
+    public void setImage(ImageView taskImage)
     {
-        this.taskImage = taskImage;
+        this.image = taskImage;
     }
 
-    public String getTaskName()
+    public String getName()
     {
-        return taskName;
+        return name;
     }
 
-    public void setTaskName(String taskName)
+    public void setName(String name)
     {
-        this.taskName = taskName;
+        this.name = name;
     }
 
-    public String getTaskDescription()
+    public String getDescription()
     {
-        return taskDescription;
+        return description;
     }
 
-    public void setTaskDescription(String taskDescription)
+    public void setDescription(String description)
     {
-        this.taskDescription = taskDescription;
+        this.description = description;
     }
 
     public int getTimeRequired()
@@ -80,9 +80,9 @@ public class Task implements Serializable
     public String toString()
     {
         return "Task:" +
-                "\nTask Image = " + taskImage +
-                "\nTask Name = " + taskName +
-                "\nTask Description = " + taskDescription +
+                "\nTask Image = " + image +
+                "\nTask Name = " + name +
+                "\nTask Description = " + description +
                 "\nTime Required = " + timeRequired +
                 "\nPoints Rewarded = " + pointsRewarded;
     }

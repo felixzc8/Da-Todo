@@ -62,7 +62,7 @@ public class TasksActivity extends AppCompatActivity
                         if (task.isSuccessful())
                         {
                             user = ds.toObject(User.class);
-                            Log.d("USER OBJECT", "user name: " + user.getUserName());
+                            Log.d("USER OBJECT", "user name: " + user.getName());
                         }
                     });
         }
@@ -93,13 +93,14 @@ public class TasksActivity extends AppCompatActivity
     public void goToAddTaskActivity(View view)
     {
         Intent goToAddTaskActivity = new Intent(this, AddTaskActivity.class);
+        goToAddTaskActivity.putExtra("user", user);
         startActivity(goToAddTaskActivity);
     }
 
     public void goToRewardsActivity(View view)
     {
         Intent goToRewardsActivity = new Intent(this, RewardsActivity.class);
-        goToRewardsActivity.putExtra("pet", userPet);
+        goToRewardsActivity.putExtra("user", user);
         startActivity(goToRewardsActivity);
     }
 

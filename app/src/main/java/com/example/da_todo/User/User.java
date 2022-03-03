@@ -1,85 +1,105 @@
 package com.example.da_todo.User;
 
+import com.example.da_todo.Reward.Pet;
+import com.example.da_todo.Task.Task;
+
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class User implements Serializable
 {
-    private String userID;
-    private String userName;
-    private String parentEmail;
-    private String parentPin;
-    private String petID;
-    ArrayList<String> taskIDs;
+    private String ID;
+    private String name;
+    private String email;
+    private String pin;
+    private Pet pet;
+    ArrayList<Task> tasks;
 
     public User()
     {
-
     }
 
-    public User(String userID, String userName, String parentEmail, String parentPin) {
-        this.userID = userID;
-        this.userName = userName;
-        this.parentEmail = parentEmail;
-        this.parentPin = parentPin;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getParentEmail() {
-        return parentEmail;
-    }
-
-    public void setParentEmail(String parentEmail) {
-        this.parentEmail = parentEmail;
-    }
-
-    public String getParentPin() {
-        return parentPin;
-    }
-
-    public void setParentPin(String parentPassword) {
-        this.parentPin = parentPin;
-    }
-
-    public String getPetID() {
-        return petID;
-    }
-
-    public void setPetID(String petID) {
-        this.petID = petID;
-    }
-
-    public ArrayList<String> getTaskIDs() {
-        return taskIDs;
-    }
-
-    public void setTaskIDs(ArrayList<String> taskIDs) {
-        this.taskIDs = taskIDs;
+    public User(String ID, String name, String email, String pin)
+    {
+        this.ID = ID;
+        this.name = name;
+        this.email = email;
+        this.pin = pin;
+        this.pet = new Pet("", 0, 0, UUID.randomUUID().toString());
+        this.tasks = new ArrayList<>();
     }
 
     @Override
-    public String toString() {
-        return "User:" +
-                "User ID = " + userID +
-                "\nUser Name = " + userName +
-                "\nParent Email = " + parentEmail +
-                "\nParent Pin = " + parentPin +
-                "\nPet ID = " + petID +
-                "\nTask IDs = " + taskIDs;
+    public String toString()
+    {
+        return "User{" +
+                "ID='" + ID + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", pin='" + pin + '\'' +
+                ", pet=" + pet +
+                ", tasks=" + tasks +
+                '}';
+    }
+
+    public String getID()
+    {
+        return ID;
+    }
+
+    public void setID(String ID)
+    {
+        this.ID = ID;
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public String getPin()
+    {
+        return pin;
+    }
+
+    public void setPin(String pin)
+    {
+        this.pin = pin;
+    }
+
+    public Pet getPet()
+    {
+        return pet;
+    }
+
+    public void setPet(Pet pet)
+    {
+        this.pet = pet;
+    }
+
+    public ArrayList<Task> getTasks()
+    {
+        return tasks;
+    }
+
+    public void setTasks(ArrayList<Task> tasks)
+    {
+        this.tasks = tasks;
     }
 }
