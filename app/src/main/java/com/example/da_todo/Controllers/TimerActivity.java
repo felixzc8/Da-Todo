@@ -71,6 +71,14 @@ public class TimerActivity extends AppCompatActivity
                 onTimerFinished();
             }
         });
+
+        String time = "0";
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            time = extras.getString("Time");
+            int timeInt = Integer.parseInt(time);
+        }
     }
 
     @Override

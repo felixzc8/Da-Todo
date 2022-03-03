@@ -18,9 +18,10 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
     private ArrayList<Task> taskList;
     private RecyclerViewClickListener listener;
 
-    public recyclerAdapter(ArrayList<Task> taskList)
+    public recyclerAdapter(ArrayList<Task> taskList, RecyclerViewClickListener listener)
     {
         this.taskList = taskList;
+        this.listener = listener;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
@@ -43,7 +44,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
         @Override
         public void onClick(View view)
         {
-
+            listener.onClick(view, getAdapterPosition());
         }
     }
 

@@ -21,6 +21,7 @@ public class TasksActivity extends AppCompatActivity
     private ArrayList<Task> taskList;
     private RecyclerView recyclerView;
     private RecyclerView recyclerAdapter;
+    private com.example.da_todo.recyclerAdapter.RecyclerViewClickListener listener;
     Pet userPet;
 
     @Override
@@ -30,20 +31,33 @@ public class TasksActivity extends AppCompatActivity
         setContentView(R.layout.activity_tasks_acvitiy);
         taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_tasksActivity);
-
         userPet = (Pet) getIntent().getSerializableExtra("pet");
-
         setTaskInfo();
         setAdapter();
     }
 
     private void setAdapter()
     {
-        recyclerAdapter adapter = new recyclerAdapter(taskList);
+        setOnClickListener();
+        recyclerAdapter adapter = new recyclerAdapter(taskList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+    }
+
+    private void setOnClickListener()
+    {
+        listener = new recyclerAdapter.RecyclerViewClickListener()
+        {
+            @Override
+            public void onClick(View v, int position)
+            {
+                Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
+                intent.putExtra("Time", "12");
+                startActivity(intent);
+            }
+        };
     }
 
     private void setTaskInfo()
@@ -66,5 +80,4 @@ public class TasksActivity extends AppCompatActivity
         goToRewardsActivity.putExtra("pet", userPet);
         startActivity(goToRewardsActivity);
     }
-
 }
