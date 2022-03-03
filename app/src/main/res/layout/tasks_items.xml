@@ -31,35 +31,25 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/minutes_TextView_TasksItems"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Minutes:"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/taskImage_ImageView_tasksItems"
+        app:layout_constraintTop_toBottomOf="@+id/taskName_TextView_TasksItems" />
+
+    <TextView
         android:id="@+id/taskTime_TextView_TasksItems"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:text="Time"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/dollar_TextView_TasksItems"
+        app:layout_constraintStart_toEndOf="@+id/minutes_TextView_TasksItems"
         app:layout_constraintTop_toBottomOf="@+id/taskName_TextView_TasksItems" />
-
-    <TextView
-        android:id="@+id/dollar_TextView_TasksItems"
-        android:layout_width="15dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:text="$"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/taskImage_ImageView_tasksItems"
-        app:layout_constraintTop_toBottomOf="@+id/taskName_TextView_TasksItems" />
-
-    <TextView
-        android:id="@+id/points_TextView_TasksItems"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:text="Reward"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/taskReward_TextView_TasksItems2"
-        app:layout_constraintTop_toBottomOf="@+id/taskTime_TextView_TasksItems" />
 
     <TextView
         android:id="@+id/taskReward_TextView_TasksItems2"
@@ -70,5 +60,15 @@
         android:text="Points:"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/taskImage_ImageView_tasksItems"
+        app:layout_constraintTop_toBottomOf="@+id/taskTime_TextView_TasksItems" />
+
+    <TextView
+        android:id="@+id/points_TextView_TasksItems"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:text="Reward"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/taskReward_TextView_TasksItems2"
         app:layout_constraintTop_toBottomOf="@+id/taskTime_TextView_TasksItems" />
 </androidx.constraintlayout.widget.ConstraintLayout>
