@@ -8,7 +8,6 @@ public class Task implements Serializable
 {
     private ImageView image;
     private String name;
-    private String description;
     private int timeRequired;
     private int pointsRewarded;
 
@@ -17,11 +16,10 @@ public class Task implements Serializable
 
     }
 
-    public Task(ImageView taskImage, String taskName, String taskDescription, int timeRequired, int pointsRewarded)
+    public Task(ImageView taskImage, String taskName, int timeRequired, int pointsRewarded)
     {
         this.image = taskImage;
         this.name = taskName;
-        this.description = taskDescription;
         this.timeRequired = timeRequired;
         this.pointsRewarded = pointsRewarded;
     }
@@ -46,15 +44,6 @@ public class Task implements Serializable
         this.name = name;
     }
 
-    public String getDescription()
-    {
-        return description;
-    }
-
-    public void setDescription(String description)
-    {
-        this.description = description;
-    }
 
     public int getTimeRequired()
     {
@@ -82,7 +71,6 @@ public class Task implements Serializable
         return "Task:" +
                 "\nTask Image = " + image +
                 "\nTask Name = " + name +
-                "\nTask Description = " + description +
                 "\nTime Required = " + timeRequired +
                 "\nPoints Rewarded = " + pointsRewarded;
     }
