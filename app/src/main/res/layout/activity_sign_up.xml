@@ -49,6 +49,7 @@
         app:endIconTint="@color/dark_blue"
         app:hintTextColor="@color/cyan"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:startIconDrawable="@drawable/ic_baseline_person_24"
