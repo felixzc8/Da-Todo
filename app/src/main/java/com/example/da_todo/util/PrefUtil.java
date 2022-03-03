@@ -12,7 +12,7 @@ public class PrefUtil
 
     public static int getTimerLength(Context context)
     {
-        return 1;
+        return 5;
     }
 
     public static Long getPreviousTimerLengthSeconds(Context context)

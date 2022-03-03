@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
@@ -31,8 +30,8 @@ public class PetNamingActivity extends AppCompatActivity {
     }
 
     public void changePetName(View view) {
-        String petName = petNameEditText.getText().toString();
-        userPet.setPetName(petName);
+        String name = petNameEditText.getText().toString();
+        userPet.setName(name);
 
         Intent intent = new Intent(this, TasksActivity.class);
         intent.putExtra("user", user);

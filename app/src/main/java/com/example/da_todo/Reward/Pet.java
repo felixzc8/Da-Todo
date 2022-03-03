@@ -4,37 +4,37 @@ import java.io.Serializable;
 
 public class Pet implements Serializable
 {
-    private String petName;
+    private String name;
     private int totalPoints;
-    private int petPoints;
-    private String petID;
+    private int points;
+    private String ID;
 
     public Pet()
     {
 
     }
 
-    public Pet(String petName, int totalPoints, int petPoints, String petID) {
-        this.petName = petName;
+    public Pet(String name, int totalPoints, int petPoints, String petID) {
+        this.name = name;
         this.totalPoints = totalPoints;
-        this.petPoints = petPoints;
-        this.petID = petID;
+        this.points = petPoints;
+        this.ID = petID;
     }
 
-    public String getPetID() {
-        return petID;
+    public String getID() {
+        return ID;
     }
 
-    public void setPetID(String petID) {
-        this.petID = petID;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
-    public String getPetName() {
-        return petName;
+    public String getName() {
+        return name;
     }
 
-    public void setPetName(String petName) {
-        this.petName = petName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getTotalPoints() {
@@ -45,20 +45,20 @@ public class Pet implements Serializable
         this.totalPoints = totalPoints;
     }
 
-    public int getPetPoints() {
-        return petPoints;
+    public int getPoints() {
+        return points;
     }
 
-    public void setPetPoints(int petPoints) {
-        this.petPoints = petPoints;
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     @Override
     public String toString() {
         return "Pet:" +
-                "\nPet Name = " + petName +
+                "\nPet Name = " + name +
                 "\nTotal Points = " + totalPoints +
-                "\nPet Points = " + petPoints +
+                "\nPet Points = " + points +
                 "\nPet ID = ";
     }
 }
