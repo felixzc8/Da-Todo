@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
+import com.example.da_todo.User.User;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class RewardsActivity extends AppCompatActivity
@@ -18,7 +19,9 @@ public class RewardsActivity extends AppCompatActivity
     TextView petNameTextView;
     TextView moneyTextView;
 
-    Pet userPet;
+    User user;
+
+    Pet pet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -28,7 +31,9 @@ public class RewardsActivity extends AppCompatActivity
 
         firestore = FirebaseFirestore.getInstance();
 
-        userPet = (Pet) getIntent().getSerializableExtra("pet");
+        user = (User) getIntent().getSerializableExtra("user");
+
+        pet = user.getPet();
 
         petNameTextView = findViewById(R.id.petNameTextView);
         moneyTextView = findViewById(R.id.moneyTextView);

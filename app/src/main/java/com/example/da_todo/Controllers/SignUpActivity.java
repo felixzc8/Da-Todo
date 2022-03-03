@@ -69,7 +69,6 @@ public class SignUpActivity extends AppCompatActivity
         String email = emailInput.getText().toString();
         String password = passwordInput.getText().toString();
         String pin = pinInput.getText().toString();
-        String petID = UUID.randomUUID().toString();
         System.out.println(String.format("Sign Up - Email: %s, Password: %s", email, password));
 
         if (!name.equals("") && !email.equals("") && !password.equals(""))
@@ -87,10 +86,6 @@ public class SignUpActivity extends AppCompatActivity
 
                                 user = new User(uid, name, email, pin);
                                 firestore.collection("/users").document(uid).set(user);
-
-                                userPet = new Pet("", 0, 0, petID);
-                                user.setPetID(petID);
-
                                 goTaskActivity();
                             }
                             else

@@ -6,9 +6,8 @@ import java.io.Serializable;
 
 public class Task implements Serializable
 {
-    private ImageView taskImage;
-    private String taskName;
-    private String taskDescription;
+    private ImageView image;
+    private String name;
     private int timeRequired;
     private int pointsRewarded;
 
@@ -19,41 +18,32 @@ public class Task implements Serializable
 
     public Task(ImageView taskImage, String taskName, int timeRequired, int pointsRewarded)
     {
-        this.taskImage = taskImage;
-        this.taskName = taskName;
+        this.image = taskImage;
+        this.name = taskName;
         this.timeRequired = timeRequired;
         this.pointsRewarded = pointsRewarded;
     }
 
     public ImageView getTaskImage()
     {
-        return taskImage;
+        return image;
     }
 
-    public void setTaskImage(ImageView taskImage)
+    public void setImage(ImageView taskImage)
     {
-        this.taskImage = taskImage;
+        this.image = taskImage;
     }
 
-    public String getTaskName()
+    public String getName()
     {
-        return taskName;
+        return name;
     }
 
-    public void setTaskName(String taskName)
+    public void setName(String name)
     {
-        this.taskName = taskName;
+        this.name = name;
     }
 
-    public String getTaskDescription()
-    {
-        return taskDescription;
-    }
-
-    public void setTaskDescription(String taskDescription)
-    {
-        this.taskDescription = taskDescription;
-    }
 
     public int getTimeRequired()
     {
@@ -79,8 +69,8 @@ public class Task implements Serializable
     public String toString()
     {
         return "Task:" +
-                "\nTask Image = " + taskImage +
-                "\nTask Name = " + taskName +
+                "\nTask Image = " + image +
+                "\nTask Name = " + name +
                 "\nTime Required = " + timeRequired +
                 "\nPoints Rewarded = " + pointsRewarded;
     }
