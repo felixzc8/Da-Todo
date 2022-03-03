@@ -78,6 +78,7 @@ public class AddTaskActivity extends AppCompatActivity
         int rewardInt = Integer.parseInt(taskPoints.getText().toString());
 
         Task task = new Task(null, nameString, timeInt, rewardInt);
+//        firestore.collection("Tasks").document()
     }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
