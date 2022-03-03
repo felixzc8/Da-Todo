@@ -84,10 +84,10 @@ public class TasksActivity extends AppCompatActivity
 
     private void setTaskInfo()
     {
-        taskList.add(new Task(null, "Eat Dinner", "Eat at 8pm, 1 bowl", 30, 5));
-        taskList.add(new Task(null, "Shower", "Save water", 10, 1));
-        taskList.add(new Task(null, "Brush Teeth", "Right before bed", 5, 3));
-        taskList.add(new Task(null, "Pack bag", "Check schedule beforehand", 10, 5));
+        taskList.add(new Task(null, "Eat Dinner", 30, 5));
+        taskList.add(new Task(null, "Shower", 10, 1));
+        taskList.add(new Task(null, "Brush Teeth", 5, 3));
+        taskList.add(new Task(null, "Pack bag",  10, 5));
     }
 
     public void goToAddTaskActivity(View view)
