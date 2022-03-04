@@ -26,7 +26,7 @@ public class PetNamingActivity extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("user");
         userPet = (Pet) getIntent().getSerializableExtra("pet");
 
-        petNameEditText = findViewById(R.id.petNameEditText);
+        petNameEditText = findViewById(R.id.petNameInput_EditText_PetNamingActivity);
     }
 
     public void changePetName(View view) {

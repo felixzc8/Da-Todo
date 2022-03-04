@@ -72,14 +72,14 @@ public class AddTaskActivity extends AppCompatActivity
         });
     }
 
-    public void addTask(){
+    public void addTask(View view){
         String nameString = taskName.toString();
         int timeInt = Integer.parseInt(taskTime.getText().toString());
         int rewardInt = Integer.parseInt(taskPoints.getText().toString());
-        UUID taskUUID=UUID.randomUUID();
+        String taskUUID = UUID.randomUUID().toString();
 
-        Task task = new Task(null, nameString, timeInt, rewardInt, null);
-//        firestore.collection("Tasks").document().
+        Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
+        firestore.collection("Tasks").document(task.getTaskUUID()).set(task);
     }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(

@@ -35,8 +35,8 @@ public class RewardsActivity extends AppCompatActivity
 
         pet = user.getPet();
 
-        petNameTextView = findViewById(R.id.petNameTextView);
-        moneyTextView = findViewById(R.id.moneyTextView);
+        petNameTextView = findViewById(R.id.petName_TextView_RewardsActivity);
+        moneyTextView = findViewById(R.id.money_TextView_RewardsActivity);
     }
 
     public void backButton(View v)

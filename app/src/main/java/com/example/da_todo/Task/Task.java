@@ -25,7 +25,7 @@ public class Task implements Serializable
         this.taskUUID = taskUUID;
     }
 
-    public ImageView getTaskImage()
+    public ImageView getImage()
     {
         return image;
     }
@@ -44,7 +44,6 @@ public class Task implements Serializable
     {
         this.name = name;
     }
-
 
     public int getTimeRequired()
     {
@@ -66,6 +65,14 @@ public class Task implements Serializable
         this.pointsRewarded = pointsRewarded;
     }
 
+    public String getTaskUUID() {
+        return taskUUID;
+    }
+
+    public void setTaskUUID(String taskUUID) {
+        this.taskUUID = taskUUID;
+    }
+
     @Override
     public String toString()
     {
@@ -73,6 +80,7 @@ public class Task implements Serializable
                 "\nTask Image = " + image +
                 "\nTask Name = " + name +
                 "\nTime Required = " + timeRequired +
-                "\nPoints Rewarded = " + pointsRewarded;
+                "\nPoints Rewarded = " + pointsRewarded +
+                "\nTask ID = " + taskUUID;
     }
 }

@@ -59,7 +59,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
     @Override
     public void onBindViewHolder(@NonNull recyclerAdapter.MyViewHolder holder, int position)
     {
-        ImageView taskImage = taskList.get(position).getTaskImage();
+        ImageView taskImage = taskList.get(position).getImage();
         String taskName = taskList.get(position).getName();
         int taskTime = taskList.get(position).getTimeRequired();
         int taskReward = taskList.get(position).getPointsRewarded();
