@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class Task implements Serializable
 {
-    private ImageView image;
+    private String image;
     private String name;
     private int timeRequired;
     private int pointsRewarded;
@@ -17,7 +17,7 @@ public class Task implements Serializable
 
     }
 
-    public Task(ImageView image, String name, int timeRequired, int pointsRewarded, String taskUUID) {
+    public Task(String image, String name, int timeRequired, int pointsRewarded, String taskUUID) {
         this.image = image;
         this.name = name;
         this.timeRequired = timeRequired;
@@ -25,12 +25,12 @@ public class Task implements Serializable
         this.taskUUID = taskUUID;
     }
 
-    public ImageView getImage()
+    public String getImage()
     {
         return image;
     }
 
-    public void setImage(ImageView taskImage)
+    public void setImage(String taskImage)
     {
         this.image = taskImage;
     }

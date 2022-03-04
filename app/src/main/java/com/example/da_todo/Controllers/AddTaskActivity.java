@@ -46,6 +46,7 @@ public class AddTaskActivity extends AppCompatActivity
 
     private ImageView taskPhoto;
     public Uri imageUri;
+    public String imageUriString;
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
@@ -73,12 +74,14 @@ public class AddTaskActivity extends AppCompatActivity
     }
 
     public void addTask(View view){
-        String nameString = taskName.toString();
+        String nameString = taskName.getText().toString();
         int timeInt = Integer.parseInt(taskTime.getText().toString());
         int rewardInt = Integer.parseInt(taskPoints.getText().toString());
         String taskUUID = UUID.randomUUID().toString();
 
-        Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
+        uploadPicture();
+
+        Task task = new Task(imageUriString, nameString, timeInt, rewardInt, taskUUID);
         firestore.collection("Tasks").document(task.getTaskUUID()).set(task);
     }
 
@@ -108,8 +111,8 @@ public class AddTaskActivity extends AppCompatActivity
         if(resultCode == RESULT_OK && data != null && data.getData() != null)
         {
             imageUri = data.getData();
+            imageUriString = imageUri.toString();
             taskPhoto.setImageURI(imageUri);
-            uploadPicture();
         }
     }
 
