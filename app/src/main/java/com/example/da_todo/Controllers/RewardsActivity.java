@@ -15,12 +15,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class RewardsActivity extends AppCompatActivity
 {
     FirebaseFirestore firestore;
-
     TextView petNameTextView;
     TextView moneyTextView;
-
     User user;
-
     Pet pet;
 
     @Override
@@ -28,13 +25,9 @@ public class RewardsActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rewards);
-
         firestore = FirebaseFirestore.getInstance();
-
         user = (User) getIntent().getSerializableExtra("user");
-
-        pet = user.getPet();
-
+//        pet = user.getPet();
         petNameTextView = findViewById(R.id.petName_TextView_RewardsActivity);
         moneyTextView = findViewById(R.id.money_TextView_RewardsActivity);
     }
