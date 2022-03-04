@@ -7,80 +7,83 @@
     tools:context=".Controllers.RewardsActivity">
 
     <Button
-        android:id="@+id/feedingButton"
+        android:id="@+id/feedPet_Button_RewardsActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="81dp"
+        android:layout_marginTop="24dp"
         android:text="BANANA $50"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodImage_ImageView_RewardsActivity" />
 
     <ImageView
-        android:id="@+id/petImage"
+        android:id="@+id/petImage_ImageView_RewardsActivity"
         android:layout_width="225dp"
         android:layout_height="234dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/bananaImage"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.346"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
-        android:id="@+id/bananaImage"
+        android:id="@+id/foodImage_ImageView_RewardsActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/feedingButton"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petImage_ImageView_RewardsActivity"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/petNameTextView"
+        android:id="@+id/petName_TextView_RewardsActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="pet name here"
         android:textSize="34sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/renamePet_Button_RewardsActivity"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="123dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/back_Button_RewardsActivity"
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="16dp"
         android:onClick="backButton"
         android:text="back"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/feedPet_Button_RewardsActivity" />
 
     <Button
         android:id="@+id/renamePet_Button_RewardsActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginBottom="12dp"
         android:onClick="renamePetButton"
         android:text="Rename Pet"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/petImage_ImageView_RewardsActivity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/moneyTextView"
+        android:id="@+id/money_TextView_RewardsActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
-        android:text="$XXX"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="$X"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

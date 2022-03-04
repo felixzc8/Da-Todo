@@ -7,7 +7,7 @@
     tools:context=".Controllers.PetNamingActivity">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/meetPet_TextView_PetNamingActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="119dp"
@@ -20,31 +20,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/petImage_ImageView_PetNamingActivity"
         android:layout_width="253dp"
         android:layout_height="247dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/nameTitle_TextView_PetNamingActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/meetPet_TextView_PetNamingActivity"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/nameTitle_TextView_PetNamingActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="23dp"
-        android:text="What's his name?"
+        android:text="What's its name?"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/petNameEditText"
+        app:layout_constraintBottom_toTopOf="@+id/petNameInput_EditText_PetNamingActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/petNameEditText"
+        android:id="@+id/petNameInput_EditText_PetNamingActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="39dp"
@@ -52,13 +52,13 @@
         android:hint="Your pet's name"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/confirm_Button_PetNamingActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/confirm_Button_PetNamingActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="95dp"
@@ -70,7 +70,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/back_Button_PetNamingActivity"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
