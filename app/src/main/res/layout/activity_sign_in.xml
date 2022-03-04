@@ -7,7 +7,7 @@
     tools:context=".Controllers.SignInActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordInputLayout"
+        android:id="@+id/inputPassword_TextInput_SignInActivity"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -24,21 +24,21 @@
         app:hintTextColor="@color/cyan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/inputEmail_TextInput_SignInActivity"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         app:startIconTint="@color/dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordInputEditText"
+            android:id="@+id/inputPassword_EditText_SignInActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:textColor="@color/cyan"
-            android:textColorHint="@color/cyan" />
+            android:textColorHint="#757575" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailInputLayout"
+        android:id="@+id/inputEmail_TextInput_SignInActivity"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -55,15 +55,15 @@
         app:startIconTint="@color/dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailInputEditText"
+            android:id="@+id/inputEmail_EditText_SignInActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/cyan"
-            android:textColorHint="@color/cyan" />
+            android:textColorHint="#757575" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/constraintLayout_Layout_SignInActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -73,27 +73,27 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/signInMsgTextView"
+            android:id="@+id/signInMessage_TextView_SignInActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
             android:text="Don't have an account?"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/goSignInButton"
+            app:layout_constraintEnd_toStartOf="@+id/goSignInButton_TextView_SignInActivity"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/goSignInButton"
+            android:id="@+id/goSignInButton_TextView_SignInActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="goToSignUpActivity"
             android:text=" Sign Up"
-            android:textColor="@color/teal_200"
+            android:textColor="#009688"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/signInMsgTextView"
+            app:layout_constraintStart_toEndOf="@+id/signInMessage_TextView_SignInActivity"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="TouchTargetSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -107,16 +107,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
 
     <Button
-        android:id="@+id/signInButton"
+        android:id="@+id/signIn_Button_SignInActivity"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginBottom="10dp"
         android:onClick="logIn"
         android:text="Sign In"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout_Layout_SignInActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
