@@ -61,7 +61,6 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
     {
         ImageView taskImage = taskList.get(position).getTaskImage();
         String taskName = taskList.get(position).getName();
-        String taskDescription = taskList.get(position).getDescription();
         int taskTime = taskList.get(position).getTimeRequired();
         int taskReward = taskList.get(position).getPointsRewarded();
 
