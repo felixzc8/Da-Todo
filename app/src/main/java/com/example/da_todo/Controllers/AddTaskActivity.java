@@ -37,13 +37,10 @@ public class AddTaskActivity extends AppCompatActivity
 {
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
     private EditText taskName;
     private EditText taskTime;
     private EditText taskPoints;
-
     private String userID;
-
     private ImageView taskPhoto;
     public Uri imageUri;
     private FirebaseStorage storage;
@@ -64,15 +61,18 @@ public class AddTaskActivity extends AppCompatActivity
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        taskPhoto.setOnClickListener(new View.OnClickListener() {
+        taskPhoto.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 choosePicture();
             }
         });
     }
 
-    public void addTask(View view){
+    public void addTask(View view)
+    {
         String nameString = taskName.toString();
         int timeInt = Integer.parseInt(taskTime.getText().toString());
         int rewardInt = Integer.parseInt(taskPoints.getText().toString());
@@ -84,17 +84,21 @@ public class AddTaskActivity extends AppCompatActivity
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
+            new ActivityResultCallback<ActivityResult>()
+            {
                 @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
+                public void onActivityResult(ActivityResult result)
+                {
+                    if (result.getResultCode() == Activity.RESULT_OK)
+                    {
                         // There are no request codes
                         Intent data = result.getData();
                     }
                 }
             });
 
-    private void choosePicture() {
+    private void choosePicture()
+    {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -102,10 +106,11 @@ public class AddTaskActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == RESULT_OK && data != null && data.getData() != null)
+        if (resultCode == RESULT_OK && data != null && data.getData() != null)
         {
             imageUri = data.getData();
             taskPhoto.setImageURI(imageUri);
@@ -113,7 +118,8 @@ public class AddTaskActivity extends AppCompatActivity
         }
     }
 
-    private void uploadPicture() {
+    private void uploadPicture()
+    {
         final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -121,23 +127,29 @@ public class AddTaskActivity extends AppCompatActivity
         StorageReference riversRef = storageReference.child("images/" + randomKey);
 
         riversRef.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>()
+                {
                     @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+                    {
                         progressBar.setVisibility(View.INVISIBLE);
                         Snackbar.make(findViewById(android.R.id.content), "Image Uploaded.", Snackbar.LENGTH_SHORT).show();
                     }
                 })
-                .addOnFailureListener(new OnFailureListener() {
+                .addOnFailureListener(new OnFailureListener()
+                {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
+                    public void onFailure(@NonNull Exception e)
+                    {
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(getApplicationContext(), "Failed to upload", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>()
+                {
                     @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot)
+                    {
                         double progressPercent = (100 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
                         int progress = (int) progressPercent;
                         progressBar.setProgress(progress, true);
@@ -145,7 +157,8 @@ public class AddTaskActivity extends AppCompatActivity
                 });
     }
 
-    public void backButton(View v){
+    public void backButton(View v)
+    {
         Intent goBackIntent = new Intent(this, TasksActivity.class);
         startActivity(goBackIntent);
     }

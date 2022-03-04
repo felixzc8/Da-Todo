@@ -22,12 +22,9 @@ public class SignUpActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
-
     EditText nameInput, emailInput, passwordInput, pinInput;
-
     User user;
     Pet userPet;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -60,7 +57,6 @@ public class SignUpActivity extends AppCompatActivity
             goTaskActivity();
         }
     }
-
 
     public void signUp(View v)
     {

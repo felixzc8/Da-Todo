@@ -17,9 +17,7 @@ public class SignInActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
-
     User user;
-
     EditText emailInput, passwordInput;
 
     @Override
@@ -27,10 +25,8 @@ public class SignInActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
         emailInput = findViewById(R.id.emailInputEditText);
         passwordInput = findViewById(R.id.passwordInputEditText);
     }
@@ -44,17 +40,18 @@ public class SignInActivity extends AppCompatActivity
         if (currentUser != null)
         {
             String email = currentUser.getEmail();
-
             System.out.println(String.format("Current User - email: %s", email));
             goTaskActivity();
         }
     }
 
-    public void logIn(View v){
+    public void logIn(View v)
+    {
         goTaskActivity();
     }
 
-    public void goToSignUpActivity(View view){
+    public void goToSignUpActivity(View view)
+    {
         Intent goToSignUpActivity = new Intent(this, SignUpActivity.class);
         startActivity(goToSignUpActivity);
     }

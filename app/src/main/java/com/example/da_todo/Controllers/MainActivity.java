@@ -15,7 +15,6 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Intent goToSignInPage = new Intent(this, SignInActivity.class);
         startActivity(goToSignInPage);
     }

@@ -11,15 +11,15 @@ import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.User.User;
 
-public class PetNamingActivity extends AppCompatActivity {
-
+public class PetNamingActivity extends AppCompatActivity
+{
     User user;
     Pet userPet;
-
     EditText petNameEditText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet_naming);
 
@@ -29,17 +29,19 @@ public class PetNamingActivity extends AppCompatActivity {
         petNameEditText = findViewById(R.id.petNameInput_EditText_PetNamingActivity);
     }
 
-    public void changePetName(View view) {
+    public void changePetName(View view)
+    {
         String name = petNameEditText.getText().toString();
+        //error here because should be type Pet, not string
         userPet.setName(name);
-
         Intent intent = new Intent(this, TasksActivity.class);
         intent.putExtra("user", user);
         intent.putExtra("pet", userPet);
         startActivity(intent);
     }
 
-    public void backButton(View view){
+    public void backButton(View view)
+    {
         Intent backButton = new Intent(this, RewardsActivity.class);
         startActivity(backButton);
     }
