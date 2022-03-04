@@ -10,18 +10,19 @@ public class Task implements Serializable
     private String name;
     private int timeRequired;
     private int pointsRewarded;
+    private String taskUUID;
 
     public Task()
     {
 
     }
 
-    public Task(ImageView taskImage, String taskName, int timeRequired, int pointsRewarded)
-    {
-        this.image = taskImage;
-        this.name = taskName;
+    public Task(ImageView image, String name, int timeRequired, int pointsRewarded, String taskUUID) {
+        this.image = image;
+        this.name = name;
         this.timeRequired = timeRequired;
         this.pointsRewarded = pointsRewarded;
+        this.taskUUID = taskUUID;
     }
 
     public ImageView getTaskImage()
