@@ -30,19 +30,16 @@ public class TasksActivity extends AppCompatActivity
     private RecyclerView recyclerAdapter;
     private com.example.da_todo.recyclerAdapter.RecyclerViewClickListener listener;
     Pet userPet;
-
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
     FirebaseUser mUser;
-
     User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tasks_acvitiy);
-
+        setContentView(R.layout.activity_tasks);
         taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_tasksActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
@@ -116,5 +113,10 @@ public class TasksActivity extends AppCompatActivity
         Intent goToRewardsActivity = new Intent(this, RewardsActivity.class);
         goToRewardsActivity.putExtra("user", user);
         startActivity(goToRewardsActivity);
+    }
+
+    public void signOut(View view)
+    {
+
     }
 }
