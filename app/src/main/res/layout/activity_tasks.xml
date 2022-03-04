@@ -10,10 +10,11 @@
         android:id="@+id/addActivity_Button_TasksActivity"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="32dp"
         android:onClick="goToAddTaskActivity"
         android:text="Add Task"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_tasksActivity" />
 
@@ -21,9 +22,9 @@
         android:id="@+id/recyclerView_tasksActivity"
         android:layout_width="350dp"
         android:layout_height="450dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/petButton" />
 

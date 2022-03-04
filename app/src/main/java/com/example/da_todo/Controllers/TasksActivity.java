@@ -114,4 +114,9 @@ public class TasksActivity extends AppCompatActivity
         goToRewardsActivity.putExtra("user", user);
         startActivity(goToRewardsActivity);
     }
+
+    public void signOut(View view)
+    {
+
+    }
 }
