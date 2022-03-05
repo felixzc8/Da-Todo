@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.AddTaskActivity">
 
+    <EditText
+        android:id="@+id/taskTime_EditText_AddTaskActivity2"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="25dp"
+        android:ems="8"
+        android:hint="15"
+        android:inputType="number"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/taskTime_TextView_AddTaskActivity"
+        app:layout_constraintTop_toBottomOf="@+id/taskName_EditText_AddTaskActivity" />
+
     <TextView
         android:id="@+id/addTask_TextView_AddTaskActivity"
         android:layout_width="wrap_content"
@@ -58,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/taskName_EditText_AddTaskActivity" />
 
     <EditText
-        android:id="@+id/taskTime_EditText_AddTaskActivity"
+        android:id="@+id/taskReward_EditText_AddTaskActivity"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:layout_marginTop="25dp"
@@ -66,8 +78,8 @@
         android:hint="15"
         android:inputType="number"
         android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/taskTime_TextView_AddTaskActivity"
-        app:layout_constraintTop_toBottomOf="@+id/taskName_EditText_AddTaskActivity" />
+        app:layout_constraintStart_toEndOf="@+id/taskReward_TextView_AddTaskActivity"
+        app:layout_constraintTop_toBottomOf="@+id/taskTime_EditText_AddTaskActivity2" />
 
     <TextView
         android:id="@+id/taskReward_TextView_AddTaskActivity"
@@ -81,18 +93,6 @@
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/taskTime_TextView_AddTaskActivity" />
-
-    <EditText
-        android:id="@+id/taskReward_EditText_AddTaskActivity"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="25dp"
-        android:ems="8"
-        android:hint="10"
-        android:inputType="textPersonName"
-        android:textSize="25sp"
-        app:layout_constraintStart_toEndOf="@+id/taskReward_TextView_AddTaskActivity"
-        app:layout_constraintTop_toBottomOf="@+id/taskTime_EditText_AddTaskActivity" />
 
     <TextView
         android:id="@+id/taskPhoto_TextView_AddTaskActivity"

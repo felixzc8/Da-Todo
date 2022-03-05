@@ -9,7 +9,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,6 +42,8 @@ public class AddTaskActivity extends AppCompatActivity
     private EditText taskPoints;
 
     private String userID;
+    private String userEmail;
+    private String userPin;
 
     private ImageView taskPhoto;
     public Uri imageUri;
@@ -58,8 +59,15 @@ public class AddTaskActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
+        Bundle intentInfo = getIntent().getExtras();
+        if(intentInfo != null){
+            userID = intentInfo.getString("userID");
+            userEmail = intentInfo.getString("parentEmail");
+            userPin = intentInfo.getString("parentPin");
+        }
+
         taskName = findViewById(R.id.taskName_EditText_AddTaskActivity);
-        taskTime = findViewById(R.id.taskTime_EditText_AddTaskActivity);
+        taskTime = findViewById(R.id.taskReward_EditText_AddTaskActivity);
         taskPoints = findViewById(R.id.taskReward_EditText_AddTaskActivity);
 
         taskPhoto = findViewById(R.id.uploadPhoto_imageView_AddTaskActivity);
@@ -155,6 +163,12 @@ public class AddTaskActivity extends AppCompatActivity
                         progressBar.setProgress(progress, true);
                     }
                 });
+    }
+
+    public void clearPage(){
+        taskName.setText(null);
+        taskTime.setText(null);
+        taskPoints.setText(null);
     }
 
     public void backButton(View v){
