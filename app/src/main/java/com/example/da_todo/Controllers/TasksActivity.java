@@ -40,6 +40,10 @@ public class TasksActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
+
+        mAuth = FirebaseAuth.getInstance();
+        firestore = FirebaseFirestore.getInstance();
+
         taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_tasksActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
@@ -115,8 +119,11 @@ public class TasksActivity extends AppCompatActivity
         startActivity(goToRewardsActivity);
     }
 
-    public void signOut(View view)
+    public void signOut(View v)
     {
-
+        mAuth.signOut();
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
+        this.finish();
     }
 }

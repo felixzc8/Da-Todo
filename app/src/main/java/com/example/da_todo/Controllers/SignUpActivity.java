@@ -42,22 +42,6 @@ public class SignUpActivity extends AppCompatActivity
 
     }
 
-    @Override
-    public void onStart()
-    {
-        super.onStart();
-//         Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if (currentUser != null)
-        {
-            String email = currentUser.getEmail();
-
-            System.out.println(String.format("Current User - email: %s", email));
-            goTaskActivity();
-        }
-    }
-
     public void signUp(View v)
     {
 
@@ -82,7 +66,7 @@ public class SignUpActivity extends AppCompatActivity
 
                                 user = new User(uid, name, email, pin);
                                 firestore.collection("/users").document(uid).set(user);
-                                goTaskActivity();
+                                goPetNamingActivity(user);
                             }
                             else
                             {
@@ -110,9 +94,10 @@ public class SignUpActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    public void goTaskActivity()
+    public void goPetNamingActivity(User user)
     {
         Intent intent = new Intent(this, PetNamingActivity.class);
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 }

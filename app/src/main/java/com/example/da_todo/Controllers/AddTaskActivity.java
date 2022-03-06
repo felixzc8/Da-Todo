@@ -92,7 +92,7 @@ public class AddTaskActivity extends AppCompatActivity
         uploadPicture();
 
         Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
-        firestore.collection("Tasks").document(task.getTaskUUID()).set(task);
+        firestore.collection("tasks").document(task.getTaskUUID()).set(task);
     }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
