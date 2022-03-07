@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/rounded_bg.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_pause_button.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_play_button.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_stop_button.xml" value="0.2125" />

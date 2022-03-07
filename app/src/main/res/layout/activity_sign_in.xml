@@ -29,7 +29,7 @@
         app:startIconTint="@color/dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputPassword_EditText_SignInActivity"
+            android:id="@+id/passwordInputEditTextSI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -55,7 +55,7 @@
         app:startIconTint="@color/dark_blue">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/inputEmail_EditText_SignInActivity"
+            android:id="@+id/emailInputEditTextSI"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/cyan"
@@ -115,7 +115,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_marginBottom="10dp"
-        android:onClick="logIn"
+        android:onClick="signIn"
         android:text="Sign In"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout_Layout_SignInActivity"
         app:layout_constraintEnd_toEndOf="parent"
