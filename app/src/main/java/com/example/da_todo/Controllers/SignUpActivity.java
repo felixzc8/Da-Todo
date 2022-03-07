@@ -35,7 +35,7 @@ public class SignUpActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
-        nameInput = findViewById(R.id.emailInputEditText);
+        nameInput = findViewById(R.id.nameInputEditText);
         emailInput = findViewById(R.id.emailInputEditText);
         passwordInput = findViewById(R.id.passwordInputEditText);
         pinInput = findViewById(R.id.pinInputEditText);
