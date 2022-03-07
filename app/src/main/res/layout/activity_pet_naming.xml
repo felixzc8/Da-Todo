@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="23dp"
-        android:text="What's its name?"
+        android:text="What's it's name?"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/petNameInput_EditText_PetNamingActivity"
         app:layout_constraintEnd_toEndOf="parent"

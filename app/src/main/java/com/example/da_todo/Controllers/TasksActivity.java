@@ -42,7 +42,10 @@ public class TasksActivity extends AppCompatActivity
         setContentView(R.layout.activity_tasks);
 
         mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
+
+        getUser();
 
         taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
