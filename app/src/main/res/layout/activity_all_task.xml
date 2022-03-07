@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.TasksActivity">
+    tools:context=".Controllers.AllTaskActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_allTaskActivity"
@@ -14,41 +14,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/petButton" />
+        app:layout_constraintTop_toBottomOf="@+id/addTask_TextView_AddTaskActivity2" />
 
     <Button
-        android:id="@+id/addActivity_Button_TasksActivity"
+        android:id="@+id/back_Button_addTaskActivity2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="backButton"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/addActivity_Button_TasksActivity2"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginBottom="15dp"
-        android:onClick="goToAllTaskActivity"
+        android:onClick="goToAddTaskActivity"
         android:text="Add Task"
-        app:layout_constraintBottom_toTopOf="@+id/signOutButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/petButton"
-        android:layout_width="112dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="15dp"
-        android:onClick="goToRewardsActivity"
-        android:text="visit pet"
+        app:layout_constraintBottom_toTopOf="@+id/back_Button_addTaskActivity2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/signOutButton"
+    <TextView
+        android:id="@+id/addTask_TextView_AddTaskActivity2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:onClick="signOut"
-        android:text="sign out"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="All Tasks"
+        android:textColor="#353535"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

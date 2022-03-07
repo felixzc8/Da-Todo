@@ -13,12 +13,12 @@ import com.example.da_todo.Task.Task;
 
 import java.util.ArrayList;
 
-public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyViewHolder>
+public class tasksRecyclerAdapter extends RecyclerView.Adapter<tasksRecyclerAdapter.MyViewHolder>
 {
     private ArrayList<Task> taskList;
     private RecyclerViewClickListener listener;
 
-    public recyclerAdapter(ArrayList<Task> taskList, RecyclerViewClickListener listener)
+    public tasksRecyclerAdapter(ArrayList<Task> taskList, RecyclerViewClickListener listener)
     {
         this.taskList = taskList;
         this.listener = listener;
@@ -35,7 +35,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
         {
             super(view);
             imageView = view.findViewById(R.id.taskImage_ImageView_tasksItems);
-            taskName = view.findViewById(R.id.taskName_TextView_TasksItems);
+            taskName = view.findViewById(R.id.taskName_TextView_AllTasksItems);
             taskTime = view.findViewById(R.id.taskTime_TextView_TasksItems);
             taskReward = view.findViewById(R.id.points_TextView_TasksItems);
             view.setOnClickListener(this);
@@ -50,14 +50,14 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.MyView
 
     @NonNull
     @Override
-    public recyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    public tasksRecyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.tasks_items, parent, false);
         return new MyViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull recyclerAdapter.MyViewHolder holder, int position)
+    public void onBindViewHolder(@NonNull tasksRecyclerAdapter.MyViewHolder holder, int position)
     {
         String taskImage = taskList.get(position).getImage();
         String taskName = taskList.get(position).getName();

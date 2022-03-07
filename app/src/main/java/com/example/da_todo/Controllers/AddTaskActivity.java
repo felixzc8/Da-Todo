@@ -93,6 +93,8 @@ public class AddTaskActivity extends AppCompatActivity
 
         Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
         firestore.collection("tasks").document(task.getTaskUUID()).set(task);
+
+        clearPage();
     }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
@@ -172,7 +174,7 @@ public class AddTaskActivity extends AppCompatActivity
     }
 
     public void backButton(View v){
-        Intent goBackIntent = new Intent(this, TasksActivity.class);
+        Intent goBackIntent = new Intent(this, AllTaskActivity.class);
         startActivity(goBackIntent);
     }
 }

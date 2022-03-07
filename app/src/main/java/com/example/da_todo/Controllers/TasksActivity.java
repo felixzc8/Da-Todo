@@ -15,7 +15,7 @@ import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.Task.Task;
 import com.example.da_todo.User.User;
-import com.example.da_todo.recyclerAdapter;
+import com.example.da_todo.tasksRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,7 +28,7 @@ public class TasksActivity extends AppCompatActivity
     private ArrayList<Task> taskList;
     private RecyclerView recyclerView;
     private RecyclerView recyclerAdapter;
-    private com.example.da_todo.recyclerAdapter.RecyclerViewClickListener listener;
+    private tasksRecyclerAdapter.RecyclerViewClickListener listener;
     Pet userPet;
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
@@ -45,7 +45,7 @@ public class TasksActivity extends AppCompatActivity
         firestore = FirebaseFirestore.getInstance();
 
         taskList = new ArrayList<>();
-        recyclerView = findViewById(R.id.recyclerView_tasksActivity);
+        recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
         setTaskInfo();
         setAdapter();
@@ -76,7 +76,7 @@ public class TasksActivity extends AppCompatActivity
     private void setAdapter()
     {
         setOnClickListener();
-        recyclerAdapter adapter = new recyclerAdapter(taskList, listener);
+        tasksRecyclerAdapter adapter = new tasksRecyclerAdapter(taskList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -85,7 +85,7 @@ public class TasksActivity extends AppCompatActivity
 
     private void setOnClickListener()
     {
-        listener = new recyclerAdapter.RecyclerViewClickListener()
+        listener = new tasksRecyclerAdapter.RecyclerViewClickListener()
         {
             @Override
             public void onClick(View v, int position)
@@ -106,11 +106,11 @@ public class TasksActivity extends AppCompatActivity
         taskList.add(new Task(null, "Pack bag",  10, 5, null));
     }
 
-    public void goToAddTaskActivity(View view)
+    public void goToAllTaskActivity(View view)
     {
-        Intent goToAddTaskActivity = new Intent(this, AddTaskActivity.class);
-        goToAddTaskActivity.putExtra("user", user);
-        startActivity(goToAddTaskActivity);
+        Intent goToAllTaskActivity = new Intent(this, AllTaskActivity.class);
+        goToAllTaskActivity.putExtra("user", user);
+        startActivity(goToAllTaskActivity);
     }
 
     public void goToRewardsActivity(View view)
