@@ -16,17 +16,17 @@
         android:textColorHint="@color/cyan"
         app:boxStrokeColor="@color/cyan"
         app:counterEnabled="true"
-        app:counterTextColor="@color/dark_blue"
+        app:counterTextColor="@color/dark_cyan"
         app:endIconMode="password_toggle"
-        app:endIconTint="@color/dark_blue"
+        app:endIconTint="@color/dark_cyan"
         app:helperText="min 6 characters"
-        app:helperTextTextColor="@color/dark_blue"
+        app:helperTextTextColor="@color/dark_cyan"
         app:hintTextColor="@color/cyan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inputEmail_TextInput_SignInActivity"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:startIconTint="@color/dark_blue">
+        app:startIconTint="@color/dark_cyan">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordInputEditTextSI"
@@ -46,13 +46,13 @@
         android:textColorHint="@color/cyan"
         app:boxStrokeColor="@color/cyan"
         app:endIconMode="clear_text"
-        app:endIconTint="@color/dark_blue"
+        app:endIconTint="@color/dark_cyan"
         app:hintTextColor="@color/cyan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userIcon_ImageView_signInActivity"
         app:startIconDrawable="@drawable/ic_baseline_email_24"
-        app:startIconTint="@color/dark_blue">
+        app:startIconTint="@color/dark_cyan">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailInputEditTextSI"

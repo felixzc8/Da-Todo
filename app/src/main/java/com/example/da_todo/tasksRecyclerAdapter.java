@@ -34,7 +34,7 @@ public class tasksRecyclerAdapter extends RecyclerView.Adapter<tasksRecyclerAdap
         public MyViewHolder(final View view)
         {
             super(view);
-            imageView = view.findViewById(R.id.taskImage_ImageView_tasksItems);
+            imageView = view.findViewById(R.id.taskImage_ImageView_AllTasksItems);
             taskName = view.findViewById(R.id.taskName_TextView_AllTasksItems);
             taskTime = view.findViewById(R.id.taskTime_TextView_TasksItems);
             taskReward = view.findViewById(R.id.points_TextView_TasksItems);

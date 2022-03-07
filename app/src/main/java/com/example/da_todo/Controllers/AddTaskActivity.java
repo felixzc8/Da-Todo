@@ -132,7 +132,7 @@ public class AddTaskActivity extends AppCompatActivity
         progressBar.setVisibility(View.VISIBLE);
 
         final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("images/" + randomKey);
+        StorageReference riversRef = storageReference.child("task_images/" + randomKey);
 
         riversRef.putFile(imageUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
