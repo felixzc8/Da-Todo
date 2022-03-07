@@ -68,6 +68,7 @@ public class PetNamingActivity extends AppCompatActivity
     {
         Intent intent = new Intent(this, TasksActivity.class);
         intent.putExtra("user", user);
+        intent.putExtra("pet", userPet);
         startActivity(intent);
     }
 }

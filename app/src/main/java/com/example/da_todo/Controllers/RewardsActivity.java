@@ -25,11 +25,29 @@ public class RewardsActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rewards);
+
         firestore = FirebaseFirestore.getInstance();
+
         user = (User) getIntent().getSerializableExtra("user");
-//        pet = user.getPet();
+        pet = user.getPet();
+
         petNameTextView = findViewById(R.id.petName_TextView_RewardsActivity);
         moneyTextView = findViewById(R.id.money_TextView_RewardsActivity);
+
+        moneyTextView.setText(pet.getTotalPoints());
+        petNameTextView.setText(pet.getName());
+    }
+
+    public void feedPet(View v) {
+        int totalPoints = pet.getTotalPoints() - 50;
+        int petPoints = pet.getPoints() + 50;
+
+        pet.setTotalPoints(totalPoints);
+        pet.setPoints(petPoints);
+
+        firestore.collection("Pets").document(pet.getID()).set(pet);
+
+        moneyTextView.setText(totalPoints);
     }
 
     public void backButton(View v)

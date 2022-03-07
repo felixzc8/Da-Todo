@@ -9,8 +9,11 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.da_todo.R;
+import com.example.da_todo.Reward.Pet;
+import com.example.da_todo.User.User;
 import com.example.da_todo.util.PrefUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
@@ -29,6 +32,10 @@ public class TimerActivity extends AppCompatActivity
     private MaterialProgressBar progress_countdown;
     private TextView textView_countdown;
 
+    Pet userPet;
+
+    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -39,6 +46,8 @@ public class TimerActivity extends AppCompatActivity
         stop_button = findViewById(R.id.stopTimer_Button_TimerActivity);
         progress_countdown = findViewById(R.id.countdown_ProgressBar_TimerActivity);
         textView_countdown = findViewById(R.id.timeDisplay_TextView_TimerActivity);
+
+        userPet = (Pet) getIntent().getSerializableExtra("pet");
 
         start_button.setOnClickListener(new View.OnClickListener()
         {
@@ -207,6 +216,13 @@ public class TimerActivity extends AppCompatActivity
                 stop_button.setEnabled(false);
                 break;
         }
+    }
+
+    public void updateTotalPoints(View v) {
+        int totalPoints = (0);
+        userPet.setTotalPoints(totalPoints);
+
+
     }
 
     public void goBack(View v)
