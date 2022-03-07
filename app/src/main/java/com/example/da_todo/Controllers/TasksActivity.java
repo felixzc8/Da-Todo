@@ -92,6 +92,7 @@ public class TasksActivity extends AppCompatActivity
             {
                 Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
                 intent.putExtra("Time", "12");
+                intent.putExtra("pet", userPet);
                 startActivity(intent);
             }
         };
