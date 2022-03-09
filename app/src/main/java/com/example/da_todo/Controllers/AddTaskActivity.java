@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.da_todo.R;
 import com.example.da_todo.Task.Task;
+import com.example.da_todo.User.User;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -36,6 +37,8 @@ public class AddTaskActivity extends AppCompatActivity
 {
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    User user;
 
     private EditText taskName;
     private EditText taskTime;
@@ -58,6 +61,8 @@ public class AddTaskActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
+
+        user = (User) getIntent().getSerializableExtra("user");
 
         Bundle intentInfo = getIntent().getExtras();
         if(intentInfo != null){
@@ -92,7 +97,11 @@ public class AddTaskActivity extends AppCompatActivity
         uploadPicture();
 
         Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
+
+        user.addTask(task);
+
         firestore.collection("tasks").document(task.getTaskUUID()).set(task);
+        firestore.collection("users").document(user.getID()).set(user);
 
         clearPage();
     }
@@ -109,7 +118,8 @@ public class AddTaskActivity extends AppCompatActivity
                 }
             });
 
-    private void choosePicture() {
+    private void choosePicture()
+    {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);

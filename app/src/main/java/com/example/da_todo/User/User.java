@@ -43,6 +43,11 @@ public class User implements Serializable
                 '}';
     }
 
+    public void addTask(Task task)
+    {
+        tasks.add(task);
+    }
+
     public String getID()
     {
         return ID;
