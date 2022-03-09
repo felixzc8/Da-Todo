@@ -94,11 +94,11 @@ public class AddTaskActivity extends AppCompatActivity
         int rewardInt = Integer.parseInt(taskPoints.getText().toString());
         taskUUID = UUID.randomUUID().toString();
 
-        uploadPicture();
-
         Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
 
         user.addTask(task);
+
+        uploadPicture();
 
         firestore.collection("tasks").document(task.getTaskUUID()).set(task);
         firestore.collection("users").document(user.getID()).set(user);
@@ -156,6 +156,16 @@ public class AddTaskActivity extends AppCompatActivity
                             public void onSuccess(Uri uri) {
                                 testURI = String.valueOf(uri);
                                 firestore.collection("tasks").document(taskUUID).update("image", testURI);
+
+                                for (Task t: user.getTasks())
+                                {
+                                    if (t.getTaskUUID().equals(taskUUID))
+                                    {
+                                        t.setImage(testURI);
+                                    }
+                                }
+
+                                firestore.collection("users").document(user.getID()).set(user);
                             }
                         });
                     }
