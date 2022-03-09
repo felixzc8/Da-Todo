@@ -155,7 +155,7 @@ public class AddTaskActivity extends AppCompatActivity
                             @Override
                             public void onSuccess(Uri uri) {
                                 testURI = String.valueOf(uri);
-                                firestore.collection("Tasks").document(taskUUID).update("image", testURI);
+                                firestore.collection("tasks").document(taskUUID).update("image", testURI);
                             }
                         });
                     }
