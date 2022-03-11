@@ -71,10 +71,9 @@ public class AddTaskActivity extends AppCompatActivity
             userPin = intentInfo.getString("parentPin");
         }
 
-        taskName = findViewById(R.id.taskName_EditText_AddTaskActivity);
-        taskTime = findViewById(R.id.taskReward_EditText_AddTaskActivity);
-        taskPoints = findViewById(R.id.taskReward_EditText_AddTaskActivity);
-
+        taskName = findViewById(R.id.taskNameInputEditText);
+        taskTime = findViewById(R.id.timeInputEditText);
+        taskPoints = findViewById(R.id.pointsInputLayout);
         taskPhoto = findViewById(R.id.uploadPhoto_imageView_AddTaskActivity);
 
         storage = FirebaseStorage.getInstance();
