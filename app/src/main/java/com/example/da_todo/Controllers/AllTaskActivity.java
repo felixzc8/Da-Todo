@@ -68,6 +68,7 @@ public class AllTaskActivity extends AppCompatActivity {
                 Intent goToAddAllTaskActivity = new Intent(getApplicationContext(), AddAllTaskActivity.class);
                 goToAddAllTaskActivity.putExtra("image", taskList.get(position).getImage());
                 goToAddAllTaskActivity.putExtra("name", taskList.get(position).getName());
+                goToAddAllTaskActivity.putExtra("user", user);
                 startActivity(goToAddAllTaskActivity);
             }
         };

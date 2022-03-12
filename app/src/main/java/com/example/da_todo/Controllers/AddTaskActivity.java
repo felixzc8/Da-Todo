@@ -71,7 +71,7 @@ public class AddTaskActivity extends AppCompatActivity
             userPin = intentInfo.getString("parentPin");
         }
 
-        taskName = findViewById(R.id.taskNameInputEditText);
+        taskName = findViewById(R.id.taskTimeInputEditText);
         taskTime = findViewById(R.id.timeInputEditText);
         taskPoints = findViewById(R.id.pointsInputLayout);
         taskPhoto = findViewById(R.id.uploadPhoto_imageView_AddTaskActivity);
