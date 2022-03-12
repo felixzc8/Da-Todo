@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DaTodo">
         <activity
+            android:name=".Controllers.AddAllTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".Controllers.AllTaskActivity"
             android:exported="false" />
         <activity

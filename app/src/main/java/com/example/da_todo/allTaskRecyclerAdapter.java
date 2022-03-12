@@ -21,12 +21,14 @@ import java.util.ArrayList;
 
 public class allTaskRecyclerAdapter extends RecyclerView.Adapter<allTaskRecyclerAdapter.MyViewHolder> {
     private ArrayList<Task> taskList;
+    private RecyclerViewClickListener listener;
 
-    public allTaskRecyclerAdapter(ArrayList<Task> taskList){
+    public allTaskRecyclerAdapter(ArrayList<Task> taskList, RecyclerViewClickListener listener){
         this.taskList = taskList;
+        this.listener = listener;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView nameText;
         private ImageView taskImage;
 
@@ -34,6 +36,12 @@ public class allTaskRecyclerAdapter extends RecyclerView.Adapter<allTaskRecycler
             super(view);
             nameText = view.findViewById(R.id.taskName_TextView_AllTasksItems);
             taskImage = view.findViewById(R.id.taskImage_ImageView_AllTasksItems);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            listener.onClick(view, getAdapterPosition());
         }
     }
 
@@ -56,5 +64,9 @@ public class allTaskRecyclerAdapter extends RecyclerView.Adapter<allTaskRecycler
     @Override
     public int getItemCount() {
         return taskList.size();
+    }
+
+    public interface RecyclerViewClickListener{
+         void onClick(View view, int position);
     }
 }
