@@ -1,5 +1,6 @@
 package com.example.da_todo.Controllers;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,10 +17,13 @@ import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.Task.Task;
 import com.example.da_todo.User.User;
 import com.example.da_todo.tasksRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -40,16 +44,15 @@ public class TasksActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
-
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
 
         getUser();
-
         taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
+        //time here?
         setTaskInfo();
         setAdapter();
     }
@@ -88,13 +91,53 @@ public class TasksActivity extends AppCompatActivity
 
     private void setOnClickListener()
     {
+//        firestore.collection("Tasks").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+//        {
+//            @Override
+//            public void onComplete(@NonNull com.google.android.gms.tasks.Task<QuerySnapshot> task)
+//            {
+//                if (task.isSuccessful())
+//                {
+//                    for (QueryDocumentSnapshot document : task.getResult())
+//                    {
+//                        int testTime = document.toObject(Task.class).getTimeRequired();
+//                        System.out.println("HERE IS IS TIME");
+//                        System.out.println(testTime);
+//                    }
+//                }
+//            }
+//        });
+
         listener = new tasksRecyclerAdapter.RecyclerViewClickListener()
         {
             @Override
             public void onClick(View v, int position)
             {
+                //smth to do with task id
+                firestore.collection("tasks").whereEqualTo("taskUUID", "51d1a706-ba1e-4352-a5af-da64e89e4d69").get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful())
+                    {
+                        Log.d("GET DOCUMENTS", "SUCCESS");
+
+                        for (QueryDocumentSnapshot queryDocumentSnapshot: task.getResult())
+                        {
+                            System.out.println(queryDocumentSnapshot);
+                            Task taskInfo = queryDocumentSnapshot.toObject(Task.class);
+                            int timeInt = taskInfo.getTimeRequired();
+                            String timeString = String.valueOf(timeInt);
+                            Log.d("STRING VALUE", timeString);
+                        }
+                    }
+                    else
+                    {
+//                        Log.d("Error getting documents:", task.getException());
+                    }
+                });
+                Log.d("OK ITS HERE", "reached here");
+
                 Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
-                intent.putExtra("Time", "12");
+//                intent.putExtra("Time", );
+//                intent.putExtra("TaskID", )
                 intent.putExtra("pet", userPet);
                 startActivity(intent);
             }

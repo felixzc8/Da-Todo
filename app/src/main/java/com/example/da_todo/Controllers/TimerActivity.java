@@ -19,11 +19,6 @@ import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 public class TimerActivity extends AppCompatActivity
 {
-    public enum TimerState
-    {
-        Stopped, Paused, Running
-    }
-
     private CountDownTimer timer = null;
     private Long timerLengthSeconds = 0L;
     private Long secondsRemaining = 0L;
@@ -31,10 +26,13 @@ public class TimerActivity extends AppCompatActivity
     private FloatingActionButton start_button, pause_button, stop_button;
     private MaterialProgressBar progress_countdown;
     private TextView textView_countdown;
+    private Pet userPet;
+    private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
-    Pet userPet;
-
-    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    public enum TimerState
+    {
+        Stopped, Paused, Running
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -85,8 +83,8 @@ public class TimerActivity extends AppCompatActivity
         Bundle extras = getIntent().getExtras();
         if (extras != null)
         {
-            time = extras.getString("Time");
-            int timeInt = Integer.parseInt(time);
+//            time = extras.getString("Time");
+//            int timeInt = Integer.parseInt(time);
         }
     }
 
@@ -118,20 +116,18 @@ public class TimerActivity extends AppCompatActivity
         if (timerState == TimerState.Stopped)
         {
             setNewTimerLength();
-        }
-        else
+        } else
         {
             setPreviousTimerLength();
         }
 
-        secondsRemaining = (timerState == TimerState.Running || timerState == TimerState.Paused)?
-                PrefUtil.getSecondsRemaining(this):timerLengthSeconds;
+        secondsRemaining = (timerState == TimerState.Running || timerState == TimerState.Paused) ?
+                PrefUtil.getSecondsRemaining(this) : timerLengthSeconds;
 
         if (secondsRemaining <= 0)
         {
             onTimerFinished();
-        }
-        else if (timerState == TimerState.Running)
+        } else if (timerState == TimerState.Running)
         {
             startTimer();
         }
@@ -172,7 +168,6 @@ public class TimerActivity extends AppCompatActivity
 
     private void setNewTimerLength()
     {
-        //time here
         int lengthInMinutes = PrefUtil.getTimerLength(this);
         timerLengthSeconds = (lengthInMinutes * 60L);
         progress_countdown.setMax(timerLengthSeconds.intValue());
@@ -218,11 +213,12 @@ public class TimerActivity extends AppCompatActivity
         }
     }
 
-    public void updateTotalPoints(View v) {
-        int totalPoints = (0);
+    public void updateTotalPoints(View v)
+    {
+        int totalPoints = 0;
         userPet.setTotalPoints(totalPoints);
-
-
+        Intent goToTasksActivity = new Intent(this, TasksActivity.class);
+        startActivity(goToTasksActivity);
     }
 
     public void goBack(View v)
