@@ -169,6 +169,7 @@ public class TimerActivity extends AppCompatActivity
             timeInt = Integer.parseInt(time);
             System.out.println("TIME VALUE HERE" + timeInt);
         }
+
         timerLengthSeconds = (timeInt * 60L);
         progress_countdown.setMax(timerLengthSeconds.intValue());
 
