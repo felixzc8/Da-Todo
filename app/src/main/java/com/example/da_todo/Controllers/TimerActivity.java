@@ -28,6 +28,7 @@ public class TimerActivity extends AppCompatActivity
     private TextView textView_countdown;
     private Pet userPet;
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    private int timeInt;
 
     public enum TimerState
     {
@@ -78,14 +79,6 @@ public class TimerActivity extends AppCompatActivity
                 onTimerFinished();
             }
         });
-
-        String time = "0";
-        Bundle extras = getIntent().getExtras();
-        if (extras != null)
-        {
-//            time = extras.getString("Time");
-//            int timeInt = Integer.parseInt(time);
-        }
     }
 
     @Override
@@ -168,9 +161,20 @@ public class TimerActivity extends AppCompatActivity
 
     private void setNewTimerLength()
     {
-        int lengthInMinutes = PrefUtil.getTimerLength(this);
-        timerLengthSeconds = (lengthInMinutes * 60L);
+        String time = "0";
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            time = extras.getString("Time");
+            timeInt = Integer.parseInt(time);
+            System.out.println("TIME VALUE HERE" + timeInt);
+        }
+        timerLengthSeconds = (timeInt * 60L);
         progress_countdown.setMax(timerLengthSeconds.intValue());
+
+//        int lengthInMinutes = PrefUtil.getTimerLength(this);
+//        timerLengthSeconds = (lengthInMinutes * 60L);
+//        progress_countdown.setMax(timerLengthSeconds.intValue());
     }
 
     private void setPreviousTimerLength()

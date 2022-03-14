@@ -38,6 +38,7 @@ public class TasksActivity extends AppCompatActivity
     FirebaseFirestore firestore;
     FirebaseUser mUser;
     User user;
+    String intentTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -52,7 +53,7 @@ public class TasksActivity extends AppCompatActivity
         taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
-        //time here?
+        intentTime = (String) getIntent().getSerializableExtra("Time");
         setTaskInfo();
         setAdapter();
     }
@@ -126,6 +127,11 @@ public class TasksActivity extends AppCompatActivity
                             int timeInt = taskInfo.getTimeRequired();
                             String timeString = String.valueOf(timeInt);
                             Log.d("STRING VALUE", timeString);
+                            Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
+                            intent.putExtra("Time", timeString);
+//                            intent.putExtra("TaskID", )
+                            intent.putExtra("pet", userPet);
+                            startActivity(intent);
                         }
                     }
                     else
@@ -133,13 +139,7 @@ public class TasksActivity extends AppCompatActivity
 //                        Log.d("Error getting documents:", task.getException());
                     }
                 });
-                Log.d("OK ITS HERE", "reached here");
 
-                Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
-//                intent.putExtra("Time", );
-//                intent.putExtra("TaskID", )
-                intent.putExtra("pet", userPet);
-                startActivity(intent);
             }
         };
     }
