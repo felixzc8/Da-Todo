@@ -86,15 +86,15 @@ public class PetCreateActivity extends AppCompatActivity
     public void enlargeImage(View v)
     {
         v.requestLayout();
-        v.getLayoutParams().height = v.getLayoutParams().height + 100;
-        v.getLayoutParams().width = v.getLayoutParams().height + 100;
+        v.getLayoutParams().height = 500;
+        v.getLayoutParams().width = 500;
     }
 
     public void restoreImage(View v)
     {
         v.requestLayout();
-        v.getLayoutParams().height = v.getLayoutParams().height - 100;
-        v.getLayoutParams().width = v.getLayoutParams().height - 100;
+        v.getLayoutParams().height = 400;
+        v.getLayoutParams().width = 400;
     }
 
     public void changePetName(View view)

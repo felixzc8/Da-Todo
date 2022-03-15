@@ -158,15 +158,15 @@ public class PetActivity extends AppCompatActivity
     public void enlargeImage(View v)
     {
         v.requestLayout();
-        v.getLayoutParams().height = v.getLayoutParams().height + 100;
-        v.getLayoutParams().width = v.getLayoutParams().height + 100;
+        v.getLayoutParams().height = 200;
+        v.getLayoutParams().width = 200;
     }
 
     public void restoreImage(View v)
     {
         v.requestLayout();
-        v.getLayoutParams().height = v.getLayoutParams().height - 100;
-        v.getLayoutParams().width = v.getLayoutParams().height - 100;
+        v.getLayoutParams().height = 100;
+        v.getLayoutParams().width = 100;
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -184,11 +184,15 @@ public class PetActivity extends AppCompatActivity
                switch(eventType)
                {
                    case MotionEvent.ACTION_DOWN:
-                       enlargeImage(petImageView);
+                       petImageView.requestLayout();
+                       petImageView.getLayoutParams().height = petImageView.getLayoutParams().height + 100;
+                       petImageView.getLayoutParams().width = petImageView.getLayoutParams().height + 100;
                        break;
 
                    case MotionEvent.ACTION_UP:
-                       restoreImage(petImageView);
+                       petImageView.requestLayout();
+                       petImageView.getLayoutParams().height = petImageView.getLayoutParams().height - 100;
+                       petImageView.getLayoutParams().width = petImageView.getLayoutParams().height - 100;
                }
                return true;
            }
