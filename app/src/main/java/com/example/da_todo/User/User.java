@@ -114,4 +114,17 @@ public class User implements Serializable
     {
         this.tasks = tasks;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "ID='" + ID + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", pin='" + pin + '\'' +
+                ", selectedPet='" + selectedPet + '\'' +
+                ", pet=" + pet +
+                ", tasks=" + tasks +
+                '}';
+    }
 }

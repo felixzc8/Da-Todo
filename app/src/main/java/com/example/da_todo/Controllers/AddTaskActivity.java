@@ -65,6 +65,7 @@ public class AddTaskActivity extends AppCompatActivity
 
         user = (User) getIntent().getSerializableExtra("user");
 
+
         Bundle intentInfo = getIntent().getExtras();
         if(intentInfo != null){
             userID = intentInfo.getString("userID");
@@ -88,27 +89,30 @@ public class AddTaskActivity extends AppCompatActivity
         });
     }
 
-    public void addTask(View view){
-        String nameString = taskName.getText().toString();
-        int timeInt = Integer.parseInt(taskTime.getText().toString());
-        int rewardInt = Integer.parseInt(taskPoints.getText().toString());
-        taskUUID = UUID.randomUUID().toString();
+//    public void addTask(View view){
+//        String nameString = taskName.getText().toString();
+//        int timeInt = Integer.parseInt(taskTime.getText().toString());
+//        int rewardInt = Integer.parseInt(taskPoints.getText().toString());
+//        taskUUID = UUID.randomUUID().toString();
 
-        Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
+//        Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
+
+//        uploadPicture();
 
 //        user.addTask(task);
 //        System.out.println("User ID" + user.getID());
+//
+////        firestore.collection("tasks").document(task.getTaskUUID()).set(task);
+//        System.out.println("Checkkkk" + user.toString());
+//        System.out.println(user.getID() + "Ttttt");
 
-        uploadPicture();
 
-        firestore.collection("tasks").document(task.getTaskUUID()).set(task);
 
-        System.out.println(user.getID() + "Ttttt");
-        firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
-        firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+//        firestore.collection("users").document(user.getID()).update("tasks",
+//                FieldValue.arrayUnion(task);
 
-        clearPage();
-    }
+//        clearPage();
+//    }
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -141,7 +145,13 @@ public class AddTaskActivity extends AppCompatActivity
         }
     }
 
-    private void uploadPicture() {
+    public void addTask(View view) {
+        String nameString = taskName.getText().toString();
+        int timeInt = Integer.parseInt(taskTime.getText().toString());
+        int rewardInt = Integer.parseInt(taskPoints.getText().toString());
+
+        taskUUID = UUID.randomUUID().toString();
+
         final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -169,7 +179,10 @@ public class AddTaskActivity extends AppCompatActivity
                                     }
                                 }
 
-                                firestore.collection("users").document(user.getID()).set(user);
+                                Task task = new Task(testURI, nameString, timeInt, rewardInt, taskUUID);
+                                firestore.collection("tasks").document(task.getTaskUUID()).set(task);
+                                firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+//                                firestore.collection("users").document(user.getID()).set(user);
                             }
                         });
                     }
