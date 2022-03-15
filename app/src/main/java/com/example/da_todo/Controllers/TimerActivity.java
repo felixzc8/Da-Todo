@@ -224,11 +224,10 @@ public class TimerActivity extends AppCompatActivity
 //        totalPoints = PrefUtil.getSecondsRemaining();
         onPause();
         Long secondsLeft = PrefUtil.getSecondsRemaining(this);
-        System.out.println("SECONDS LEFT");
-        System.out.println(secondsLeft);
         Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
-        System.out.println("ORIGIANAL SECONDS LEFT");
-        System.out.println(originalSeconds);
+        Long taskPercentage = ((originalSeconds - secondsLeft) / originalSeconds) * 100;
+        System.out.println("PERCENTAGE HERE");
+        System.out.println(taskPercentage);
 
         System.out.println(totalPoints);
 //        userPet.setTotalPoints(totalPoints);
