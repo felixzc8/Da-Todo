@@ -16,8 +16,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.UUID;
-
 public class SignUpActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
@@ -95,7 +93,7 @@ public class SignUpActivity extends AppCompatActivity
 
     public void goPetNamingActivity(User user)
     {
-        Intent intent = new Intent(this, PetNamingActivity.class);
+        Intent intent = new Intent(this, PetCreateActivity.class);
         intent.putExtra("user", user);
         startActivity(intent);
     }

@@ -1,6 +1,5 @@
 package com.example.da_todo.Controllers;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,12 +10,10 @@ import android.widget.EditText;
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.User.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class PetNamingActivity extends AppCompatActivity
+public class PetCreateActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
@@ -29,7 +26,7 @@ public class PetNamingActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pet_naming);
+        setContentView(R.layout.activity_pet_create);
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -58,11 +55,6 @@ public class PetNamingActivity extends AppCompatActivity
         goTaskActivity();
     }
 
-    public void backButton(View view)
-    {
-        Intent backButton = new Intent(this, RewardsActivity.class);
-        startActivity(backButton);
-    }
 
     public void goTaskActivity()
     {
