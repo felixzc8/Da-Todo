@@ -91,32 +91,65 @@ public class PetActivity extends AppCompatActivity
         switch (v.getId())
         {
             case R.id.teddyBearImageView:
-                if(!currentAction.equals("teddy bear"))
+                switch (currentAction)
                 {
-                    enlargeImage(findViewById(R.id.teddyBearImageView));
-                    restoreImage(findViewById(R.id.bananaImageView));
-                    restoreImage(findViewById(R.id.soapImageView));
-                    currentAction = "teddy bear";
+                    case "":
+                        enlargeImage(findViewById(R.id.teddyBearImageView));
+                        currentAction = "teddy bear";
+                        break;
+
+                    case "banana":
+                        enlargeImage(findViewById(R.id.teddyBearImageView));
+                        restoreImage(findViewById(R.id.bananaImageView));
+                        currentAction = "teddy bear";
+                        break;
+
+                    case "soap":
+                        enlargeImage(findViewById(R.id.teddyBearImageView));
+                        restoreImage(findViewById(R.id.soapImageView));
+                        currentAction = "teddy bear";
                 }
                 break;
 
             case R.id.bananaImageView:
-                if(!currentAction.equals("banana"))
+                switch (currentAction)
                 {
-                    enlargeImage(findViewById(R.id.bananaImageView));
-                    restoreImage(findViewById(R.id.teddyBearImageView));
-                    restoreImage(findViewById(R.id.soapImageView));
-                    currentAction = "banana";
+                    case "":
+                        enlargeImage(findViewById(R.id.bananaImageView));
+                        currentAction = "banana";
+                        break;
+
+                    case "teddy bear":
+                        enlargeImage(findViewById(R.id.bananaImageView));
+                        restoreImage(findViewById(R.id.teddyBearImageView));
+                        currentAction = "banana";
+                        break;
+
+                    case "soap":
+                        enlargeImage(findViewById(R.id.bananaImageView));
+                        restoreImage(findViewById(R.id.soapImageView));
+                        currentAction = "banana";
                 }
                 break;
 
             case R.id.soapImageView:
-                if(!currentAction.equals("soap"))
+                switch (currentAction)
                 {
-                    enlargeImage(findViewById(R.id.soapImageView));
-                    restoreImage(findViewById(R.id.teddyBearImageView));
-                    restoreImage(findViewById(R.id.bananaImageView));
-                    currentAction = "soap";
+                    case "":
+                        enlargeImage(findViewById(R.id.soapImageView));
+                        currentAction = "soap";
+                        break;
+
+                    case "teddy bear":
+                        enlargeImage(findViewById(R.id.soapImageView));
+                        restoreImage(findViewById(R.id.teddyBearImageView));
+                        currentAction = "soap";
+                        break;
+
+                    case "banana":
+                        enlargeImage(findViewById(R.id.soapImageView));
+                        restoreImage(findViewById(R.id.bananaImageView));
+                        currentAction = "soap";
                 }
                 break;
         }
