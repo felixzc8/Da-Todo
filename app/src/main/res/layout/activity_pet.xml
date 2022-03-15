@@ -6,12 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.PetActivity">
 
+    <ProgressBar
+        android:id="@+id/hungerProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:progressTint="#FFBD00"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/happinessProgressBar" />
+
+    <ProgressBar
+        android:id="@+id/cleanProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:progressTint="#FF0068"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hungerProgressBar" />
+
     <TextView
         android:id="@+id/petName_TextView_RewardsActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="pet name here"
+        android:textColor="@color/cyan"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +68,7 @@
         android:id="@+id/bananaImageView"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="200dp"
         android:onClick="selectedAction"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,5 +112,46 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/bearCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="1"
+        app:layout_constraintBottom_toTopOf="@+id/teddyBearImageView"
+        app:layout_constraintEnd_toEndOf="@+id/teddyBearImageView"
+        app:layout_constraintStart_toStartOf="@+id/teddyBearImageView" />
+
+    <TextView
+        android:id="@+id/bananaCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="2"
+        app:layout_constraintBottom_toTopOf="@+id/bananaImageView"
+        app:layout_constraintEnd_toEndOf="@+id/bananaImageView"
+        app:layout_constraintStart_toStartOf="@+id/bananaImageView" />
+
+    <TextView
+        android:id="@+id/soapCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="3"
+        app:layout_constraintBottom_toTopOf="@+id/soapImageView"
+        app:layout_constraintEnd_toEndOf="@+id/soapImageView"
+        app:layout_constraintStart_toStartOf="@+id/soapImageView" />
+
+    <ProgressBar
+        android:id="@+id/happinessProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:progressTint="#FFA550"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
