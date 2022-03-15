@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
@@ -20,7 +21,12 @@ public class PetCreateActivity extends AppCompatActivity
 
     User user;
     Pet userPet;
+    String selectedPet;
+
     EditText petNameEditText;
+
+    ImageView dogImageView, catImageView, unicornImageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -35,6 +41,51 @@ public class PetCreateActivity extends AppCompatActivity
         userPet = user.getPet();
 
         petNameEditText = findViewById(R.id.petNameInput_EditText_PetNamingActivity);
+
+        dogImageView = findViewById(R.id.dogImageView);
+        catImageView = findViewById(R.id.catImageView);
+        unicornImageView = findViewById(R.id.unicornImageView);
+    }
+
+    public void selectedPet(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.dogImageView:
+                enlargeImage(findViewById(R.id.dogImageView));
+                restoreImage(findViewById(R.id.catImageView));
+                restoreImage(findViewById(R.id.unicornImageView));
+                selectedPet = "dog";
+                break;
+
+            case R.id.catImageView:
+                enlargeImage(findViewById(R.id.catImageView));
+                restoreImage(findViewById(R.id.dogImageView));
+                restoreImage(findViewById(R.id.unicornImageView));
+                selectedPet = "cat";
+                break;
+
+            case R.id.unicornImageView:
+                enlargeImage(findViewById(R.id.unicornImageView));
+                restoreImage(findViewById(R.id.catImageView));
+                restoreImage(findViewById(R.id.dogImageView));
+                selectedPet = "unicorn";
+                break;
+        }
+    }
+
+    public void enlargeImage(View v)
+    {
+        v.requestLayout();
+        v.getLayoutParams().height = 150;
+        v.getLayoutParams().width = 150;
+    }
+
+    public void restoreImage(View v)
+    {
+        v.requestLayout();
+        v.getLayoutParams().height = 100;
+        v.getLayoutParams().width = 100;
     }
 
     public void changePetName(View view)
@@ -44,6 +95,7 @@ public class PetCreateActivity extends AppCompatActivity
 
         userPet.setName(name);
         user.setPet(userPet);
+        user.setSelectedPet(selectedPet);
 
         firestore.collection("users")
                 .document(mAuth.getCurrentUser().getUid())
@@ -55,12 +107,10 @@ public class PetCreateActivity extends AppCompatActivity
         goTaskActivity();
     }
 
-
     public void goTaskActivity()
     {
         Intent intent = new Intent(this, TasksActivity.class);
         intent.putExtra("user", user);
-        intent.putExtra("pet", userPet);
         startActivity(intent);
     }
 }
