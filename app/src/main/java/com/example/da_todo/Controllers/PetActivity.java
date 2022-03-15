@@ -123,6 +123,21 @@ public class PetActivity extends AppCompatActivity
         v.getLayoutParams().width = 100;
     }
 
+    public void buyTeddyBears()
+    {
+
+    }
+
+    public void buyBananas()
+    {
+
+    }
+
+    public void buySoap()
+    {
+
+    }
+
     public void progressBar()
     {
 
