@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.da_todo.R;
@@ -65,10 +66,26 @@ public class AddAllTaskActivity extends AppCompatActivity {
         Task task = new Task(image, name, timeRequired, pointsRewarded, taskUUID);
         System.out.println(user.getID());
         firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+        Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
+        clearPage();
+    }
+
+    public void clearPage(){
+        taskTime.setText(null);
+        taskPoints.setText(null);
+        taskPhoto.setImageDrawable(null);
+        back();
+    }
+
+    private void back() {
+        Intent goBack = new Intent(this, AllTaskActivity.class);
+        goBack.putExtra("user", user);
+        startActivity(goBack);
     }
 
     public void backButton(View view){
         Intent goBack = new Intent(this, AllTaskActivity.class);
+        goBack.putExtra("user", user);
         startActivity(goBack);
     }
 }

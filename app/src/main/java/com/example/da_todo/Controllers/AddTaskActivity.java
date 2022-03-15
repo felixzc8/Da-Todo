@@ -182,6 +182,8 @@ public class AddTaskActivity extends AppCompatActivity
                                 Task task = new Task(testURI, nameString, timeInt, rewardInt, taskUUID);
                                 firestore.collection("tasks").document(task.getTaskUUID()).set(task);
                                 firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+                                Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
+                                clearPage();
 //                                firestore.collection("users").document(user.getID()).set(user);
                             }
                         });
@@ -208,10 +210,19 @@ public class AddTaskActivity extends AppCompatActivity
         taskName.setText(null);
         taskTime.setText(null);
         taskPoints.setText(null);
+        taskPhoto.setImageDrawable(null);
+        back();
+    }
+
+    public void back(){
+        Intent goBackIntent = new Intent(this, AllTaskActivity.class);
+        goBackIntent.putExtra("user", user);
+        startActivity(goBackIntent);
     }
 
     public void backButton(View v){
         Intent goBackIntent = new Intent(this, AllTaskActivity.class);
+        goBackIntent.putExtra("user", user);
         startActivity(goBackIntent);
     }
 }
