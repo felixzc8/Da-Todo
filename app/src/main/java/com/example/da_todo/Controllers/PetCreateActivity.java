@@ -52,34 +52,24 @@ public class PetCreateActivity extends AppCompatActivity
         switch (v.getId())
         {
             case R.id.dogImageView:
-                if (!selectedPet.equals("dog"))
-                {
-                    enlargeImage(findViewById(R.id.dogImageView));
-                    restoreImage(findViewById(R.id.catImageView));
-                    restoreImage(findViewById(R.id.unicornImageView));
-                    selectedPet = "dog";
-                }
+                enlargeImage(findViewById(R.id.dogImageView));
+                restoreImage(findViewById(R.id.catImageView));
+                restoreImage(findViewById(R.id.unicornImageView));
+                selectedPet = "dog";
                 break;
 
             case R.id.catImageView:
-                if (!selectedPet.equals("cat"))
-                {
-                    enlargeImage(findViewById(R.id.catImageView));
-                    restoreImage(findViewById(R.id.dogImageView));
-                    restoreImage(findViewById(R.id.unicornImageView));
-                    selectedPet = "cat";
-                }
+                enlargeImage(findViewById(R.id.catImageView));
+                restoreImage(findViewById(R.id.dogImageView));
+                restoreImage(findViewById(R.id.unicornImageView));
+                selectedPet = "cat";
                 break;
 
             case R.id.unicornImageView:
-                if(!selectedPet.equals("unicorn"))
-                {
-                    enlargeImage(findViewById(R.id.unicornImageView));
-                    restoreImage(findViewById(R.id.catImageView));
-                    restoreImage(findViewById(R.id.dogImageView));
-                    selectedPet = "unicorn";
-                }
-                break;
+                enlargeImage(findViewById(R.id.unicornImageView));
+                restoreImage(findViewById(R.id.catImageView));
+                restoreImage(findViewById(R.id.dogImageView));
+                selectedPet = "unicorn";
         }
     }
 
