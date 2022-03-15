@@ -73,7 +73,7 @@ public class AddTaskActivity extends AppCompatActivity
 
         taskName = findViewById(R.id.taskTimeInputEditText);
         taskTime = findViewById(R.id.timeInputEditText);
-        taskPoints = findViewById(R.id.pointsInputLayout);
+        taskPoints = findViewById(R.id.pointsInputEditText);
         taskPhoto = findViewById(R.id.uploadPhoto_imageView_AddTaskActivity);
 
         storage = FirebaseStorage.getInstance();
