@@ -32,6 +32,7 @@ public class TimerActivity extends AppCompatActivity
     private int timeInt;
     private Button finishButton;
     private Long totalPoints = 0L;
+    private double pointsGiven;
 
     public enum TimerState
     {
@@ -221,19 +222,20 @@ public class TimerActivity extends AppCompatActivity
 
     public void updateTotalPoints(View v)
     {
-//        totalPoints = PrefUtil.getSecondsRemaining();
         onPause();
         Long secondsLeft = PrefUtil.getSecondsRemaining(this);
         Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
         double secondsLeftInt = secondsLeft.intValue();
         double originalSecondsInt = originalSeconds.intValue();
-        double taskPercentage = 100 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt) * 100);
-        int taskPercentageInt = (int) taskPercentage;
-        System.out.println("Still had % left");
-        System.out.println(taskPercentageInt);
+        double taskPercentage = 1 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt));
 
-        System.out.println(totalPoints);
-//        userPet.setTotalPoints(totalPoints);
+        //get # reward points
+        double pointsGiven = (taskPercentage + 1) * 50;
+        int pointsGivenInt = (int) pointsGiven;
+
+        System.out.println(pointsGivenInt);
+
+//        userPet.setTotalPoints(pointsGivenInt);
         Intent goToTasksActivity = new Intent(this, TasksActivity.class);
         startActivity(goToTasksActivity);
     }
