@@ -3,22 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/rounded_bg.xml" value="0.2085" />
         <entry key="app/src/main/res/drawable/ic_pause_button.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_play_button.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_stop_button.xml" value="0.2125" />
         <entry key="app/src/main/res/drawable/ic_timer.xml" value="0.2125" />
-        <entry key="app/src/main/res/layout/activity_add_all_task.xml" value="0.2513586956521739" />
+        <entry key="app/src/main/res/layout/activity_add_all_task.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/activity_add_task.xml" value="0.3124519016431725" />
+        <entry key="app/src/main/res/layout/activity_all_task.xml" value="0.2513586956521739" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2296195652173913" />
+        <entry key="app/src/main/res/layout/activity_pet.xml" value="0.3948287521583447" />
+        <entry key="app/src/main/res/layout/activity_pet_create.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/activity_pet_naming.xml" value="0.34243369724439543" />
         <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.28229166666666666" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.22606121560801626" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.28952404519786007" />
-        <entry key="app/src/main/res/layout/activity_tasks.xml" value="0.32887573242187507" />
+        <entry key="app/src/main/res/layout/activity_tasks.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_tasks_acvitiy.xml" value="0.274283566682235" />
-        <entry key="app/src/main/res/layout/activity_timer.xml" value="0.3015838623046876" />
-        <entry key="app/src/main/res/layout/all_tasks_items.xml" value="0.2953125" />
-        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.26438930345618217" />
+        <entry key="app/src/main/res/layout/activity_timer.xml" value="0.26688995361328127" />
+        <entry key="app/src/main/res/layout/all_tasks.xml" value="0.2513586956521739" />
+        <entry key="app/src/main/res/layout/all_tasks_items.xml" value="0.17099370541779885" />
+        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.4087710173233696" />
       </map>
     </option>
   </component>

@@ -13,6 +13,7 @@ public class User implements Serializable
     private String name;
     private String email;
     private String pin;
+    private String selectedPet;
     private Pet pet;
     ArrayList<Task> tasks;
 
@@ -26,21 +27,19 @@ public class User implements Serializable
         this.name = name;
         this.email = email;
         this.pin = pin;
+        this.selectedPet = "";
         this.pet = new Pet("", 0, 0, UUID.randomUUID().toString());
         this.tasks = new ArrayList<>();
     }
 
-    @Override
-    public String toString()
-    {
-        return "User{" +
-                "ID='" + ID + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", pin='" + pin + '\'' +
-                ", pet=" + pet +
-                ", tasks=" + tasks +
-                '}';
+    public User(String ID, String name, String email, String pin, String selectedPet, Pet pet, ArrayList<Task> tasks) {
+        this.ID = ID;
+        this.name = name;
+        this.email = email;
+        this.pin = pin;
+        this.selectedPet = selectedPet;
+        this.pet = pet;
+        this.tasks = tasks;
     }
 
     public void addTask(Task task)
@@ -86,6 +85,14 @@ public class User implements Serializable
     public void setPin(String pin)
     {
         this.pin = pin;
+    }
+
+    public String getSelectedPet() {
+        return selectedPet;
+    }
+
+    public void setSelectedPet(String selectedPet) {
+        this.selectedPet = selectedPet;
     }
 
     public Pet getPet()
