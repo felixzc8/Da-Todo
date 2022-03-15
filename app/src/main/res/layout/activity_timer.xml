@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".Controllers.TimerActivity">
 
+    <ImageButton
+        android:id="@+id/backButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:onClick="goBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_new_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/startTimer_Button_TimerActivity"
         android:layout_width="wrap_content"
@@ -64,18 +79,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/back_Button_TimerActivity"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="15dp"
-        android:onClick="goBack"
-        android:textAllCaps="false"
-        android:text="Back"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/finish_Button_TimerActivity"
