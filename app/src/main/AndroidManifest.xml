@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controllers.RewardsActivity"
+            android:name=".Controllers.PetActivity"
             android:exported="false" />
         <activity
             android:name=".Controllers.AddTaskActivity"

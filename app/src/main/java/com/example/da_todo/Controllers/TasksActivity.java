@@ -1,6 +1,5 @@
 package com.example.da_todo.Controllers;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,13 +16,11 @@ import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.Task.Task;
 import com.example.da_todo.User.User;
 import com.example.da_todo.tasksRecyclerAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -145,7 +142,7 @@ public class TasksActivity extends AppCompatActivity
 
     public void goToRewardsActivity(View view)
     {
-        Intent goToRewardsActivity = new Intent(this, RewardsActivity.class);
+        Intent goToRewardsActivity = new Intent(this, PetActivity.class);
         goToRewardsActivity.putExtra("user", user);
         startActivity(goToRewardsActivity);
     }
