@@ -2,6 +2,7 @@ package com.example.da_todo.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.da_todo.R;
 import com.example.da_todo.Task.Task;
 import com.example.da_todo.User.User;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.UUID;
@@ -25,7 +27,7 @@ public class AddAllTaskActivity extends AppCompatActivity {
 
     User user;
 
-
+    String inputName;
     String image;
     String name;
     int timeRequired;
@@ -42,7 +44,7 @@ public class AddAllTaskActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if(extras != null){
             image = extras.getString("image");
-            name = extras.getString("name");
+            inputName = extras.getString("name");
         }
 
         taskName = findViewById(R.id.taskName_TextView_AddAllTaskActivity);
@@ -50,6 +52,7 @@ public class AddAllTaskActivity extends AppCompatActivity {
         taskPoints = findViewById(R.id.taskPointsInputEditText);
         taskPhoto  = findViewById(R.id.taskImage_ImageView_AddAllTaskActivity);
 
+        taskName.setText(inputName);
         Glide.with(taskPhoto.getContext()).load(image).centerCrop().into(taskPhoto);
     }
 
@@ -60,6 +63,12 @@ public class AddAllTaskActivity extends AppCompatActivity {
         taskUUID = UUID.randomUUID().toString();
 
         Task task = new Task(image, name, timeRequired, pointsRewarded, taskUUID);
-        firestore.collection("users").document(user.getID()).set(task);
+        System.out.println(user.getID());
+        firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+    }
+
+    public void backButton(View view){
+        Intent goBack = new Intent(this, AllTaskActivity.class);
+        startActivity(goBack);
     }
 }

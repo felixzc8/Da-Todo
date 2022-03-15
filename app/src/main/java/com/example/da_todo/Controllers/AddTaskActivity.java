@@ -95,7 +95,7 @@ public class AddTaskActivity extends AppCompatActivity
 
         Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
 
-        user.addTask(task);
+//        user.addTask(task);
 
         uploadPicture();
 

@@ -7,6 +7,17 @@
     tools:context=".Controllers.AddAllTaskActivity">
 
     <Button
+        android:id="@+id/back_Button_addAllTaskActivity"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="backButton"
+        android:text="Back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/addTask_Button_AddTaskActivity3"
         android:layout_width="270dp"
         android:layout_height="60dp"
