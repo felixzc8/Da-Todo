@@ -20,6 +20,8 @@ import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 public class TimerActivity extends AppCompatActivity
 {
+    User user;
+
     private CountDownTimer timer = null;
     private Long timerLengthSeconds = 0L;
     private Long secondsRemaining = 0L;
@@ -46,6 +48,8 @@ public class TimerActivity extends AppCompatActivity
         stop_button = findViewById(R.id.stopTimer_Button_TimerActivity);
         progress_countdown = findViewById(R.id.countdown_ProgressBar_TimerActivity);
         textView_countdown = findViewById(R.id.timeDisplay_TextView_TimerActivity);
+
+        user = (User) getIntent().getSerializableExtra("user");
 
         userPet = (Pet) getIntent().getSerializableExtra("pet");
 
@@ -239,6 +243,7 @@ public class TimerActivity extends AppCompatActivity
     public void goBack(View v)
     {
         Intent goBack = new Intent(this, TasksActivity.class);
+        goBack.putExtra("user", user);
         startActivity(goBack);
     }
 }

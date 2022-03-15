@@ -110,7 +110,7 @@ public class TasksActivity extends AppCompatActivity
 
                             Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
                             intent.putExtra("Time", timeString);
-//                            intent.putExtra("TaskID", )
+                            intent.putExtra("user", user);
                             intent.putExtra("pet", userPet);
                             startActivity(intent);
                         }

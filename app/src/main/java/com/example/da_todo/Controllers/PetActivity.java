@@ -253,6 +253,7 @@ public class PetActivity extends AppCompatActivity
     public void backButton(View v)
     {
         Intent backButton = new Intent(this, TasksActivity.class);
+        backButton.putExtra("user", user);
         startActivity(backButton);
     }
 }
