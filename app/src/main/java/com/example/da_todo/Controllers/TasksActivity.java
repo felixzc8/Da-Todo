@@ -99,7 +99,7 @@ public class TasksActivity extends AppCompatActivity
             {
                 //smth to do with task id
                 firestore.collection("tasks")
-                        .whereEqualTo("taskUUID", "5594cab7-4ac0-4b90-8273-fc07ff7d3538")
+                        .whereEqualTo("taskUUID", "4ddbea4d-e5de-4312-ad51-a031b41336bd")
                         .get().addOnCompleteListener(task -> {
                     if (task.isSuccessful())
                     {

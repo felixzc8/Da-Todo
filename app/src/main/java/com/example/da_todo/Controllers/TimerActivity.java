@@ -30,8 +30,6 @@ public class TimerActivity extends AppCompatActivity
     private Pet userPet;
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private int timeInt;
-    private Button finishButton;
-    private Long totalPoints = 0L;
 
     public enum TimerState
     {
@@ -48,7 +46,6 @@ public class TimerActivity extends AppCompatActivity
         stop_button = findViewById(R.id.stopTimer_Button_TimerActivity);
         progress_countdown = findViewById(R.id.countdown_ProgressBar_TimerActivity);
         textView_countdown = findViewById(R.id.timeDisplay_TextView_TimerActivity);
-        finishButton = findViewById(R.id.finish_Button_TimerActivity);
 
         userPet = (Pet) getIntent().getSerializableExtra("pet");
 
@@ -221,17 +218,20 @@ public class TimerActivity extends AppCompatActivity
 
     public void updateTotalPoints(View v)
     {
-//        totalPoints = PrefUtil.getSecondsRemaining();
         onPause();
         Long secondsLeft = PrefUtil.getSecondsRemaining(this);
-        System.out.println("SECONDS LEFT");
-        System.out.println(secondsLeft);
         Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
-        System.out.println("ORIGIANAL SECONDS LEFT");
-        System.out.println(originalSeconds);
+        double secondsLeftInt = secondsLeft.intValue();
+        double originalSecondsInt = originalSeconds.intValue();
+        double taskPercentage = 1 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt));
 
-        System.out.println(totalPoints);
-//        userPet.setTotalPoints(totalPoints);
+        //get # reward points
+        double pointsGiven = (taskPercentage + 1) * 50;
+        int pointsGivenInt = (int) pointsGiven;
+
+        System.out.println(pointsGivenInt);
+
+//        userPet.setTotalPoints(pointsGivenInt);
         Intent goToTasksActivity = new Intent(this, TasksActivity.class);
         startActivity(goToTasksActivity);
     }
@@ -240,10 +240,5 @@ public class TimerActivity extends AppCompatActivity
     {
         Intent goBack = new Intent(this, TasksActivity.class);
         startActivity(goBack);
-    }
-
-    public void pointsRewarded(Long time)
-    {
-
     }
 }
