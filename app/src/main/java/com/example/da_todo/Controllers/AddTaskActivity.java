@@ -25,6 +25,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -96,11 +97,15 @@ public class AddTaskActivity extends AppCompatActivity
         Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
 
 //        user.addTask(task);
+//        System.out.println("User ID" + user.getID());
 
         uploadPicture();
 
         firestore.collection("tasks").document(task.getTaskUUID()).set(task);
-        firestore.collection("users").document(user.getID()).set(user);
+
+        System.out.println(user.getID() + "Ttttt");
+        firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+        firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
 
         clearPage();
     }

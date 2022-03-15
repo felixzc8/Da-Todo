@@ -100,6 +100,7 @@ public class AllTaskActivity extends AppCompatActivity {
 
     public void backButton(View v){
         Intent goBackIntent = new Intent(this, TasksActivity.class);
+        goBackIntent.putExtra("user", user);
         startActivity(goBackIntent);
     }
 }
