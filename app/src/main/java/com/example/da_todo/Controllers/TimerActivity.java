@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.da_todo.R;
@@ -29,6 +30,8 @@ public class TimerActivity extends AppCompatActivity
     private Pet userPet;
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private int timeInt;
+    private Button finishButton;
+    private Long totalPoints = 0L;
 
     public enum TimerState
     {
@@ -45,6 +48,7 @@ public class TimerActivity extends AppCompatActivity
         stop_button = findViewById(R.id.stopTimer_Button_TimerActivity);
         progress_countdown = findViewById(R.id.countdown_ProgressBar_TimerActivity);
         textView_countdown = findViewById(R.id.timeDisplay_TextView_TimerActivity);
+        finishButton = findViewById(R.id.finish_Button_TimerActivity);
 
         userPet = (Pet) getIntent().getSerializableExtra("pet");
 
@@ -58,7 +62,6 @@ public class TimerActivity extends AppCompatActivity
                 updateButtons();
             }
         });
-
         pause_button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -69,7 +72,6 @@ public class TimerActivity extends AppCompatActivity
                 updateButtons();
             }
         });
-
         stop_button.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -169,7 +171,6 @@ public class TimerActivity extends AppCompatActivity
             timeInt = Integer.parseInt(time);
             System.out.println("TIME VALUE HERE" + timeInt);
         }
-
         timerLengthSeconds = (timeInt * 60L);
         progress_countdown.setMax(timerLengthSeconds.intValue());
 
@@ -220,8 +221,17 @@ public class TimerActivity extends AppCompatActivity
 
     public void updateTotalPoints(View v)
     {
-        int totalPoints = 0;
-        userPet.setTotalPoints(totalPoints);
+//        totalPoints = PrefUtil.getSecondsRemaining();
+        onPause();
+        Long secondsLeft = PrefUtil.getSecondsRemaining(this);
+        System.out.println("SECONDS LEFT");
+        System.out.println(secondsLeft);
+        Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
+        System.out.println("ORIGIANAL SECONDS LEFT");
+        System.out.println(originalSeconds);
+
+        System.out.println(totalPoints);
+//        userPet.setTotalPoints(totalPoints);
         Intent goToTasksActivity = new Intent(this, TasksActivity.class);
         startActivity(goToTasksActivity);
     }
@@ -230,5 +240,10 @@ public class TimerActivity extends AppCompatActivity
     {
         Intent goBack = new Intent(this, TasksActivity.class);
         startActivity(goBack);
+    }
+
+    public void pointsRewarded(Long time)
+    {
+
     }
 }
