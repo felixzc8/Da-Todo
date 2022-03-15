@@ -52,24 +52,33 @@ public class PetCreateActivity extends AppCompatActivity
         switch (v.getId())
         {
             case R.id.dogImageView:
-                enlargeImage(findViewById(R.id.dogImageView));
-                restoreImage(findViewById(R.id.catImageView));
-                restoreImage(findViewById(R.id.unicornImageView));
-                selectedPet = "dog";
+                if (!selectedPet.equals("dog"))
+                {
+                    enlargeImage(findViewById(R.id.dogImageView));
+                    restoreImage(findViewById(R.id.catImageView));
+                    restoreImage(findViewById(R.id.unicornImageView));
+                    selectedPet = "dog";
+                }
                 break;
 
             case R.id.catImageView:
-                enlargeImage(findViewById(R.id.catImageView));
-                restoreImage(findViewById(R.id.dogImageView));
-                restoreImage(findViewById(R.id.unicornImageView));
-                selectedPet = "cat";
+                if (!selectedPet.equals("cat"))
+                {
+                    enlargeImage(findViewById(R.id.catImageView));
+                    restoreImage(findViewById(R.id.dogImageView));
+                    restoreImage(findViewById(R.id.unicornImageView));
+                    selectedPet = "cat";
+                }
                 break;
 
             case R.id.unicornImageView:
-                enlargeImage(findViewById(R.id.unicornImageView));
-                restoreImage(findViewById(R.id.catImageView));
-                restoreImage(findViewById(R.id.dogImageView));
-                selectedPet = "unicorn";
+                if(!selectedPet.equals("unicorn"))
+                {
+                    enlargeImage(findViewById(R.id.unicornImageView));
+                    restoreImage(findViewById(R.id.catImageView));
+                    restoreImage(findViewById(R.id.dogImageView));
+                    selectedPet = "unicorn";
+                }
                 break;
         }
     }
@@ -77,15 +86,15 @@ public class PetCreateActivity extends AppCompatActivity
     public void enlargeImage(View v)
     {
         v.requestLayout();
-        v.getLayoutParams().height = 150;
-        v.getLayoutParams().width = 150;
+        v.getLayoutParams().height = v.getLayoutParams().height + 100;
+        v.getLayoutParams().width = v.getLayoutParams().height + 100;
     }
 
     public void restoreImage(View v)
     {
         v.requestLayout();
-        v.getLayoutParams().height = 100;
-        v.getLayoutParams().width = 100;
+        v.getLayoutParams().height = v.getLayoutParams().height - 100;
+        v.getLayoutParams().width = v.getLayoutParams().height - 100;
     }
 
     public void changePetName(View view)

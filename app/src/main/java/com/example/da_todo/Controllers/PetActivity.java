@@ -2,8 +2,11 @@ package com.example.da_todo.Controllers;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -62,6 +65,7 @@ public class PetActivity extends AppCompatActivity
 
         setPetImage(user);
         progressBar();
+        petPressed();
     }
 
     public void setPetImage(User user)
@@ -87,24 +91,33 @@ public class PetActivity extends AppCompatActivity
         switch (v.getId())
         {
             case R.id.teddyBearImageView:
-                enlargeImage(findViewById(R.id.teddyBearImageView));
-                restoreImage(findViewById(R.id.bananaImageView));
-                restoreImage(findViewById(R.id.soapImageView));
-                currentAction = "teddy bear";
+                if(!currentAction.equals("teddy bear"))
+                {
+                    enlargeImage(findViewById(R.id.teddyBearImageView));
+                    restoreImage(findViewById(R.id.bananaImageView));
+                    restoreImage(findViewById(R.id.soapImageView));
+                    currentAction = "teddy bear";
+                }
                 break;
 
             case R.id.bananaImageView:
-                enlargeImage(findViewById(R.id.bananaImageView));
-                restoreImage(findViewById(R.id.teddyBearImageView));
-                restoreImage(findViewById(R.id.soapImageView));
-                currentAction = "banana";
+                if(!currentAction.equals("banana"))
+                {
+                    enlargeImage(findViewById(R.id.bananaImageView));
+                    restoreImage(findViewById(R.id.teddyBearImageView));
+                    restoreImage(findViewById(R.id.soapImageView));
+                    currentAction = "banana";
+                }
                 break;
 
             case R.id.soapImageView:
-                enlargeImage(findViewById(R.id.soapImageView));
-                restoreImage(findViewById(R.id.teddyBearImageView));
-                restoreImage(findViewById(R.id.bananaImageView));
-                currentAction = "soap";
+                if(!currentAction.equals("soap"))
+                {
+                    enlargeImage(findViewById(R.id.soapImageView));
+                    restoreImage(findViewById(R.id.teddyBearImageView));
+                    restoreImage(findViewById(R.id.bananaImageView));
+                    currentAction = "soap";
+                }
                 break;
         }
     }
@@ -112,15 +125,41 @@ public class PetActivity extends AppCompatActivity
     public void enlargeImage(View v)
     {
         v.requestLayout();
-        v.getLayoutParams().height = 150;
-        v.getLayoutParams().width = 150;
+        v.getLayoutParams().height = v.getLayoutParams().height + 100;
+        v.getLayoutParams().width = v.getLayoutParams().height + 100;
     }
 
     public void restoreImage(View v)
     {
         v.requestLayout();
-        v.getLayoutParams().height = 100;
-        v.getLayoutParams().width = 100;
+        v.getLayoutParams().height = v.getLayoutParams().height - 100;
+        v.getLayoutParams().width = v.getLayoutParams().height - 100;
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    public void petPressed()
+    {
+       petImageView.setOnTouchListener(new View.OnTouchListener()
+       {
+           @Override
+           public boolean onTouch(View view, MotionEvent motionEvent)
+           {
+               Log.i("TouchEvent", "touch detected");
+
+               int eventType = motionEvent.getActionMasked();
+
+               switch(eventType)
+               {
+                   case MotionEvent.ACTION_DOWN:
+                       enlargeImage(petImageView);
+                       break;
+
+                   case MotionEvent.ACTION_UP:
+                       restoreImage(petImageView);
+               }
+               return true;
+           }
+       });
     }
 
     public void buyTeddyBears()
