@@ -30,9 +30,6 @@ public class TimerActivity extends AppCompatActivity
     private Pet userPet;
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private int timeInt;
-    private Button finishButton;
-    private Long totalPoints = 0L;
-    private double pointsGiven;
 
     public enum TimerState
     {
@@ -49,7 +46,6 @@ public class TimerActivity extends AppCompatActivity
         stop_button = findViewById(R.id.stopTimer_Button_TimerActivity);
         progress_countdown = findViewById(R.id.countdown_ProgressBar_TimerActivity);
         textView_countdown = findViewById(R.id.timeDisplay_TextView_TimerActivity);
-        finishButton = findViewById(R.id.finish_Button_TimerActivity);
 
         userPet = (Pet) getIntent().getSerializableExtra("pet");
 
@@ -244,10 +240,5 @@ public class TimerActivity extends AppCompatActivity
     {
         Intent goBack = new Intent(this, TasksActivity.class);
         startActivity(goBack);
-    }
-
-    public void pointsRewarded(Long time)
-    {
-
     }
 }
