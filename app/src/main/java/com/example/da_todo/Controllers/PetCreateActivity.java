@@ -20,7 +20,7 @@ public class PetCreateActivity extends AppCompatActivity
     FirebaseFirestore firestore;
     User user;
     Pet userPet;
-    String selectedPet;
+    String selectedPet = "";
     EditText petNameEditText;
     ImageView dogImageView, catImageView, unicornImageView, dragonImageView, hamsterImageView, pandaImageView;
 
@@ -52,23 +52,39 @@ public class PetCreateActivity extends AppCompatActivity
         {
             case R.id.dogImageView:
                 enlargeImage(findViewById(R.id.dogImageView));
-                restoreImage(findViewById(R.id.catImageView));
-                restoreImage(findViewById(R.id.unicornImageView));
+                restoreImage();
                 selectedPet = "dog";
                 break;
 
             case R.id.catImageView:
                 enlargeImage(findViewById(R.id.catImageView));
-                restoreImage(findViewById(R.id.dogImageView));
-                restoreImage(findViewById(R.id.unicornImageView));
+                restoreImage();
                 selectedPet = "cat";
                 break;
 
             case R.id.unicornImageView:
                 enlargeImage(findViewById(R.id.unicornImageView));
-                restoreImage(findViewById(R.id.catImageView));
-                restoreImage(findViewById(R.id.dogImageView));
+                restoreImage();
                 selectedPet = "unicorn";
+                break;
+
+            case R.id.dragonImageView:
+                enlargeImage(findViewById(R.id.dragonImageView));
+                restoreImage();
+                selectedPet = "dragon";
+                break;
+
+            case R.id.hamsterImageView:
+                enlargeImage(findViewById(R.id.unicornImageView));
+                restoreImage();
+                selectedPet = "hamster";
+                break;
+
+            case R.id.pandaImageView:
+                enlargeImage(findViewById(R.id.unicornImageView));
+                restoreImage();
+                selectedPet = "panda";
+                break;
         }
     }
 
@@ -79,11 +95,38 @@ public class PetCreateActivity extends AppCompatActivity
         v.getLayoutParams().width = 500;
     }
 
-    public void restoreImage(View v)
+    public void reduceImage(View v)
     {
         v.requestLayout();
         v.getLayoutParams().height = 400;
         v.getLayoutParams().width = 400;
+    }
+
+    public void restoreImage()
+    {
+        switch(selectedPet)
+        {
+            case "":
+                break;
+            case "dog":
+                reduceImage(findViewById(R.id.dogImageView));
+                break;
+            case "cat":
+                reduceImage(findViewById(R.id.catImageView));
+                break;
+            case "unicorn":
+                reduceImage(findViewById(R.id.unicornImageView));
+                break;
+            case "dragon":
+                reduceImage(findViewById(R.id.dragonImageView));
+                break;
+            case "hamster":
+                reduceImage(findViewById(R.id.hamsterImageView));
+                break;
+            case "panda":
+                reduceImage(findViewById(R.id.pandaImageView));
+                break;
+        }
     }
 
     public void changePetName(View view)
