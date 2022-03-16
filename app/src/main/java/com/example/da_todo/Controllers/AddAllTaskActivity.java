@@ -59,15 +59,23 @@ public class AddAllTaskActivity extends AppCompatActivity {
 
     public void addTask(View view){
         name = taskName.getText().toString();
-        timeRequired = Integer.parseInt(taskTime.getText().toString());
-        pointsRewarded = Integer.parseInt(taskPoints.getText().toString());
-        taskUUID = UUID.randomUUID().toString();
+        try{
+            timeRequired = Integer.parseInt(taskTime.getText().toString());
+            pointsRewarded = Integer.parseInt(taskPoints.getText().toString());
 
-        Task task = new Task(image, name, timeRequired, pointsRewarded, taskUUID);
-        System.out.println(user.getID());
-        firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
-        Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
-        clearPage();
+            taskUUID = UUID.randomUUID().toString();
+
+            Task task = new Task(image, name, timeRequired, pointsRewarded, taskUUID);
+            System.out.println(user.getID());
+            firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+            Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
+            clearPage();
+        } catch(Exception err){
+            err.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Incorrect input. Only input numbers", Toast.LENGTH_LONG).show();
+            taskTime.setText(null);
+            taskPoints.setText(null);
+        }
     }
 
     public void clearPage(){
@@ -88,4 +96,5 @@ public class AddAllTaskActivity extends AppCompatActivity {
         goBack.putExtra("user", user);
         startActivity(goBack);
     }
+
 }

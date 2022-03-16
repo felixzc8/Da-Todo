@@ -146,64 +146,71 @@ public class AddTaskActivity extends AppCompatActivity
     }
 
     public void addTask(View view) {
-        String nameString = taskName.getText().toString();
-        int timeInt = Integer.parseInt(taskTime.getText().toString());
-        int rewardInt = Integer.parseInt(taskPoints.getText().toString());
+        try{
+            String nameString = taskName.getText().toString();
+            int timeInt = Integer.parseInt(taskTime.getText().toString());
+            int rewardInt = Integer.parseInt(taskPoints.getText().toString());
 
-        taskUUID = UUID.randomUUID().toString();
+            taskUUID = UUID.randomUUID().toString();
 
-        final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
-        progressBar.setVisibility(View.VISIBLE);
+            final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
+            progressBar.setVisibility(View.VISIBLE);
 
-        final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("task_images/" + randomKey);
+            final String randomKey = UUID.randomUUID().toString();
+            StorageReference riversRef = storageReference.child("task_images/" + randomKey);
 
-        riversRef.putFile(imageUri)
-                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        progressBar.setVisibility(View.INVISIBLE);
-                        Snackbar.make(findViewById(android.R.id.content), "Image Uploaded.", Snackbar.LENGTH_SHORT).show();
+            riversRef.putFile(imageUri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Snackbar.make(findViewById(android.R.id.content), "Image Uploaded.", Snackbar.LENGTH_SHORT).show();
 
-                        riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                            @Override
-                            public void onSuccess(Uri uri) {
-                                testURI = String.valueOf(uri);
-                                firestore.collection("tasks").document(taskUUID).update("image", testURI);
+                            riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    testURI = String.valueOf(uri);
+                                    firestore.collection("tasks").document(taskUUID).update("image", testURI);
 
-                                for (Task t: user.getTasks())
-                                {
-                                    if (t.getTaskUUID().equals(taskUUID))
+                                    for (Task t: user.getTasks())
                                     {
-                                        t.setImage(testURI);
+                                        if (t.getTaskUUID().equals(taskUUID))
+                                        {
+                                            t.setImage(testURI);
+                                        }
                                     }
-                                }
 
-                                Task task = new Task(testURI, nameString, timeInt, rewardInt, taskUUID);
-                                firestore.collection("tasks").document(task.getTaskUUID()).set(task);
-                                firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
-                                Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
-                                clearPage();
+                                    Task task = new Task(testURI, nameString, timeInt, rewardInt, taskUUID);
+                                    firestore.collection("tasks").document(task.getTaskUUID()).set(task);
+                                    firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+                                    Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
+                                    clearPage();
 //                                firestore.collection("users").document(user.getID()).set(user);
-                            }
-                        });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressBar.setVisibility(View.INVISIBLE);
-                        Toast.makeText(getApplicationContext(), "Failed to upload", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
-                        double progressPercent = (100 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-                        int progress = (int) progressPercent;
-                        progressBar.setProgress(progress, true);
-                    }
-                });
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            Toast.makeText(getApplicationContext(), "Failed to upload", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                            double progressPercent = (100 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                            int progress = (int) progressPercent;
+                            progressBar.setProgress(progress, true);
+                        }
+                    });
+        } catch(Exception err){
+            err.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Incorrect input. Only input numbers", Toast.LENGTH_LONG).show();
+            taskTime.setText(null);
+            taskPoints.setText(null);
+        }
     }
 
     public void clearPage(){
