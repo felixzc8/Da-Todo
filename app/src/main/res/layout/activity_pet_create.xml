@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="Create your pet!"
+        android:textColor="@color/dark_cyan"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,11 +26,24 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="23dp"
         android:text="What's it's name?"
+        android:textColor="@color/dark_cyan"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/petNameInput_EditText_PetNamingActivity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/choosePet_TextView_PetNamingActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Choose your pet"
+        android:textColor="@color/dark_cyan"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meetPet_TextView_PetNamingActivity" />
 
     <EditText
         android:id="@+id/petNameInput_EditText_PetNamingActivity"
@@ -44,11 +58,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/confirm_Button_PetNamingActivity"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="95dp"
+        android:background="@drawable/rounded_bg"
+        android:backgroundTint="@color/yellow"
         android:onClick="changePetName"
         android:text="confirm"
         app:layout_constraintBottom_toBottomOf="parent"
