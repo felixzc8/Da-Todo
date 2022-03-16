@@ -111,27 +111,33 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
+        android:onClick="selectedPet"
         app:layout_constraintEnd_toEndOf="@+id/catImageView"
         app:layout_constraintStart_toStartOf="@+id/catImageView"
         app:layout_constraintTop_toBottomOf="@+id/catImageView"
-        app:srcCompat="@drawable/hamsterpet" />
+        app:srcCompat="@drawable/hamsterpet"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/dragonImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:onClick="selectedPet"
         app:layout_constraintEnd_toStartOf="@+id/hamsterImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hamsterImageView"
-        app:srcCompat="@drawable/dragonpet" />
+        app:srcCompat="@drawable/dragonpet"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/pandaImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:onClick="selectedPet"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/hamsterImageView"
         app:layout_constraintTop_toTopOf="@+id/hamsterImageView"
-        app:srcCompat="@drawable/pandapet" />
+        app:srcCompat="@drawable/pandapet"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

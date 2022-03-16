@@ -75,13 +75,13 @@ public class PetCreateActivity extends AppCompatActivity
                 break;
 
             case R.id.hamsterImageView:
-                enlargeImage(findViewById(R.id.unicornImageView));
+                enlargeImage(findViewById(R.id.hamsterImageView));
                 restoreImage();
                 selectedPet = "hamster";
                 break;
 
             case R.id.pandaImageView:
-                enlargeImage(findViewById(R.id.unicornImageView));
+                enlargeImage(findViewById(R.id.pandaImageView));
                 restoreImage();
                 selectedPet = "panda";
                 break;
