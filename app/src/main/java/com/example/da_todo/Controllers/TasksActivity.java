@@ -35,6 +35,9 @@ public class TasksActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private RecyclerView recyclerAdapter;
     private tasksRecyclerAdapter.RecyclerViewClickListener listener;
+
+    tasksRecyclerAdapter adapter;
+
     Pet userPet;
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
@@ -62,8 +65,8 @@ public class TasksActivity extends AppCompatActivity
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
         intentTime = (String) getIntent().getSerializableExtra("Time");
-        setTaskInfo();
         setAdapter();
+        getTasks();
     }
 
     public void getUser()
@@ -88,10 +91,37 @@ public class TasksActivity extends AppCompatActivity
         }
     }
 
+    public void getTasks()
+    {
+        firestore.collection("vehicles")
+                .whereEqualTo("open", true)
+                .whereGreaterThan("seatsLeft", 0)
+                .get()
+                .addOnCompleteListener(task ->
+                {
+                    if (task.isSuccessful())
+                    {
+                        Log.d("get documents ", "success");
+
+                        for (QueryDocumentSnapshot qds : task.getResult())
+                        {
+                            Task t = qds.toObject(Task.class);
+                            taskList.add(t);
+                        }
+                        System.out.println("TASKS: " + taskList);
+                        adapter.notifyDataSetChanged();
+                    }
+                    else
+                    {
+                        Log.d("Error getting documents: ", "" + task.getException());
+                    }
+                });
+    }
+
     private void setAdapter()
     {
         setOnClickListener();
-        tasksRecyclerAdapter adapter = new tasksRecyclerAdapter(taskList, listener);
+        adapter = new tasksRecyclerAdapter(taskList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -136,6 +166,8 @@ public class TasksActivity extends AppCompatActivity
         };
     }
 
+
+
     private void setTaskInfo()
     {
 
@@ -143,7 +175,7 @@ public class TasksActivity extends AppCompatActivity
 //        taskList.add(new Task(null, "Shower", 10, 1, null));
 //        taskList.add(new Task(null, "Brush Teeth", 5, 3, null));
 //        taskList.add(new Task(null, "Pack bag",  10, 5, null));
-        try{
+//        try{
 //            firestore.collection("users").document(mUser.getUid()).get().addOnCompleteListener(task -> {
 //                if(task.isSuccessful()){
 //                    DocumentSnapshot ds = task.getResult();
@@ -158,9 +190,9 @@ public class TasksActivity extends AppCompatActivity
 //                    }
 //                }
 //            });
-        } catch (Exception err){
-            err.printStackTrace();
-        }
+//        } catch (Exception err){
+//            err.printStackTrace();
+//        }
     }
 
     public void goToAllTaskActivity(View view)
