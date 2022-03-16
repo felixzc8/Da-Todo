@@ -18,15 +18,11 @@ public class PetCreateActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
-
     User user;
     Pet userPet;
     String selectedPet;
-
     EditText petNameEditText;
-
     ImageView dogImageView, catImageView, unicornImageView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
