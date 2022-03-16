@@ -75,13 +75,20 @@ public class PetActivity extends AppCompatActivity
             case "dog":
                 petImageView.setImageResource(R.drawable.dogpet);
                 break;
-
             case "cat":
                 petImageView.setImageResource(R.drawable.catpet);
                 break;
-
             case "unicorn":
                 petImageView.setImageResource(R.drawable.unicornpet);
+                break;
+            case "dragon":
+                petImageView.setImageResource(R.drawable.dragonpet);
+                break;
+            case "hamster":
+                petImageView.setImageResource(R.drawable.hamsterpet);
+                break;
+            case "panda":
+                petImageView.setImageResource(R.drawable.pandapet);
                 break;
         }
     }
@@ -91,67 +98,38 @@ public class PetActivity extends AppCompatActivity
         switch (v.getId())
         {
             case R.id.teddyBearImageView:
-                switch (currentAction)
-                {
-                    case "":
-                        enlargeImage(findViewById(R.id.teddyBearImageView));
-                        currentAction = "teddy bear";
-                        break;
-
-                    case "banana":
-                        enlargeImage(findViewById(R.id.teddyBearImageView));
-                        restoreImage(findViewById(R.id.bananaImageView));
-                        currentAction = "teddy bear";
-                        break;
-
-                    case "soap":
-                        enlargeImage(findViewById(R.id.teddyBearImageView));
-                        restoreImage(findViewById(R.id.soapImageView));
-                        currentAction = "teddy bear";
-                }
+                enlargeImage(findViewById(R.id.teddyBearImageView));
+                restoreImage();
                 break;
 
             case R.id.bananaImageView:
-                switch (currentAction)
-                {
-                    case "":
-                        enlargeImage(findViewById(R.id.bananaImageView));
-                        currentAction = "banana";
-                        break;
-
-                    case "teddy bear":
-                        enlargeImage(findViewById(R.id.bananaImageView));
-                        restoreImage(findViewById(R.id.teddyBearImageView));
-                        currentAction = "banana";
-                        break;
-
-                    case "soap":
-                        enlargeImage(findViewById(R.id.bananaImageView));
-                        restoreImage(findViewById(R.id.soapImageView));
-                        currentAction = "banana";
-                }
+                enlargeImage(findViewById(R.id.bananaImageView));
+                restoreImage();
                 break;
 
             case R.id.soapImageView:
-                switch (currentAction)
-                {
-                    case "":
-                        enlargeImage(findViewById(R.id.soapImageView));
-                        currentAction = "soap";
-                        break;
-
-                    case "teddy bear":
-                        enlargeImage(findViewById(R.id.soapImageView));
-                        restoreImage(findViewById(R.id.teddyBearImageView));
-                        currentAction = "soap";
-                        break;
-
-                    case "banana":
-                        enlargeImage(findViewById(R.id.soapImageView));
-                        restoreImage(findViewById(R.id.bananaImageView));
-                        currentAction = "soap";
-                }
+                enlargeImage(findViewById(R.id.soapImageView));
+                restoreImage();
                 break;
+        }
+    }
+
+    public void restoreImage()
+    {
+        switch(currentAction)
+        {
+            case "":
+                break;
+            case "teddy bear":
+                reduceImage(findViewById(R.id.teddyBearImageView));
+                break;
+            case "banana":
+                reduceImage(findViewById(R.id.bananaImageView));
+                break;
+            case "soap":
+                reduceImage(findViewById(R.id.soapImageView));
+                break;
+
         }
     }
 
@@ -162,7 +140,7 @@ public class PetActivity extends AppCompatActivity
         v.getLayoutParams().width = 200;
     }
 
-    public void restoreImage(View v)
+    public void reduceImage(View v)
     {
         v.requestLayout();
         v.getLayoutParams().height = 100;
