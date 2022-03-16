@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ public class PetActivity extends AppCompatActivity
     TextView petNameTextView, moneyTextView;
     ImageView petImageView, teddyBearImageView, bananaImageView, soapImageView;
 
+    Button buyButton;
+
     ProgressBar happinessProgressBar;
     ProgressBar hungerProgressBar;
     ProgressBar cleanProgressBar;
@@ -55,6 +58,8 @@ public class PetActivity extends AppCompatActivity
         teddyBearImageView = findViewById(R.id.teddyBearImageView);
         bananaImageView = findViewById(R.id.bananaImageView);
         soapImageView = findViewById(R.id.soapImageView);
+
+        buyButton = findViewById(R.id.buyButton);
 
         happinessProgressBar = findViewById(R.id.happinessProgressBar);
         hungerProgressBar = findViewById(R.id.hungerProgressBar);
@@ -100,16 +105,22 @@ public class PetActivity extends AppCompatActivity
             case R.id.teddyBearImageView:
                 enlargeImage(findViewById(R.id.teddyBearImageView));
                 restoreImage();
+                buyButton.setText("buy teddy bears");
+                currentAction = "teddy bear";
                 break;
 
             case R.id.bananaImageView:
                 enlargeImage(findViewById(R.id.bananaImageView));
                 restoreImage();
+                buyButton.setText("buy bananas");
+                currentAction = "banana";
                 break;
 
             case R.id.soapImageView:
                 enlargeImage(findViewById(R.id.soapImageView));
                 restoreImage();
+                buyButton.setText("buy soap");
+                currentAction = "soap";
                 break;
         }
     }
@@ -129,7 +140,6 @@ public class PetActivity extends AppCompatActivity
             case "soap":
                 reduceImage(findViewById(R.id.soapImageView));
                 break;
-
         }
     }
 
