@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.da_todo.Task.Task;
 
 import java.util.ArrayList;
@@ -26,14 +27,15 @@ public class tasksRecyclerAdapter extends RecyclerView.Adapter<tasksRecyclerAdap
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
-        private ImageView imageView;
         private TextView taskName;
         private TextView taskTime;
         private TextView taskReward;
+        private ImageView imageView;
 
         public MyViewHolder(final View view)
         {
             super(view);
+
             imageView = view.findViewById(R.id.taskImage_ImageView_AllTasksItems);
             taskName = view.findViewById(R.id.taskName_TextView_AllTasksItems);
             taskTime = view.findViewById(R.id.taskTime_TextView_TasksItems);
@@ -67,6 +69,7 @@ public class tasksRecyclerAdapter extends RecyclerView.Adapter<tasksRecyclerAdap
         holder.taskName.setText(taskName);
         holder.taskTime.setText(String.valueOf(taskTime));
         holder.taskReward.setText(String.valueOf(taskReward));
+        Glide.with(holder.imageView.getContext()).load(taskImage).centerCrop().into(holder.imageView);
     }
 
     @Override

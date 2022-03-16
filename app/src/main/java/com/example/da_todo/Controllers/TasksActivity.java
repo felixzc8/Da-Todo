@@ -1,5 +1,6 @@
 package com.example.da_todo.Controllers;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,13 +17,17 @@ import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.Task.Task;
 import com.example.da_todo.User.User;
 import com.example.da_todo.tasksRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class TasksActivity extends AppCompatActivity
 {
@@ -36,6 +41,12 @@ public class TasksActivity extends AppCompatActivity
     FirebaseUser mUser;
     User user;
     String intentTime;
+
+    String imageURLString;
+    String nameString;
+    int timeInt;
+    int pointsRewardedInt;
+    String idString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -127,10 +138,29 @@ public class TasksActivity extends AppCompatActivity
 
     private void setTaskInfo()
     {
-        taskList.add(new Task(null, "Eat Dinner", 30, 5, null));
-        taskList.add(new Task(null, "Shower", 10, 1, null));
-        taskList.add(new Task(null, "Brush Teeth", 5, 3, null));
-        taskList.add(new Task(null, "Pack bag",  10, 5, null));
+
+//        taskList.add(new Task(null, "Eat Dinner", 30, 5, null));
+//        taskList.add(new Task(null, "Shower", 10, 1, null));
+//        taskList.add(new Task(null, "Brush Teeth", 5, 3, null));
+//        taskList.add(new Task(null, "Pack bag",  10, 5, null));
+        try{
+//            firestore.collection("users").document(mUser.getUid()).get().addOnCompleteListener(task -> {
+//                if(task.isSuccessful()){
+//                    DocumentSnapshot ds = task.getResult();
+//                    List<Task> tasksList = (List<Task>)ds.getData().get("tasks");
+//                    for(Task taskX: tasksList){
+//                        imageURLString = taskX.getImage();
+//                        nameString = taskX.getName();
+//                        timeInt = taskX.getTimeRequired();
+//                        pointsRewardedInt = taskX.getPointsRewarded();
+//                        idString = taskX.getTaskUUID();
+//                        taskList.add(new Task(imageURLString, nameString, timeInt, pointsRewardedInt, idString));
+//                    }
+//                }
+//            });
+        } catch (Exception err){
+            err.printStackTrace();
+        }
     }
 
     public void goToAllTaskActivity(View view)
