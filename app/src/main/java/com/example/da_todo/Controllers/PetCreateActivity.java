@@ -22,7 +22,7 @@ public class PetCreateActivity extends AppCompatActivity
     Pet userPet;
     String selectedPet;
     EditText petNameEditText;
-    ImageView dogImageView, catImageView, unicornImageView;
+    ImageView dogImageView, catImageView, unicornImageView, dragonImageView, hamsterImageView, pandaImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,6 +41,9 @@ public class PetCreateActivity extends AppCompatActivity
         dogImageView = findViewById(R.id.dogImageView);
         catImageView = findViewById(R.id.catImageView);
         unicornImageView = findViewById(R.id.unicornImageView);
+        dragonImageView = findViewById(R.id.dragonImageView);
+        hamsterImageView = findViewById(R.id.hamsterImageView);
+        pandaImageView = findViewById(R.id.pandaImageView);
     }
 
     public void selectedPet(View v)
