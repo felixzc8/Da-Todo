@@ -193,15 +193,17 @@ public class PetActivity extends AppCompatActivity
         switch(currentAction)
         {
             case "teddy bear":
-
+                buyTeddyBears();
                 break;
             case "banana":
+                buyBananas();
                 break;
             case "soap":
+                buySoap();
                 break;
-
         }
     }
+
 
     public void buyTeddyBears()
     {
