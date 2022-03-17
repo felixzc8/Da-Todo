@@ -38,7 +38,6 @@ public class TasksActivity extends AppCompatActivity
 
     tasksRecyclerAdapter adapter;
 
-
     Pet userPet;
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
