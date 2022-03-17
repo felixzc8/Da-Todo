@@ -159,6 +159,7 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_bg"
         android:backgroundTint="@color/yellow"
+        android:onClick="buyItem"
         android:text="buy"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"

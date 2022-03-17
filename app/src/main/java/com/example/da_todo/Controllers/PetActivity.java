@@ -32,7 +32,6 @@ public class PetActivity extends AppCompatActivity
 
     String currentAction = "";
 
-
     int counter = 0;
 
     TextView petNameTextView, moneyTextView;
@@ -69,7 +68,7 @@ public class PetActivity extends AppCompatActivity
         hungerProgressBar = findViewById(R.id.hungerProgressBar);
         cleanProgressBar = findViewById(R.id.cleanProgressBar);
 
-        moneyTextView.setText(Integer.toString(pet.getTotalPoints()));
+        moneyTextView.setText(Integer.toString(user.getPoints()));
         petNameTextView.setText(pet.getName());
 
         setPetImage(user);
@@ -210,7 +209,6 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
-
     public void updateUser()
     {
         firestore.collection("users")
@@ -220,6 +218,7 @@ public class PetActivity extends AppCompatActivity
             //to be completed
         });
     }
+
     public void buyTeddyBears()
     {
         pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() + 1);
@@ -264,18 +263,18 @@ public class PetActivity extends AppCompatActivity
         timer.schedule(timerTask, 0, 20);
     }
 
-    public void feedPet(View v)
-    {
-        int totalPoints = pet.getTotalPoints() - 50;
-        int petPoints = pet.getPoints() + 50;
-
-        pet.setTotalPoints(totalPoints);
-        pet.setPoints(petPoints);
-
-        firestore.collection("Pets").document(pet.getID()).set(pet);
-
-        moneyTextView.setText(totalPoints);
-    }
+//    public void feedPet(View v)
+//    {
+//        int totalPoints = pet.getTotalPoints() - 50;
+//        int petPoints = pet.getPoints() + 50;
+//
+//        pet.setTotalPoints(totalPoints);
+//        pet.setPoints(petPoints);
+//
+//        firestore.collection("Pets").document(pet.getID()).set(pet);
+//
+//        moneyTextView.setText(totalPoints);
+//    }
 
     public void backButton(View v)
     {

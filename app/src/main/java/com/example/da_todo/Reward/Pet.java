@@ -5,8 +5,6 @@ import java.io.Serializable;
 public class Pet implements Serializable
 {
     private String name;
-    private int totalPoints;
-    private int points;
     private String ID;
     TeddyBear teddyBear;
     Banana banana;
@@ -17,14 +15,12 @@ public class Pet implements Serializable
 
     }
 
-    public Pet(String name, int totalPoints, int petPoints, String petID)
+    public Pet(String name, String petID)
     {
         this.teddyBear = new TeddyBear();
         this.banana = new Banana();
         this.soap = new Soap();
         this.name = name;
-        this.totalPoints = totalPoints;
-        this.points = petPoints;
         this.ID = petID;
     }
 
@@ -44,21 +40,6 @@ public class Pet implements Serializable
         this.name = name;
     }
 
-    public int getTotalPoints() {
-        return totalPoints;
-    }
-
-    public void setTotalPoints(int totalPoints) {
-        this.totalPoints = totalPoints;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
 
     public TeddyBear getTeddyBear() {
         return teddyBear;
@@ -86,10 +67,12 @@ public class Pet implements Serializable
 
     @Override
     public String toString() {
-        return "Pet:" +
-                "\nPet Name = " + name +
-                "\nTotal Points = " + totalPoints +
-                "\nPet Points = " + points +
-                "\nPet ID = ";
+        return "Pet{" +
+                "name='" + name + '\'' +
+                ", ID='" + ID + '\'' +
+                ", teddyBear=" + teddyBear +
+                ", banana=" + banana +
+                ", soap=" + soap +
+                '}';
     }
 }

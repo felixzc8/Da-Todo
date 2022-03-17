@@ -29,7 +29,7 @@ public class User implements Serializable
         this.email = email;
         this.pin = pin;
         this.selectedPet = "";
-        this.pet = new Pet("", 0, 0, UUID.randomUUID().toString());
+        this.pet = new Pet("", UUID.randomUUID().toString());
         this.tasks = new ArrayList<>();
         this.points = 0;
     }
