@@ -8,13 +8,20 @@ public class Pet implements Serializable
     private int totalPoints;
     private int points;
     private String ID;
+    TeddyBear teddyBear;
+    Banana banana;
+    Soap soap;
 
     public Pet()
     {
 
     }
 
-    public Pet(String name, int totalPoints, int petPoints, String petID) {
+    public Pet(String name, int totalPoints, int petPoints, String petID)
+    {
+        this.teddyBear = new TeddyBear();
+        this.banana = new Banana();
+        this.soap = new Soap();
         this.name = name;
         this.totalPoints = totalPoints;
         this.points = petPoints;
