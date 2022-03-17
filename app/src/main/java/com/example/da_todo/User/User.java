@@ -16,7 +16,7 @@ public class User implements Serializable
     private String selectedPet;
     private Pet pet;
     ArrayList<Task> tasks;
-    Integer points = 0;
+    Integer points;
 
     public User()
     {
@@ -31,6 +31,7 @@ public class User implements Serializable
         this.selectedPet = "";
         this.pet = new Pet("", 0, 0, UUID.randomUUID().toString());
         this.tasks = new ArrayList<>();
+        this.points = 0;
     }
 
     public User(String ID, String name, String email, String pin, String selectedPet, Pet pet, ArrayList<Task> tasks) {
