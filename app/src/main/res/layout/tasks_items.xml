@@ -75,4 +75,5 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/star_icon_stylized_svg" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
