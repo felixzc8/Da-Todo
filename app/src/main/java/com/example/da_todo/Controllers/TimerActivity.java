@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.User.User;
@@ -32,6 +34,13 @@ public class TimerActivity extends AppCompatActivity
     private Pet userPet;
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private int timeInt;
+    private String pointsRewarded;
+    private String name;
+    private String imageURL;
+
+    private TextView nameTextView;
+    private ImageView imageView;
+    private TextView rewardTextView;
 
     public enum TimerState
     {
@@ -52,6 +61,22 @@ public class TimerActivity extends AppCompatActivity
         user = (User) getIntent().getSerializableExtra("user");
 
         userPet = (Pet) getIntent().getSerializableExtra("pet");
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null)
+        {
+            pointsRewarded = extras.getString("Reward");
+            name = extras.getString("Name");
+            imageURL = extras.getString("Image");
+        }
+        nameTextView = findViewById(R.id.taskName_TextView_TimerActivity);
+        nameTextView.setText(name);
+
+        imageView = findViewById(R.id.imageView_timerActivity);
+        Glide.with(getApplicationContext()).load(imageURL).centerCrop().into(imageView);
+
+        rewardTextView = findViewById(R.id.points_TextView_TimerActivity);
+        rewardTextView.setText(pointsRewarded);
 
         start_button.setOnClickListener(new View.OnClickListener()
         {

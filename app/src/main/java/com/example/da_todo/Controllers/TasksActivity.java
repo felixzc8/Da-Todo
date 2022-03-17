@@ -116,6 +116,9 @@ public class TasksActivity extends AppCompatActivity
         {
             Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
             intent.putExtra("Time", String.valueOf(taskList.get(position).getTimeRequired()));
+            intent.putExtra("Reward", String.valueOf(taskList.get(position).getPointsRewarded()));
+            intent.putExtra("Name", taskList.get(position).getName());
+            intent.putExtra("Image", taskList.get(position).getImage());
             intent.putExtra("user", user);
             intent.putExtra("pet", userPet);
             startActivity(intent);
