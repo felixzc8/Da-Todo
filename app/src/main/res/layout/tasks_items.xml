@@ -64,6 +64,7 @@
         app:layout_constraintTop_toBottomOf="@+id/taskName_TextView_AllTasksItems"
         app:srcCompat="@drawable/timer_icon_153935" />
 
+
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="50dp"
