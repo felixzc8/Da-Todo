@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.User.User;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Timer;
@@ -23,6 +24,7 @@ import java.util.TimerTask;
 
 public class PetActivity extends AppCompatActivity
 {
+    FirebaseAuth mAuth;
     FirebaseFirestore firestore;
 
     User user;
@@ -48,6 +50,7 @@ public class PetActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
 
+        mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
 
         user = (User) getIntent().getSerializableExtra("user");
@@ -194,30 +197,48 @@ public class PetActivity extends AppCompatActivity
         {
             case "teddy bear":
                 buyTeddyBears();
+                updateUser();
                 break;
             case "banana":
                 buyBananas();
+                updateUser();
                 break;
             case "soap":
                 buySoap();
+                updateUser();
                 break;
         }
     }
 
 
+    public void updateUser()
+    {
+        firestore.collection("users")
+                .document(mAuth.getCurrentUser().getUid())
+                .set(user).addOnCompleteListener(task ->
+        {
+            //to be completed
+        });
+    }
     public void buyTeddyBears()
     {
-
+        pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() + 1);
+        user.setPoints(user.getPoints() - pet.getTeddyBear().getPrice());
+        user.setPet(pet);
     }
 
     public void buyBananas()
     {
-
+        pet.getBanana().setAmount(pet.getBanana().getAmount() + 1);
+        user.setPoints(user.getPoints() - pet.getBanana().getPrice());
+        user.setPet(pet);
     }
 
     public void buySoap()
     {
-
+        pet.getSoap().setAmount(pet.getSoap().getAmount() + 1);
+        user.setPoints(user.getPoints() - pet.getSoap().getPrice());
+        user.setPet(pet);
     }
 
     public void progressBar()

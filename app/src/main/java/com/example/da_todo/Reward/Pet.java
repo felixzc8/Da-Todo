@@ -60,6 +60,30 @@ public class Pet implements Serializable
         this.points = points;
     }
 
+    public TeddyBear getTeddyBear() {
+        return teddyBear;
+    }
+
+    public void setTeddyBear(TeddyBear teddyBear) {
+        this.teddyBear = teddyBear;
+    }
+
+    public Banana getBanana() {
+        return banana;
+    }
+
+    public void setBanana(Banana banana) {
+        this.banana = banana;
+    }
+
+    public Soap getSoap() {
+        return soap;
+    }
+
+    public void setSoap(Soap soap) {
+        this.soap = soap;
+    }
+
     @Override
     public String toString() {
         return "Pet:" +

@@ -16,6 +16,7 @@ public class User implements Serializable
     private String selectedPet;
     private Pet pet;
     ArrayList<Task> tasks;
+    Integer points = 0;
 
     public User()
     {
@@ -113,6 +114,14 @@ public class User implements Serializable
     public void setTasks(ArrayList<Task> tasks)
     {
         this.tasks = tasks;
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
     }
 
     @Override
