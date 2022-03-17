@@ -38,6 +38,8 @@ public class TasksActivity extends AppCompatActivity
 
     tasksRecyclerAdapter adapter;
 
+    String hi;
+
     Pet userPet;
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
@@ -120,6 +122,8 @@ public class TasksActivity extends AppCompatActivity
             startActivity(intent);
         };
     }
+
+
 
 
 
