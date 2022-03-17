@@ -55,18 +55,19 @@ public class TasksActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        taskList = new ArrayList<>();
+
         setContentView(R.layout.activity_tasks);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
 
+
         getUser();
-        taskList = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
         intentTime = (String) getIntent().getSerializableExtra("Time");
-        setAdapter();
-        getTasks();
+//        getTasks();
     }
 
     public void getUser()
@@ -81,6 +82,9 @@ public class TasksActivity extends AppCompatActivity
                         {
                             user = ds.toObject(User.class);
                             Log.d("USER OBJECT", "user name: " + user.getName());
+                            taskList = user.getTasks();
+                            System.out.println(taskList);
+                            setAdapter();
                         }
                     });
         }
@@ -93,29 +97,26 @@ public class TasksActivity extends AppCompatActivity
 
     public void getTasks()
     {
-        firestore.collection("vehicles")
-                .whereEqualTo("open", true)
-                .whereGreaterThan("seatsLeft", 0)
-                .get()
-                .addOnCompleteListener(task ->
-                {
-                    if (task.isSuccessful())
-                    {
-                        Log.d("get documents ", "success");
-
-                        for (QueryDocumentSnapshot qds : task.getResult())
-                        {
-                            Task t = qds.toObject(Task.class);
-                            taskList.add(t);
-                        }
-                        System.out.println("TASKS: " + taskList);
-                        adapter.notifyDataSetChanged();
-                    }
-                    else
-                    {
-                        Log.d("Error getting documents: ", "" + task.getException());
-                    }
-                });
+//        firestore.collection("users").document(user.getID()).get().addOnCompleteListener(task ->
+//        {
+//            if (task.isSuccessful())
+//            {
+//                System.out.println("Tttt");
+//                Log.d("get documents ", "success");
+//
+//                for (QueryDocumentSnapshot qds : task.getResult())
+//                {
+//                    Task t = qds.toObject(Task.class);
+//                    taskList.add(t);
+//                }
+//                System.out.println("TASKS: " + taskList);
+//                adapter.notifyDataSetChanged();
+//            }
+//            else
+//            {
+//                Log.d("Error getting documents: ", "" + task.getException());
+//            }
+//        });
     }
 
     private void setAdapter()
