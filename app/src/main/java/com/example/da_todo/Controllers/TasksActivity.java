@@ -93,6 +93,7 @@ public class TasksActivity extends AppCompatActivity
             e.printStackTrace();
             Toast.makeText(this, "error getting user", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void getTasks()
