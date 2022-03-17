@@ -97,26 +97,6 @@ public class TasksActivity extends AppCompatActivity
 
     public void getTasks()
     {
-//        firestore.collection("users").document(user.getID()).get().addOnCompleteListener(task ->
-//        {
-//            if (task.isSuccessful())
-//            {
-//                System.out.println("Tttt");
-//                Log.d("get documents ", "success");
-//
-//                for (QueryDocumentSnapshot qds : task.getResult())
-//                {
-//                    Task t = qds.toObject(Task.class);
-//                    taskList.add(t);
-//                }
-//                System.out.println("TASKS: " + taskList);
-//                adapter.notifyDataSetChanged();
-//            }
-//            else
-//            {
-//                Log.d("Error getting documents: ", "" + task.getException());
-//            }
-//        });
     }
 
     private void setAdapter()
@@ -131,39 +111,13 @@ public class TasksActivity extends AppCompatActivity
 
     private void setOnClickListener()
     {
-        listener = new tasksRecyclerAdapter.RecyclerViewClickListener()
+        listener = (v, position) ->
         {
-            @Override
-            public void onClick(View v, int position)
-            {
-                //smth to do with task id
-                firestore.collection("tasks")
-                        .whereEqualTo("taskUUID", "4ddbea4d-e5de-4312-ad51-a031b41336bd")
-                        .get().addOnCompleteListener(task -> {
-                    if (task.isSuccessful())
-                    {
-                        Log.d("GET DOCUMENTS", "SUCCESS");
-
-                        for (QueryDocumentSnapshot queryDocumentSnapshot: task.getResult())
-                        {
-                            Task taskInfo = queryDocumentSnapshot.toObject(Task.class);
-                            int timeInt = taskInfo.getTimeRequired();
-                            String timeString = String.valueOf(timeInt);
-
-                            Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
-                            intent.putExtra("Time", timeString);
-                            intent.putExtra("user", user);
-                            intent.putExtra("pet", userPet);
-                            startActivity(intent);
-                        }
-                    }
-                    else
-                    {
-//                        Log.d("Error getting documents:", task.getException());
-                    }
-                });
-
-            }
+            Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
+            intent.putExtra("Time", String.valueOf(taskList.get(position).getTimeRequired()));
+            intent.putExtra("user", user);
+            intent.putExtra("pet", userPet);
+            startActivity(intent);
         };
     }
 
