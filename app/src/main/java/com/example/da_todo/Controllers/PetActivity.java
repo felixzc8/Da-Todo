@@ -30,6 +30,7 @@ public class PetActivity extends AppCompatActivity
 
     String currentAction = "";
 
+
     int counter = 0;
 
     TextView petNameTextView, moneyTextView;
@@ -186,6 +187,23 @@ public class PetActivity extends AppCompatActivity
            }
        });
     }
+
+    public void buyItem(View v)
+    {
+        switch(currentAction)
+        {
+            case "teddy bear":
+                buyTeddyBears();
+                break;
+            case "banana":
+                buyBananas();
+                break;
+            case "soap":
+                buySoap();
+                break;
+        }
+    }
+
 
     public void buyTeddyBears()
     {
