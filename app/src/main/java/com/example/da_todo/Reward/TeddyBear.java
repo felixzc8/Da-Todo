@@ -1,6 +1,8 @@
 package com.example.da_todo.Reward;
 
-public class TeddyBear
+import java.io.Serializable;
+
+public class TeddyBear implements Serializable
 {
     String name;
     Integer price;

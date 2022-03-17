@@ -1,6 +1,8 @@
 package com.example.da_todo.Reward;
 
-public class Soap
+import java.io.Serializable;
+
+public class Soap implements Serializable
 {
     String name;
     Integer price;

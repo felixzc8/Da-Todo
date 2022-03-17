@@ -1,6 +1,8 @@
 package com.example.da_todo.Reward;
 
-public class Banana
+import java.io.Serializable;
+
+public class Banana implements Serializable
 {
     String name;
     Integer price;
