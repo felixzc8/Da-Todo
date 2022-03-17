@@ -178,6 +178,7 @@ public class PetActivity extends AppCompatActivity
                        petImageView.requestLayout();
                        petImageView.getLayoutParams().height = petImageView.getLayoutParams().height + 100;
                        petImageView.getLayoutParams().width = petImageView.getLayoutParams().height + 100;
+                       petPushinP();
                        break;
 
                    case MotionEvent.ACTION_UP:
@@ -209,14 +210,60 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    public void petPushinP()
+    {
+        switch(currentAction)
+        {
+            case "":
+                break;
+            case "teddy bear":
+                updateUserTeddy();
+                break;
+            case "banana":
+                updateUserBanana();
+                break;
+            case "soap":
+                updateUserSoap();
+                break;
+        }
+    }
+
     public void updateUser()
     {
         firestore.collection("users")
                 .document(mAuth.getCurrentUser().getUid())
                 .set(user).addOnCompleteListener(task ->
         {
-            //to be completed
         });
+    }
+
+    public void updateUserTeddy()
+    {
+        happinessProgressBar.setProgress(happinessProgressBar.getProgress() + 10);
+        pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() - 1);
+        user.setPet(pet);
+
+        System.out.println(pet.getTeddyBear().getAmount());
+
+        updateUser();
+    }
+
+    public void updateUserBanana()
+    {
+        hungerProgressBar.setProgress(hungerProgressBar.getProgress() + 10);
+        pet.getBanana().setAmount(pet.getBanana().getAmount() - 1);
+        user.setPet(pet);
+
+        updateUser();
+    }
+
+    public void updateUserSoap()
+    {
+        cleanProgressBar.setProgress(cleanProgressBar.getProgress() + 10);
+        pet.getSoap().setAmount(pet.getSoap().getAmount() - 1);
+        user.setPet(pet);
+
+        updateUser();
     }
 
     public void buyTeddyBears()
@@ -224,6 +271,8 @@ public class PetActivity extends AppCompatActivity
         pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() + 1);
         user.setPoints(user.getPoints() - pet.getTeddyBear().getPrice());
         user.setPet(pet);
+
+        moneyTextView.setText("" + user.getPoints());
     }
 
     public void buyBananas()
@@ -231,6 +280,8 @@ public class PetActivity extends AppCompatActivity
         pet.getBanana().setAmount(pet.getBanana().getAmount() + 1);
         user.setPoints(user.getPoints() - pet.getBanana().getPrice());
         user.setPet(pet);
+
+        moneyTextView.setText("" + user.getPoints());
     }
 
     public void buySoap()
@@ -238,6 +289,8 @@ public class PetActivity extends AppCompatActivity
         pet.getSoap().setAmount(pet.getSoap().getAmount() + 1);
         user.setPoints(user.getPoints() - pet.getSoap().getPrice());
         user.setPet(pet);
+
+        moneyTextView.setText("" + user.getPoints());
     }
 
     public void progressBar()
@@ -254,14 +307,43 @@ public class PetActivity extends AppCompatActivity
                 hungerProgressBar.setProgress(counter);
                 cleanProgressBar.setProgress(counter);
 
-                if(counter == 100)
+                if(counter == 100) {
                     timer.cancel();
 
+                    progressNuts();
+                }
             }
         };
-
         timer.schedule(timerTask, 0, 20);
     }
+
+    public void progressNuts()
+    {
+        final Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                counter--;
+
+                Thread thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        happinessProgressBar.setProgress(counter);
+                        hungerProgressBar.setProgress(counter);
+                        cleanProgressBar.setProgress(counter);
+                    }
+                });
+                thread.start();
+            }
+        };
+        timer.schedule(timerTask, 0, 10000);
+    }
+
 
 //    public void feedPet(View v)
 //    {
