@@ -55,7 +55,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="time"
+        android:hint="time (min)"
         android:textColorHint="@color/cyan"
         app:boxStrokeColor="@color/cyan"
         app:endIconMode="clear_text"

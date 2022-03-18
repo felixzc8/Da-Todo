@@ -11,9 +11,11 @@
         <entry key="app/src/main/res/layout/activity_rewards.xml" value="0.21693840579710144" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.23327026367187503" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2296195652173913" />
+        <entry key="app/src/main/res/layout/activity_tasks.xml" value="0.23324275362318841" />
         <entry key="app/src/main/res/layout/activity_tasks_acvitiy.xml" value="0.2296195652173913" />
         <entry key="app/src/main/res/layout/activity_timer.xml" value="0.2296195652173913" />
-        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.16304347826086957" />
+        <entry key="app/src/main/res/layout/all_tasks_items.xml" value="0.23324275362318841" />
+        <entry key="app/src/main/res/layout/tasks_items.xml" value="0.5584231169327446" />
       </map>
     </option>
   </component>

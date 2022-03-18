@@ -10,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.da_todo.R;
@@ -45,6 +47,8 @@ public class TasksActivity extends AppCompatActivity
     User user;
     String intentTime;
 
+    ImageView goPetActivityButton;
+
     String imageURLString;
     String nameString;
     int timeInt;
@@ -67,6 +71,8 @@ public class TasksActivity extends AppCompatActivity
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
         intentTime = (String) getIntent().getSerializableExtra("Time");
+
+        goPetActivityButton = findViewById(R.id.goPetActivityButton);
 //        getTasks();
     }
 
@@ -85,6 +91,7 @@ public class TasksActivity extends AppCompatActivity
                             taskList = user.getTasks();
                             System.out.println(taskList);
                             setAdapter();
+                            setPetImage(user);
                         }
                     });
         }
@@ -124,6 +131,31 @@ public class TasksActivity extends AppCompatActivity
         };
     }
 
+    public void setPetImage(User user)
+    {
+        switch (user.getSelectedPet())
+        {
+            case "dog":
+                goPetActivityButton.setImageResource(R.drawable.dogpet);
+                break;
+            case "cat":
+                goPetActivityButton.setImageResource(R.drawable.catpet);
+                break;
+            case "unicorn":
+                goPetActivityButton.setImageResource(R.drawable.unicornpet);
+                break;
+            case "dragon":
+                goPetActivityButton.setImageResource(R.drawable.dragonpet);
+                break;
+            case "hamster":
+                goPetActivityButton.setImageResource(R.drawable.hamsterpet);
+                break;
+            case "panda":
+                goPetActivityButton.setImageResource(R.drawable.pandapet);
+                break;
+        }
+    }
+
     private void setTaskInfo()
     {
 
@@ -158,7 +190,7 @@ public class TasksActivity extends AppCompatActivity
         startActivity(goToAllTaskActivity);
     }
 
-    public void goToRewardsActivity(View view)
+    public void goPetActivity(View view)
     {
         Intent goToRewardsActivity = new Intent(this, PetActivity.class);
         goToRewardsActivity.putExtra("user", user);

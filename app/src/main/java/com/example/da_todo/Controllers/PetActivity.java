@@ -34,7 +34,7 @@ public class PetActivity extends AppCompatActivity
 
     int counter = 0;
 
-    TextView petNameTextView, moneyTextView;
+    TextView petNameTextView, moneyTextView, teddyBearCountTextView, bananaCountTextView, soapCountTextView;
     ImageView petImageView, teddyBearImageView, bananaImageView, soapImageView;
 
     Button buyButton;
@@ -57,6 +57,10 @@ public class PetActivity extends AppCompatActivity
 
         petNameTextView = findViewById(R.id.petName_TextView_RewardsActivity);
         moneyTextView = findViewById(R.id.money_TextView_RewardsActivity);
+        teddyBearCountTextView = findViewById(R.id.teddyBearCountTextView);
+        bananaCountTextView = findViewById(R.id.bananaCountTextView);
+        soapCountTextView = findViewById(R.id.soapCountTextView);
+
         petImageView = findViewById(R.id.petImageView);
         teddyBearImageView = findViewById(R.id.teddyBearImageView);
         bananaImageView = findViewById(R.id.bananaImageView);
@@ -70,6 +74,10 @@ public class PetActivity extends AppCompatActivity
 
         moneyTextView.setText(Integer.toString(user.getPoints()));
         petNameTextView.setText(pet.getName());
+
+        teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
+        bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
+        soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
 
         setPetImage(user);
         progressBar();
@@ -242,6 +250,7 @@ public class PetActivity extends AppCompatActivity
         happinessProgressBar.setProgress(happinessProgressBar.getProgress() + 10);
         pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() - 1);
         user.setPet(pet);
+        teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
 
         System.out.println(pet.getTeddyBear().getAmount());
 
@@ -253,6 +262,7 @@ public class PetActivity extends AppCompatActivity
         hungerProgressBar.setProgress(hungerProgressBar.getProgress() + 10);
         pet.getBanana().setAmount(pet.getBanana().getAmount() - 1);
         user.setPet(pet);
+        bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
 
         updateUser();
     }
@@ -262,6 +272,7 @@ public class PetActivity extends AppCompatActivity
         cleanProgressBar.setProgress(cleanProgressBar.getProgress() + 10);
         pet.getSoap().setAmount(pet.getSoap().getAmount() - 1);
         user.setPet(pet);
+        soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
 
         updateUser();
     }
@@ -273,6 +284,7 @@ public class PetActivity extends AppCompatActivity
         user.setPet(pet);
 
         moneyTextView.setText("" + user.getPoints());
+        teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
     }
 
     public void buyBananas()
@@ -282,6 +294,7 @@ public class PetActivity extends AppCompatActivity
         user.setPet(pet);
 
         moneyTextView.setText("" + user.getPoints());
+        bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
     }
 
     public void buySoap()
@@ -291,6 +304,7 @@ public class PetActivity extends AppCompatActivity
         user.setPet(pet);
 
         moneyTextView.setText("" + user.getPoints());
+        soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
     }
 
     public void progressBar()

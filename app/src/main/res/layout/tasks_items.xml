@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
         app:cardBackgroundColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rounded_bg"
-            android:backgroundTint="@color/light_grey">
+            android:backgroundTint="@color/dark_cyan">
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -32,7 +33,8 @@
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toStartOf="@+id/taskTime_TextView_TasksItems"
                 app:layout_constraintTop_toTopOf="@+id/taskTime_TextView_TasksItems"
-                app:srcCompat="@drawable/timer_icon_153935" />
+                app:srcCompat="@drawable/ic_baseline_access_time_filled_24"
+                app:tint="@color/orange" />
 
             <TextView
                 android:id="@+id/points_TextView_TasksItems"
@@ -42,6 +44,7 @@
                 android:layout_marginEnd="40dp"
                 android:gravity="center"
                 android:text="Reward"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/taskTime_TextView_TasksItems" />
@@ -53,7 +56,8 @@
                 android:layout_marginEnd="20dp"
                 app:layout_constraintEnd_toStartOf="@+id/points_TextView_TasksItems"
                 app:layout_constraintTop_toTopOf="@+id/points_TextView_TasksItems"
-                app:srcCompat="@drawable/star_icon_stylized_svg" />
+                app:srcCompat="@drawable/ic_baseline_star_24"
+                app:tint="@color/yellow" />
 
             <TextView
                 android:id="@+id/taskName_TextView_AllTasksItems"
@@ -62,7 +66,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="Task Name"
-                android:textColor="@color/dark_cyan"
+                android:textColor="@color/white"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,6 +80,7 @@
                 android:layout_marginEnd="40dp"
                 android:gravity="center"
                 android:text="Time"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/taskImage_ImageView_AllTasksItems" />
