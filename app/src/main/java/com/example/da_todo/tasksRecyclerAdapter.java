@@ -40,6 +40,7 @@ public class tasksRecyclerAdapter extends RecyclerView.Adapter<tasksRecyclerAdap
             taskName = view.findViewById(R.id.taskName_TextView_AllTasksItems);
             taskTime = view.findViewById(R.id.taskTime_TextView_TasksItems);
             taskReward = view.findViewById(R.id.points_TextView_TasksItems);
+
             view.setOnClickListener(this);
         }
 
@@ -61,6 +62,8 @@ public class tasksRecyclerAdapter extends RecyclerView.Adapter<tasksRecyclerAdap
     @Override
     public void onBindViewHolder(@NonNull tasksRecyclerAdapter.MyViewHolder holder, int position)
     {
+        System.out.println("checkss");
+        System.out.println("has tasks");
         String taskImage = taskList.get(position).getImage();
         String taskName = taskList.get(position).getName();
         int taskTime = taskList.get(position).getTimeRequired();

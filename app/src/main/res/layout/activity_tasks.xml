@@ -68,4 +68,26 @@
         app:srcCompat="@drawable/unicornpet"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <TextView
+        android:id="@+id/noItems_TextView_TasksActivity"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/recyclerView_allTaskActivity" />
+
+    <ImageView
+        android:id="@+id/noItems_ImageView_TasksActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/noItems_TextView_TasksActivity"
+        app:srcCompat="@drawable/party_popper_1f389" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

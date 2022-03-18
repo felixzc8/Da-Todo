@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.da_todo.R;
@@ -37,6 +38,8 @@ public class TasksActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private RecyclerView recyclerAdapter;
     private tasksRecyclerAdapter.RecyclerViewClickListener listener;
+    private TextView noItems;
+    private ImageView noItemsImage;
 
     tasksRecyclerAdapter adapter;
 
@@ -48,6 +51,8 @@ public class TasksActivity extends AppCompatActivity
     String intentTime;
 
     ImageView goPetActivityButton;
+
+    boolean hasItems;
 
     String imageURLString;
     String nameString;
@@ -66,14 +71,18 @@ public class TasksActivity extends AppCompatActivity
         mUser = mAuth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
 
-
-        getUser();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
         intentTime = (String) getIntent().getSerializableExtra("Time");
 
         goPetActivityButton = findViewById(R.id.goPetActivityButton);
+        noItems = findViewById(R.id.noItems_TextView_TasksActivity);
+        noItemsImage = findViewById(R.id.noItems_ImageView_TasksActivity);
+        noItemsImage.setVisibility(View.INVISIBLE);
+
+        getUser();
 //        getTasks();
+
     }
 
     public void getUser()
@@ -89,6 +98,13 @@ public class TasksActivity extends AppCompatActivity
                             user = ds.toObject(User.class);
                             Log.d("USER OBJECT", "user name: " + user.getName());
                             taskList = user.getTasks();
+                            if(taskList.size() == 0){
+                                hasItems = false;
+                                showNoItems();
+                                noItemsImage.setVisibility(View.VISIBLE);
+                            } else {
+                                hasItems = true;
+                            }
                             System.out.println(taskList);
                             setAdapter();
                             setPetImage(user);
@@ -102,8 +118,15 @@ public class TasksActivity extends AppCompatActivity
         }
     }
 
-    public void getTasks()
+    public void showNoItems()
     {
+        if(hasItems == false)
+        {
+            noItems.setText("Whohoo!!! \nYou completed all the tasks :) ");
+        }
+        else{
+            noItems.setText(null);
+        }
     }
 
     private void setAdapter()
