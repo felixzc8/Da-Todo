@@ -183,11 +183,11 @@ public class TasksActivity extends AppCompatActivity
 //        }
     }
 
-    public void goToAllTaskActivity(View view)
+    public void goToAddTaskPinActivity(View view)
     {
-        Intent goToAllTaskActivity = new Intent(this, AllTaskActivity.class);
-        goToAllTaskActivity.putExtra("user", user);
-        startActivity(goToAllTaskActivity);
+        Intent goToAddTaskPinActivity = new Intent(this, AddTaskPinActivity.class);
+        goToAddTaskPinActivity.putExtra("user", user);
+        startActivity(goToAddTaskPinActivity);
     }
 
     public void goPetActivity(View view)
