@@ -30,6 +30,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firestore.v1.WriteResult;
 
 import java.util.HashMap;
@@ -290,59 +291,48 @@ public class TimerActivity extends AppCompatActivity
         System.out.println("USER POINTS HERE");
         System.out.println(userPet.getPoints());
 
+        position = (int) getIntent().getSerializableExtra("position");
+        String positionString = String.valueOf(position);
+
+//        firestore.collection("users").document(user.getID()).update(positionString, FieldValue.delete());
+//        firestore.collection("users").document(user.getID()).update("tasks/0", FieldValue.delete());
+//        firestore.collection("users").document(user.getID()).collection("tasks").document(positionString).update(positionString, FieldValue.delete());
+
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(user.getID()).child("tasks").child(positionString);
+//        ref.removeValue();
+
+//        firestore.collection("users").document(user.getID()).collection("tasks").document("0").delete();
+
         //remove task from firebase
+
+        firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayRemove(position));
+
         try
         {
             System.out.println("TASK ID HERE");
             System.out.println(taskID);
             System.out.println(position);
 
-            position = (int) getIntent().getSerializableExtra("position");
-            String positionString = String.valueOf(position);
-
-//            DocumentReference docRef = firestore.collection("/users").document(mUser.getUid())
-//                    .collection("tasks").document(positionString);
-//
-//            Map<String,Object> updates = new HashMap<>();
-//            updates.put(positionString, FieldValue.delete());
-//
-//            docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                @Override
-//                public void onComplete(@NonNull Task<Void> task) {
-//                    System.out.println("COMPLETED??");
-//                }
-//            });
-
-//            CollectionReference collectionReference = firestore.collection("/users")
-//                    .document(mUser.getUid()).collection("tasks");
-//            Map<String, Object> updates = new HashMap<>();
-//            updates.put(positionString, FieldValue.delete());
-//            ApiFuture<WriteResult> writeResult = collectionReference.update(updates);
-//            System.out.println("Update time : " + writeResult.get());
+//            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid());
+//            documentReference.delete().wait();
 
             DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid())
-                    .collection("tasks").document("email");
+                    .collection("tasks").document(positionString);
+            documentReference.delete().wait();
 
-            documentReference.delete();
-
-//            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid())
-//                    .collection("tasks").document(positionString);
-//
-//            documentReference.delete();
-
-//            firestore.collection("/users").document(mUser.getUid())
-//                    .collection("tasks").document(positionString).delete()
-//                    .addOnCompleteListener(new OnCompleteListener<Void>()
-//                    {
-//                        @Override
-//                        public void onComplete(@NonNull Task<Void> task)
-//                        {
-//                            if (task.isSuccessful())
-//                            {
-//                                System.out.println("NO WAY IT WORKS");
-//                            }
-//                        }
-//                    });
+            firestore.collection("/users").document(mUser.getUid())
+                    .collection("tasks").document(positionString).delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>()
+                    {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task)
+                        {
+                            if (task.isSuccessful())
+                            {
+                                System.out.println("NO WAY IT WORKS");
+                            }
+                        }
+                    });
         }
         catch (Exception e)
         {

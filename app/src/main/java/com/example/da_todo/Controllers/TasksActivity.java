@@ -56,7 +56,6 @@ public class TasksActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         taskList = new ArrayList<>();
-
         setContentView(R.layout.activity_tasks);
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
@@ -94,7 +93,6 @@ public class TasksActivity extends AppCompatActivity
                             {
                                 hasItems = true;
                             }
-//                            System.out.println(taskList);
                             setAdapter();
                             setPetImage(user);
                         }

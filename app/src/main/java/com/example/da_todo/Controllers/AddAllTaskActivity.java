@@ -57,9 +57,9 @@ public class AddAllTaskActivity extends AppCompatActivity
 
     public void addTask(View view)
     {
-        name = taskName.getText().toString();
         try
         {
+            name = taskName.getText().toString();
             timeRequired = Integer.parseInt(taskTime.getText().toString());
             pointsRewarded = Integer.parseInt(taskPoints.getText().toString());
             taskUUID = UUID.randomUUID().toString();
