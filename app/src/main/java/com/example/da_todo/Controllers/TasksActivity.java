@@ -1,6 +1,5 @@
 package com.example.da_todo.Controllers;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,17 +18,12 @@ import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.Task.Task;
 import com.example.da_todo.User.User;
 import com.example.da_todo.tasksRecyclerAdapter;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class TasksActivity extends AppCompatActivity
 {
@@ -42,18 +35,15 @@ public class TasksActivity extends AppCompatActivity
     private ImageView noItemsImage;
 
     tasksRecyclerAdapter adapter;
-
     Pet userPet;
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
     FirebaseUser mUser;
     User user;
     String intentTime;
-
     ImageView goPetActivityButton;
 
     boolean hasItems;
-
     String imageURLString;
     String nameString;
     int timeInt;
@@ -70,19 +60,15 @@ public class TasksActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
-
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
         userPet = (Pet) getIntent().getSerializableExtra("pet");
         intentTime = (String) getIntent().getSerializableExtra("Time");
-
         goPetActivityButton = findViewById(R.id.goPetActivityButton);
         noItems = findViewById(R.id.noItems_TextView_TasksActivity);
         noItemsImage = findViewById(R.id.noItems_ImageView_TasksActivity);
         noItemsImage.setVisibility(View.INVISIBLE);
-
         getUser();
 //        getTasks();
-
     }
 
     public void getUser()
@@ -98,11 +84,14 @@ public class TasksActivity extends AppCompatActivity
                             user = ds.toObject(User.class);
                             Log.d("USER OBJECT", "user name: " + user.getName());
                             taskList = user.getTasks();
-                            if(taskList.size() == 0){
+                            if (taskList.size() == 0)
+                            {
                                 hasItems = false;
                                 showNoItems();
                                 noItemsImage.setVisibility(View.VISIBLE);
-                            } else {
+                            }
+                            else
+                            {
                                 hasItems = true;
                             }
                             System.out.println(taskList);
@@ -120,11 +109,12 @@ public class TasksActivity extends AppCompatActivity
 
     public void showNoItems()
     {
-        if(hasItems == false)
+        if (hasItems == false)
         {
             noItems.setText("Whohoo!!! \nYou completed all the tasks :) ");
         }
-        else{
+        else
+        {
             noItems.setText(null);
         }
     }
@@ -181,7 +171,6 @@ public class TasksActivity extends AppCompatActivity
 
     private void setTaskInfo()
     {
-
 //        taskList.add(new Task(null, "Eat Dinner", 30, 5, null));
 //        taskList.add(new Task(null, "Shower", 10, 1, null));
 //        taskList.add(new Task(null, "Brush Teeth", 5, 3, null));

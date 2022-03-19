@@ -59,7 +59,6 @@ public class TimerActivity extends AppCompatActivity
         textView_countdown = findViewById(R.id.timeDisplay_TextView_TimerActivity);
 
         user = (User) getIntent().getSerializableExtra("user");
-
         userPet = (Pet) getIntent().getSerializableExtra("pet");
 
         Bundle extras = getIntent().getExtras();
@@ -253,12 +252,14 @@ public class TimerActivity extends AppCompatActivity
         double secondsLeftInt = secondsLeft.intValue();
         double originalSecondsInt = originalSeconds.intValue();
         double taskPercentage = 1 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt));
-
-        //get # reward points
         double pointsGiven = (taskPercentage + 1) * 50;
-        int pointsGivenInt = (int) pointsGiven;
-
+        int originalPoints = Integer.parseInt(pointsRewarded);
+        int pointsGivenInt = (int) pointsGiven + originalPoints;
+        System.out.println("POINTS HERE");
         System.out.println(pointsGivenInt);
+
+        //get the original number of points for the task
+        //add it to pointsGivenInt
 
 //        userPet.setTotalPoints(pointsGivenInt);
         Intent goToTasksActivity = new Intent(this, TasksActivity.class);
