@@ -251,23 +251,20 @@ public class TimerActivity extends AppCompatActivity
         onPause();
         Long secondsLeft = PrefUtil.getSecondsRemaining(this);
         Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
+
         double secondsLeftInt = secondsLeft.intValue();
         double originalSecondsInt = originalSeconds.intValue();
         double taskPercentage = 1 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt));
         double pointsGiven = (taskPercentage + 1) * 50;
         int originalPoints = Integer.parseInt(pointsRewarded);
         int pointsGivenInt = (int) pointsGiven + originalPoints;
+
         userPet.setPoints(pointsGivenInt);
         System.out.println("USER POINTS HERE");
         System.out.println(userPet.getPoints());
-//        intent.putExtra("newPet", userPet);
-
         Intent intent = new Intent(getApplicationContext(), TasksActivity.class);
         intent.putExtra("newPet", userPet);
         startActivity(intent);
-
-//        Intent goToTasksActivity = new Intent(this, TasksActivity.class);
-//        startActivity(goToTasksActivity);
     }
 
     public void goBack(View v)

@@ -47,7 +47,6 @@ public class PetActivity extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-
         user = (User) getIntent().getSerializableExtra("user");
         userPet = (Pet) getIntent().getSerializableExtra("newUserPet");
         pet = user.getPet();
@@ -57,22 +56,16 @@ public class PetActivity extends AppCompatActivity
         teddyBearCountTextView = findViewById(R.id.teddyBearCountTextView);
         bananaCountTextView = findViewById(R.id.bananaCountTextView);
         soapCountTextView = findViewById(R.id.soapCountTextView);
-
         petImageView = findViewById(R.id.petImageView);
         teddyBearImageView = findViewById(R.id.teddyBearImageView);
         bananaImageView = findViewById(R.id.bananaImageView);
         soapImageView = findViewById(R.id.soapImageView);
-
         buyButton = findViewById(R.id.buyButton);
-
         happinessProgressBar = findViewById(R.id.happinessProgressBar);
         hungerProgressBar = findViewById(R.id.hungerProgressBar);
         cleanProgressBar = findViewById(R.id.cleanProgressBar);
-
-//        moneyTextView.setText(Integer.toString(pet.getPoints()));
         moneyTextView.setText(Integer.toString(userPet.getPoints()));
         petNameTextView.setText(pet.getName());
-
         teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
         bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
         soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));

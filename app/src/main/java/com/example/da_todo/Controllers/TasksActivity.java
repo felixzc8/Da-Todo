@@ -62,7 +62,6 @@ public class TasksActivity extends AppCompatActivity
         mUser = mAuth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
-//        userPet = (Pet) getIntent().getSerializableExtra("pet");
         newUserPet = (Pet) getIntent().getSerializableExtra("newPet");
         intentTime = (String) getIntent().getSerializableExtra("Time");
         goPetActivityButton = findViewById(R.id.goPetActivityButton);
