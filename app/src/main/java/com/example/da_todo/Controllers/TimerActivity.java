@@ -303,55 +303,6 @@ public class TimerActivity extends AppCompatActivity
                 break;
             }
         }
-
-        position = (int) getIntent().getSerializableExtra("position");
-        String positionString = String.valueOf(position);
-
-//        firestore.collection("users").document(user.getID()).update(positionString, FieldValue.delete());
-//        firestore.collection("users").document(user.getID()).update("tasks/0", FieldValue.delete());
-//        firestore.collection("users").document(user.getID()).collection("tasks").document(positionString).update(positionString, FieldValue.delete());
-
-//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(user.getID()).child("tasks").child(positionString);
-//        ref.removeValue();
-
-//        firestore.collection("users").document(user.getID()).collection("tasks").document("0").delete();
-
-        //remove task from firebase
-
-        firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayRemove(position));
-
-        try
-        {
-            System.out.println("TASK ID HERE");
-            System.out.println(taskID);
-            System.out.println(position);
-
-//            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid());
-//            documentReference.delete().wait();
-
-//            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid())
-//                    .collection("tasks").document(positionString);
-//            documentReference.delete().wait();
-
-            firestore.collection("/users").document(mUser.getUid())
-                    .collection("tasks").document(positionString).delete()
-                    .addOnCompleteListener(new OnCompleteListener<Void>()
-                    {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task)
-                        {
-                            if (task.isSuccessful())
-                            {
-                                System.out.println("NO WAY IT WORKS");
-                            }
-                        }
-                    });
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-            Toast.makeText(this, "error getting user", Toast.LENGTH_SHORT).show();
-        }
         Intent intent = new Intent(getApplicationContext(), TasksActivity.class);
         intent.putExtra("newPet", userPet);
         startActivity(intent);
