@@ -291,6 +291,19 @@ public class TimerActivity extends AppCompatActivity
         System.out.println("USER POINTS HERE");
         System.out.println(userPet.getPoints());
 
+        String taskID = (String) getIntent().getSerializableExtra("TaskID");
+        System.out.println(taskID);
+
+        for (com.example.da_todo.Task.Task t: user.getTasks())
+        {
+            if (taskID.equals(t.getTaskUUID()))
+            {
+                user.getTasks().remove(t);
+                firestore.collection("users").document(user.getID()).set(user);
+                break;
+            }
+        }
+
         position = (int) getIntent().getSerializableExtra("position");
         String positionString = String.valueOf(position);
 
@@ -316,9 +329,9 @@ public class TimerActivity extends AppCompatActivity
 //            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid());
 //            documentReference.delete().wait();
 
-            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid())
-                    .collection("tasks").document(positionString);
-            documentReference.delete().wait();
+//            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid())
+//                    .collection("tasks").document(positionString);
+//            documentReference.delete().wait();
 
             firestore.collection("/users").document(mUser.getUid())
                     .collection("tasks").document(positionString).delete()
