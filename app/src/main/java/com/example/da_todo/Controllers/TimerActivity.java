@@ -248,7 +248,7 @@ public class TimerActivity extends AppCompatActivity
 
     public void updateTotalPoints(View v)
     {
-        onPause();
+        initTimer();
         Long secondsLeft = PrefUtil.getSecondsRemaining(this);
         Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
 
