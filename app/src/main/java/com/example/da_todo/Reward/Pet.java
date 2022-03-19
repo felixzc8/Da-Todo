@@ -6,6 +6,7 @@ public class Pet implements Serializable
 {
     private String name;
     private String ID;
+    private int points;
     TeddyBear teddyBear;
     Banana banana;
     Soap soap;
@@ -24,49 +25,69 @@ public class Pet implements Serializable
         this.ID = petID;
     }
 
-    public String getID() {
+    public String getID()
+    {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(String ID)
+    {
         this.ID = ID;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-
-    public TeddyBear getTeddyBear() {
+    public TeddyBear getTeddyBear()
+    {
         return teddyBear;
     }
 
-    public void setTeddyBear(TeddyBear teddyBear) {
+    public void setTeddyBear(TeddyBear teddyBear)
+    {
         this.teddyBear = teddyBear;
     }
 
-    public Banana getBanana() {
+    public Banana getBanana()
+    {
         return banana;
     }
 
-    public void setBanana(Banana banana) {
+    public void setBanana(Banana banana)
+    {
         this.banana = banana;
     }
 
-    public Soap getSoap() {
+    public Soap getSoap()
+    {
         return soap;
     }
 
-    public void setSoap(Soap soap) {
+    public void setSoap(Soap soap)
+    {
         this.soap = soap;
     }
 
+    public void setPoints(int points)
+    {
+        this.points = points;
+    }
+
+    public int getPoints()
+    {
+        return points;
+    }
+
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Pet{" +
                 "name='" + name + '\'' +
                 ", ID='" + ID + '\'' +

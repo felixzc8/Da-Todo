@@ -64,8 +64,7 @@ public class SignUpActivity extends AppCompatActivity
                                 user = new User(uid, name, email, pin);
                                 firestore.collection("/users").document(uid).set(user);
                                 goPetNamingActivity(user);
-                            }
-                            else
+                            } else
                             {
                                 Log.w("SIGN UP", "createUserWithEmail:failure",
                                         task.getException());
@@ -78,8 +77,7 @@ public class SignUpActivity extends AppCompatActivity
             {
                 e.printStackTrace();
             }
-        }
-        else
+        } else
         {
             Toast.makeText(this, "fill in all fields", Toast.LENGTH_SHORT).show();
         }

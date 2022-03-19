@@ -61,7 +61,7 @@ public class TasksActivity extends AppCompatActivity
         mUser = mAuth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
-        userPet = (Pet) getIntent().getSerializableExtra("pet");
+//        userPet = (Pet) getIntent().getSerializableExtra("pet");
         intentTime = (String) getIntent().getSerializableExtra("Time");
         goPetActivityButton = findViewById(R.id.goPetActivityButton);
         noItems = findViewById(R.id.noItems_TextView_TasksActivity);
@@ -82,6 +82,7 @@ public class TasksActivity extends AppCompatActivity
                         if (task.isSuccessful())
                         {
                             user = ds.toObject(User.class);
+                            userPet = user.getPet();
                             Log.d("USER OBJECT", "user name: " + user.getName());
                             taskList = user.getTasks();
                             if (taskList.size() == 0)
@@ -89,12 +90,11 @@ public class TasksActivity extends AppCompatActivity
                                 hasItems = false;
                                 showNoItems();
                                 noItemsImage.setVisibility(View.VISIBLE);
-                            }
-                            else
+                            } else
                             {
                                 hasItems = true;
                             }
-                            System.out.println(taskList);
+//                            System.out.println(taskList);
                             setAdapter();
                             setPetImage(user);
                         }
@@ -111,9 +111,8 @@ public class TasksActivity extends AppCompatActivity
     {
         if (hasItems == false)
         {
-            noItems.setText("Whohoo!!! \nYou completed all the tasks :) ");
-        }
-        else
+            noItems.setText("Yay!!! \nYou have completed all your tasks :) ");
+        } else
         {
             noItems.setText(null);
         }
@@ -206,6 +205,7 @@ public class TasksActivity extends AppCompatActivity
     {
         Intent goToRewardsActivity = new Intent(this, PetActivity.class);
         goToRewardsActivity.putExtra("user", user);
+        goToRewardsActivity.putExtra("pet", userPet);
         startActivity(goToRewardsActivity);
     }
 

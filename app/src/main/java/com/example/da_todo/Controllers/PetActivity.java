@@ -26,19 +26,14 @@ public class PetActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
-
     User user;
     Pet pet;
-
     String currentAction = "";
-
+    int pointsDisplay;
     int counter = 0;
-
     TextView petNameTextView, moneyTextView, teddyBearCountTextView, bananaCountTextView, soapCountTextView;
     ImageView petImageView, teddyBearImageView, bananaImageView, soapImageView;
-
     Button buyButton;
-
     ProgressBar happinessProgressBar;
     ProgressBar hungerProgressBar;
     ProgressBar cleanProgressBar;
@@ -138,7 +133,7 @@ public class PetActivity extends AppCompatActivity
 
     public void restoreImage()
     {
-        switch(currentAction)
+        switch (currentAction)
         {
             case "":
                 break;
@@ -171,37 +166,37 @@ public class PetActivity extends AppCompatActivity
     @SuppressLint("ClickableViewAccessibility")
     public void petPressed()
     {
-       petImageView.setOnTouchListener(new View.OnTouchListener()
-       {
-           @Override
-           public boolean onTouch(View view, MotionEvent motionEvent)
-           {
-               Log.i("TouchEvent", "touch detected");
+        petImageView.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent)
+            {
+                Log.i("TouchEvent", "touch detected");
 
-               int eventType = motionEvent.getActionMasked();
+                int eventType = motionEvent.getActionMasked();
 
-               switch(eventType)
-               {
-                   case MotionEvent.ACTION_DOWN:
-                       petImageView.requestLayout();
-                       petImageView.getLayoutParams().height = petImageView.getLayoutParams().height + 100;
-                       petImageView.getLayoutParams().width = petImageView.getLayoutParams().height + 100;
-                       petPushinP();
-                       break;
+                switch (eventType)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        petImageView.requestLayout();
+                        petImageView.getLayoutParams().height = petImageView.getLayoutParams().height + 100;
+                        petImageView.getLayoutParams().width = petImageView.getLayoutParams().height + 100;
+                        petPushinP();
+                        break;
 
-                   case MotionEvent.ACTION_UP:
-                       petImageView.requestLayout();
-                       petImageView.getLayoutParams().height = petImageView.getLayoutParams().height - 100;
-                       petImageView.getLayoutParams().width = petImageView.getLayoutParams().height - 100;
-               }
-               return true;
-           }
-       });
+                    case MotionEvent.ACTION_UP:
+                        petImageView.requestLayout();
+                        petImageView.getLayoutParams().height = petImageView.getLayoutParams().height - 100;
+                        petImageView.getLayoutParams().width = petImageView.getLayoutParams().height - 100;
+                }
+                return true;
+            }
+        });
     }
 
     public void buyItem(View v)
     {
-        switch(currentAction)
+        switch (currentAction)
         {
             case "teddy bear":
                 buyTeddyBears();
@@ -220,7 +215,7 @@ public class PetActivity extends AppCompatActivity
 
     public void petPushinP()
     {
-        switch(currentAction)
+        switch (currentAction)
         {
             case "":
                 break;
@@ -243,6 +238,11 @@ public class PetActivity extends AppCompatActivity
                 .set(user).addOnCompleteListener(task ->
         {
         });
+    }
+
+    public void updatePoints()
+    {
+        user.getPoints();
     }
 
     public void updateUserTeddy()
@@ -309,7 +309,6 @@ public class PetActivity extends AppCompatActivity
 
     public void progressBar()
     {
-
         final Timer timer = new Timer();
         TimerTask timerTask = new TimerTask()
         {
@@ -321,7 +320,8 @@ public class PetActivity extends AppCompatActivity
                 hungerProgressBar.setProgress(counter);
                 cleanProgressBar.setProgress(counter);
 
-                if(counter == 100) {
+                if (counter == 100)
+                {
                     timer.cancel();
 
                     progressNuts();
@@ -334,17 +334,24 @@ public class PetActivity extends AppCompatActivity
     public void progressNuts()
     {
         final Timer timer = new Timer();
-        TimerTask timerTask = new TimerTask() {
+        TimerTask timerTask = new TimerTask()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
                 counter--;
 
-                Thread thread = new Thread(new Runnable() {
+                Thread thread = new Thread(new Runnable()
+                {
                     @Override
-                    public void run() {
-                        try{
+                    public void run()
+                    {
+                        try
+                        {
                             Thread.sleep(100);
-                        } catch (InterruptedException e) {
+                        }
+                        catch (InterruptedException e)
+                        {
                             e.printStackTrace();
                         }
                         happinessProgressBar.setProgress(counter);
@@ -357,7 +364,6 @@ public class PetActivity extends AppCompatActivity
         };
         timer.schedule(timerTask, 0, 10000);
     }
-
 
 //    public void feedPet(View v)
 //    {

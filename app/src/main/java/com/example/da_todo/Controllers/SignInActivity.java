@@ -65,8 +65,7 @@ public class SignInActivity extends AppCompatActivity
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d("SIGN IN", "signInWithEmail:success");
                                 goTaskActivity();
-                            }
-                            else
+                            } else
                             {
                                 // If sign in fails, display a message to the user.
                                 Log.w("SIGN IN", "signInWithEmail:failure",
@@ -81,8 +80,7 @@ public class SignInActivity extends AppCompatActivity
             {
                 e.printStackTrace();
             }
-        }
-        else
+        } else
         {
             Toast.makeText(this, "fill in all fields", Toast.LENGTH_SHORT).show();
         }

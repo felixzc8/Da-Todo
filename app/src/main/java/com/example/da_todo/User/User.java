@@ -16,7 +16,7 @@ public class User implements Serializable
     private String selectedPet;
     private Pet pet;
     ArrayList<Task> tasks;
-    Integer points;
+    int points;
 
     public User()
     {
@@ -34,7 +34,8 @@ public class User implements Serializable
         this.points = 0;
     }
 
-    public User(String ID, String name, String email, String pin, String selectedPet, Pet pet, ArrayList<Task> tasks) {
+    public User(String ID, String name, String email, String pin, String selectedPet, Pet pet, ArrayList<Task> tasks)
+    {
         this.ID = ID;
         this.name = name;
         this.email = email;
@@ -89,11 +90,13 @@ public class User implements Serializable
         this.pin = pin;
     }
 
-    public String getSelectedPet() {
+    public String getSelectedPet()
+    {
         return selectedPet;
     }
 
-    public void setSelectedPet(String selectedPet) {
+    public void setSelectedPet(String selectedPet)
+    {
         this.selectedPet = selectedPet;
     }
 
@@ -117,16 +120,19 @@ public class User implements Serializable
         this.tasks = tasks;
     }
 
-    public Integer getPoints() {
+    public int getPoints()
+    {
         return points;
     }
 
-    public void setPoints(Integer points) {
-        this.points = points;
+    public void setPoints(int newPoints)
+    {
+        this.points = points + newPoints;
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "User{" +
                 "ID='" + ID + '\'' +
                 ", name='" + name + '\'' +

@@ -23,7 +23,6 @@ import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 public class TimerActivity extends AppCompatActivity
 {
     User user;
-
     private CountDownTimer timer = null;
     private Long timerLengthSeconds = 0L;
     private Long secondsRemaining = 0L;
@@ -31,13 +30,12 @@ public class TimerActivity extends AppCompatActivity
     private FloatingActionButton start_button, pause_button, stop_button;
     private MaterialProgressBar progress_countdown;
     private TextView textView_countdown;
-    private Pet userPet;
+    Pet userPet;
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private int timeInt;
     private String pointsRewarded;
     private String name;
     private String imageURL;
-
     private TextView nameTextView;
     private ImageView imageView;
     private TextView rewardTextView;
@@ -60,6 +58,8 @@ public class TimerActivity extends AppCompatActivity
 
         user = (User) getIntent().getSerializableExtra("user");
         userPet = (Pet) getIntent().getSerializableExtra("pet");
+//        System.out.println("HEY ORIGINAL POINTS HERE");
+//        userPet.getPoints();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null)
@@ -255,13 +255,9 @@ public class TimerActivity extends AppCompatActivity
         double pointsGiven = (taskPercentage + 1) * 50;
         int originalPoints = Integer.parseInt(pointsRewarded);
         int pointsGivenInt = (int) pointsGiven + originalPoints;
-        System.out.println("POINTS HERE");
-        System.out.println(pointsGivenInt);
-
-        //get the original number of points for the task
-        //add it to pointsGivenInt
-
-//        userPet.setTotalPoints(pointsGivenInt);
+        userPet.setPoints(pointsGivenInt);
+        System.out.println("USER POINTS HERE");
+        System.out.println(userPet.getPoints());
         Intent goToTasksActivity = new Intent(this, TasksActivity.class);
         startActivity(goToTasksActivity);
     }

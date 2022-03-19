@@ -15,27 +15,33 @@ public class Banana implements Serializable
         this.amount = 0;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name)
+    {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public Integer getPrice()
+    {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Integer price)
+    {
         this.price = price;
     }
 
-    public Integer getAmount() {
+    public Integer getAmount()
+    {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Integer amount)
+    {
         this.amount = amount;
     }
 }

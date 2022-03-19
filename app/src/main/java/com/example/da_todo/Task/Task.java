@@ -17,7 +17,8 @@ public class Task implements Serializable
 
     }
 
-    public Task(String image, String name, int timeRequired, int pointsRewarded, String taskUUID) {
+    public Task(String image, String name, int timeRequired, int pointsRewarded, String taskUUID)
+    {
         this.image = image;
         this.name = name;
         this.timeRequired = timeRequired;
@@ -65,11 +66,13 @@ public class Task implements Serializable
         this.pointsRewarded = pointsRewarded;
     }
 
-    public String getTaskUUID() {
+    public String getTaskUUID()
+    {
         return taskUUID;
     }
 
-    public void setTaskUUID(String taskUUID) {
+    public void setTaskUUID(String taskUUID)
+    {
         this.taskUUID = taskUUID;
     }
 
