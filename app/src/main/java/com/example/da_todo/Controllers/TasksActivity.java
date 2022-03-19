@@ -69,7 +69,6 @@ public class TasksActivity extends AppCompatActivity
         noItemsImage = findViewById(R.id.noItems_ImageView_TasksActivity);
         noItemsImage.setVisibility(View.INVISIBLE);
         getUser();
-//        getTasks();
     }
 
     public void getUser()
@@ -127,7 +126,20 @@ public class TasksActivity extends AppCompatActivity
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+//        setUpListViewListerner();
     }
+
+//    private void setUpListViewListerner()
+//    {
+//        recyclerView.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//
+//            }
+//        });
+//    }
 
     private void setOnClickListener()
     {
@@ -138,8 +150,13 @@ public class TasksActivity extends AppCompatActivity
             intent.putExtra("Reward", String.valueOf(taskList.get(position).getPointsRewarded()));
             intent.putExtra("Name", taskList.get(position).getName());
             intent.putExtra("Image", taskList.get(position).getImage());
+            intent.putExtra("TaskID", taskList.get(position).getTaskUUID());
             intent.putExtra("user", user);
             intent.putExtra("pet", userPet);
+            intent.putExtra("userID", user.getID());
+            intent.putExtra("position", position);
+            System.out.println("POSITION HERE");
+            System.out.println(position);
             startActivity(intent);
         };
     }

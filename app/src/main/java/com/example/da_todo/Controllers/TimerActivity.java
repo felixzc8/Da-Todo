@@ -1,29 +1,50 @@
 package com.example.da_todo.Controllers;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
-import com.example.da_todo.Task.Task;
 import com.example.da_todo.User.User;
 import com.example.da_todo.util.PrefUtil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firestore.v1.WriteResult;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
 public class TimerActivity extends AppCompatActivity
 {
     User user;
+    String id;
+    String taskID;
+    FirebaseAuth mAuth;
+    FirebaseUser mUser;
+    int position;
     private CountDownTimer timer = null;
     private Long timerLengthSeconds = 0L;
     private Long secondsRemaining = 0L;
@@ -58,8 +79,14 @@ public class TimerActivity extends AppCompatActivity
         progress_countdown = findViewById(R.id.countdown_ProgressBar_TimerActivity);
         textView_countdown = findViewById(R.id.timeDisplay_TextView_TimerActivity);
 
+        mAuth = FirebaseAuth.getInstance();
+        mUser = mAuth.getCurrentUser();
+
+        taskID = (String) getIntent().getSerializableExtra("TaskID");
+        id = (String) getIntent().getSerializableExtra("userID");
         user = (User) getIntent().getSerializableExtra("user");
         userPet = (Pet) getIntent().getSerializableExtra("pet");
+        position = (int) getIntent().getSerializableExtra("position");
 //        System.out.println("HEY ORIGINAL POINTS HERE");
 //        userPet.getPoints();
 
@@ -262,6 +289,66 @@ public class TimerActivity extends AppCompatActivity
         userPet.setPoints(pointsGivenInt);
         System.out.println("USER POINTS HERE");
         System.out.println(userPet.getPoints());
+
+        //remove task from firebase
+        try
+        {
+            System.out.println("TASK ID HERE");
+            System.out.println(taskID);
+            System.out.println(position);
+
+            position = (int) getIntent().getSerializableExtra("position");
+            String positionString = String.valueOf(position);
+
+//            DocumentReference docRef = firestore.collection("/users").document(mUser.getUid())
+//                    .collection("tasks").document(positionString);
+//
+//            Map<String,Object> updates = new HashMap<>();
+//            updates.put(positionString, FieldValue.delete());
+//
+//            docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) {
+//                    System.out.println("COMPLETED??");
+//                }
+//            });
+
+//            CollectionReference collectionReference = firestore.collection("/users")
+//                    .document(mUser.getUid()).collection("tasks");
+//            Map<String, Object> updates = new HashMap<>();
+//            updates.put(positionString, FieldValue.delete());
+//            ApiFuture<WriteResult> writeResult = collectionReference.update(updates);
+//            System.out.println("Update time : " + writeResult.get());
+
+            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid())
+                    .collection("tasks").document("email");
+
+            documentReference.delete();
+
+//            DocumentReference documentReference = firestore.collection("/users").document(mUser.getUid())
+//                    .collection("tasks").document(positionString);
+//
+//            documentReference.delete();
+
+//            firestore.collection("/users").document(mUser.getUid())
+//                    .collection("tasks").document(positionString).delete()
+//                    .addOnCompleteListener(new OnCompleteListener<Void>()
+//                    {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task)
+//                        {
+//                            if (task.isSuccessful())
+//                            {
+//                                System.out.println("NO WAY IT WORKS");
+//                            }
+//                        }
+//                    });
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            Toast.makeText(this, "error getting user", Toast.LENGTH_SHORT).show();
+        }
         Intent intent = new Intent(getApplicationContext(), TasksActivity.class);
         intent.putExtra("newPet", userPet);
         startActivity(intent);
