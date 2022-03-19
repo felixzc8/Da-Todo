@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
+import com.example.da_todo.Task.Task;
 import com.example.da_todo.User.User;
 import com.example.da_todo.util.PrefUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -39,6 +40,7 @@ public class TimerActivity extends AppCompatActivity
     private TextView nameTextView;
     private ImageView imageView;
     private TextView rewardTextView;
+    private Intent intent;
 
     public enum TimerState
     {
@@ -258,8 +260,14 @@ public class TimerActivity extends AppCompatActivity
         userPet.setPoints(pointsGivenInt);
         System.out.println("USER POINTS HERE");
         System.out.println(userPet.getPoints());
-        Intent goToTasksActivity = new Intent(this, TasksActivity.class);
-        startActivity(goToTasksActivity);
+//        intent.putExtra("newPet", userPet);
+
+        Intent intent = new Intent(getApplicationContext(), TasksActivity.class);
+        intent.putExtra("newPet", userPet);
+        startActivity(intent);
+
+//        Intent goToTasksActivity = new Intent(this, TasksActivity.class);
+//        startActivity(goToTasksActivity);
     }
 
     public void goBack(View v)

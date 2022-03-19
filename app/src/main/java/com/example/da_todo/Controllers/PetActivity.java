@@ -27,6 +27,7 @@ public class PetActivity extends AppCompatActivity
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
     User user;
+    Pet userPet;
     Pet pet;
     String currentAction = "";
     int pointsDisplay;
@@ -48,6 +49,7 @@ public class PetActivity extends AppCompatActivity
         firestore = FirebaseFirestore.getInstance();
 
         user = (User) getIntent().getSerializableExtra("user");
+        userPet = (Pet) getIntent().getSerializableExtra("newUserPet");
         pet = user.getPet();
 
         petNameTextView = findViewById(R.id.petName_TextView_RewardsActivity);
@@ -67,7 +69,8 @@ public class PetActivity extends AppCompatActivity
         hungerProgressBar = findViewById(R.id.hungerProgressBar);
         cleanProgressBar = findViewById(R.id.cleanProgressBar);
 
-        moneyTextView.setText(Integer.toString(user.getPoints()));
+//        moneyTextView.setText(Integer.toString(pet.getPoints()));
+        moneyTextView.setText(Integer.toString(userPet.getPoints()));
         petNameTextView.setText(pet.getName());
 
         teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));

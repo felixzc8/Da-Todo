@@ -36,6 +36,7 @@ public class TasksActivity extends AppCompatActivity
 
     tasksRecyclerAdapter adapter;
     Pet userPet;
+    Pet newUserPet;
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
     FirebaseUser mUser;
@@ -62,6 +63,7 @@ public class TasksActivity extends AppCompatActivity
         firestore = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
 //        userPet = (Pet) getIntent().getSerializableExtra("pet");
+        newUserPet = (Pet) getIntent().getSerializableExtra("newPet");
         intentTime = (String) getIntent().getSerializableExtra("Time");
         goPetActivityButton = findViewById(R.id.goPetActivityButton);
         noItems = findViewById(R.id.noItems_TextView_TasksActivity);
@@ -205,7 +207,7 @@ public class TasksActivity extends AppCompatActivity
     {
         Intent goToRewardsActivity = new Intent(this, PetActivity.class);
         goToRewardsActivity.putExtra("user", user);
-        goToRewardsActivity.putExtra("pet", userPet);
+        goToRewardsActivity.putExtra("newUserPet", newUserPet);
         startActivity(goToRewardsActivity);
     }
 

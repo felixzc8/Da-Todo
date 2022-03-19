@@ -75,9 +75,9 @@ public class Pet implements Serializable
         this.soap = soap;
     }
 
-    public void setPoints(int points)
+    public void setPoints(int newPoints)
     {
-        this.points = points;
+        this.points += newPoints;
     }
 
     public int getPoints()
