@@ -37,6 +37,7 @@ public class PetActivity extends AppCompatActivity
     ProgressBar hungerProgressBar;
     ProgressBar cleanProgressBar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
