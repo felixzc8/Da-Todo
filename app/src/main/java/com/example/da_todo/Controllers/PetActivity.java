@@ -239,32 +239,45 @@ public class PetActivity extends AppCompatActivity
 
     public void updateUserTeddy()
     {
-        happinessProgressBar.setProgress(happinessProgressBar.getProgress() + 10);
-        pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() - 1);
-        user.setPet(pet);
-        teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
-
-        System.out.println(pet.getTeddyBear().getAmount());
+        if (pet.getTeddyBear().getAmount() >= 1) {
+            happinessProgressBar.incrementProgressBy(10);
+            pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() - 1);
+            user.setPet(pet);
+            teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "You don't have enough teddy bears!", Toast.LENGTH_LONG).show();
+        }
 
         updateUser();
     }
 
     public void updateUserBanana()
     {
-        hungerProgressBar.setProgress(hungerProgressBar.getProgress() + 10);
-        pet.getBanana().setAmount(pet.getBanana().getAmount() - 1);
-        user.setPet(pet);
-        bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
+        if (pet.getBanana().getAmount() >= 1) {
+            hungerProgressBar.incrementProgressBy(10);
+            pet.getBanana().setAmount(pet.getBanana().getAmount() - 1);
+            user.setPet(pet);
+            bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "You don't have enough bananas", Toast.LENGTH_LONG).show();
+        }
 
         updateUser();
     }
 
     public void updateUserSoap()
     {
-        cleanProgressBar.setProgress(cleanProgressBar.getProgress() + 10);
-        pet.getSoap().setAmount(pet.getSoap().getAmount() - 1);
-        user.setPet(pet);
-        soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
+        if (pet.getSoap().getAmount() >= 1) {
+            cleanProgressBar.incrementProgressBy(10);
+            pet.getSoap().setAmount(pet.getSoap().getAmount() - 1);
+            user.setPet(pet);
+            soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "You don't have enough soap!", Toast.LENGTH_LONG).show();
+        }
 
         updateUser();
     }
@@ -349,8 +362,6 @@ public class PetActivity extends AppCompatActivity
             @Override
             public void run()
             {
-                counter--;
-
                 Thread thread = new Thread(new Runnable()
                 {
                     @Override
@@ -364,9 +375,9 @@ public class PetActivity extends AppCompatActivity
                         {
                             e.printStackTrace();
                         }
-                        happinessProgressBar.setProgress(counter);
-                        hungerProgressBar.setProgress(counter);
-                        cleanProgressBar.setProgress(counter);
+                        happinessProgressBar.setProgress(happinessProgressBar.getProgress() - 1);
+                        hungerProgressBar.setProgress(hungerProgressBar.getProgress() - 1);
+                        cleanProgressBar.setProgress(cleanProgressBar.getProgress() - 1);
                     }
                 });
                 thread.start();
