@@ -86,8 +86,11 @@ public class TimerActivity extends AppCompatActivity
         taskID = (String) getIntent().getSerializableExtra("TaskID");
         id = (String) getIntent().getSerializableExtra("userID");
         user = (User) getIntent().getSerializableExtra("user");
-        userPet = (Pet) getIntent().getSerializableExtra("pet");
+//        userPet = (Pet) getIntent().getSerializableExtra("pet");
         position = (int) getIntent().getSerializableExtra("position");
+
+        userPet = user.getPet();
+
 //        System.out.println("HEY ORIGINAL POINTS HERE");
 //        userPet.getPoints();
 
@@ -288,12 +291,11 @@ public class TimerActivity extends AppCompatActivity
         int pointsGivenInt = (int) pointsGiven + originalPoints;
 
         userPet.setPoints(pointsGivenInt);
-        System.out.println("USER POINTS HERE");
+
+        System.out.println("POINTS GIVEN HERE");
         System.out.println(userPet.getPoints());
 
         String taskID = (String) getIntent().getSerializableExtra("TaskID");
-        System.out.println(taskID);
-
         for (com.example.da_todo.Task.Task t: user.getTasks())
         {
             if (taskID.equals(t.getTaskUUID()))
@@ -304,7 +306,7 @@ public class TimerActivity extends AppCompatActivity
             }
         }
         Intent intent = new Intent(getApplicationContext(), TasksActivity.class);
-        intent.putExtra("newPet", userPet);
+//        intent.putExtra("newPet", userPet);
         startActivity(intent);
     }
 

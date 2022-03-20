@@ -34,6 +34,8 @@ public class TasksActivity extends AppCompatActivity
     private TextView noItems;
     private ImageView noItemsImage;
 
+    int passedPoints;
+
     tasksRecyclerAdapter adapter;
     Pet userPet;
     Pet newUserPet;
@@ -61,12 +63,11 @@ public class TasksActivity extends AppCompatActivity
         mUser = mAuth.getCurrentUser();
         firestore = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
-        newUserPet = (Pet) getIntent().getSerializableExtra("newPet");
-        intentTime = (String) getIntent().getSerializableExtra("Time");
         goPetActivityButton = findViewById(R.id.goPetActivityButton);
         noItems = findViewById(R.id.noItems_TextView_TasksActivity);
         noItemsImage = findViewById(R.id.noItems_ImageView_TasksActivity);
         noItemsImage.setVisibility(View.INVISIBLE);
+        intentTime = (String) getIntent().getSerializableExtra("Time");
         getUser();
     }
 
@@ -81,9 +82,13 @@ public class TasksActivity extends AppCompatActivity
                         if (task.isSuccessful())
                         {
                             user = ds.toObject(User.class);
+
                             userPet = user.getPet();
+//                            newUserPet = (Pet) getIntent().getSerializableExtra("newPet");
+
                             Log.d("USER OBJECT", "user name: " + user.getName());
                             taskList = user.getTasks();
+
                             if (taskList.size() == 0)
                             {
                                 hasItems = false;
@@ -126,18 +131,6 @@ public class TasksActivity extends AppCompatActivity
         recyclerView.setAdapter(adapter);
 //        setUpListViewListerner();
     }
-
-//    private void setUpListViewListerner()
-//    {
-//        recyclerView.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View view)
-//            {
-//
-//            }
-//        });
-//    }
 
     private void setOnClickListener()
     {
@@ -184,32 +177,6 @@ public class TasksActivity extends AppCompatActivity
         }
     }
 
-    private void setTaskInfo()
-    {
-//        taskList.add(new Task(null, "Eat Dinner", 30, 5, null));
-//        taskList.add(new Task(null, "Shower", 10, 1, null));
-//        taskList.add(new Task(null, "Brush Teeth", 5, 3, null));
-//        taskList.add(new Task(null, "Pack bag",  10, 5, null));
-//        try{
-//            firestore.collection("users").document(mUser.getUid()).get().addOnCompleteListener(task -> {
-//                if(task.isSuccessful()){
-//                    DocumentSnapshot ds = task.getResult();
-//                    List<Task> tasksList = (List<Task>)ds.getData().get("tasks");
-//                    for(Task taskX: tasksList){
-//                        imageURLString = taskX.getImage();
-//                        nameString = taskX.getName();
-//                        timeInt = taskX.getTimeRequired();
-//                        pointsRewardedInt = taskX.getPointsRewarded();
-//                        idString = taskX.getTaskUUID();
-//                        taskList.add(new Task(imageURLString, nameString, timeInt, pointsRewardedInt, idString));
-//                    }
-//                }
-//            });
-//        } catch (Exception err){
-//            err.printStackTrace();
-//        }
-    }
-
     public void goToAddTaskPinActivity(View view)
     {
         Intent goToAddTaskPinActivity = new Intent(this, AddTaskPinActivity.class);
@@ -221,7 +188,8 @@ public class TasksActivity extends AppCompatActivity
     {
         Intent goToRewardsActivity = new Intent(this, PetActivity.class);
         goToRewardsActivity.putExtra("user", user);
-        goToRewardsActivity.putExtra("newUserPet", newUserPet);
+//        goToRewardsActivity.putExtra("noNewUserPet", userPet);
+//        goToRewardsActivity.putExtra("newUserPet", newUserPet);
         startActivity(goToRewardsActivity);
     }
 
