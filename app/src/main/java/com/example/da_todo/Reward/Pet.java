@@ -80,6 +80,11 @@ public class Pet implements Serializable
         this.points += newPoints;
     }
 
+    public void minusPoints(int newPoints)
+    {
+        this.points -= newPoints;
+    }
+
     public int getPoints()
     {
         return points;

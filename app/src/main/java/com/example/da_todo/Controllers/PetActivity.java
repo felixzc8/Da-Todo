@@ -271,8 +271,15 @@ public class PetActivity extends AppCompatActivity
 
     public void buyTeddyBears()
     {
+        System.out.println("TEDDIES HERE");
+        System.out.println(pet.getPoints());
+
         pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() + 1);
-        user.setPoints(user.getPoints() - pet.getTeddyBear().getPrice());
+        pet.minusPoints(pet.getTeddyBear().getPrice());
+
+        System.out.println(pet.getTeddyBear().getPrice());
+        System.out.println(pet.getPoints());
+
         user.setPet(pet);
 
         moneyTextView.setText("" + user.getPoints());
