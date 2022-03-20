@@ -283,12 +283,25 @@ public class TimerActivity extends AppCompatActivity
         Long secondsLeft = PrefUtil.getSecondsRemaining(this);
         Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
 
+        System.out.println("TOTLA POINTS HERE");
         double secondsLeftInt = secondsLeft.intValue();
+        System.out.println(secondsLeftInt);
         double originalSecondsInt = originalSeconds.intValue();
+        System.out.println(originalSecondsInt);
         double taskPercentage = 1 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt));
-        double pointsGiven = (taskPercentage + 1) * 50;
+        System.out.println(taskPercentage);
+
+//        double pointsGiven = (taskPercentage + 1) * 50;
+//        System.out.println(pointsGiven);
+//        int originalPoints = Integer.parseInt(pointsRewarded);
+//        System.out.println(originalPoints);
+//        int pointsGivenInt = (int) pointsGiven + originalPoints;
+//        System.out.println(pointsGivenInt);
+
         int originalPoints = Integer.parseInt(pointsRewarded);
+        double pointsGiven = taskPercentage * originalPoints;
         int pointsGivenInt = (int) pointsGiven + originalPoints;
+        System.out.println(pointsGivenInt);
 
         userPet.setPoints(pointsGivenInt);
 
