@@ -291,6 +291,7 @@ public class TimerActivity extends AppCompatActivity
         double taskPercentage = 1 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt));
         System.out.println(taskPercentage);
 
+
 //        double pointsGiven = (taskPercentage + 1) * 50;
 //        System.out.println(pointsGiven);
 //        int originalPoints = Integer.parseInt(pointsRewarded);
