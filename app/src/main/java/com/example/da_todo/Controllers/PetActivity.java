@@ -48,6 +48,7 @@ public class PetActivity extends AppCompatActivity
         firestore = FirebaseFirestore.getInstance();
         user = (User) getIntent().getSerializableExtra("user");
         pet = user.getPet();
+
         petNameTextView = findViewById(R.id.petName_TextView_RewardsActivity);
         moneyTextView = findViewById(R.id.money_TextView_RewardsActivity);
         teddyBearCountTextView = findViewById(R.id.teddyBearCountTextView);
