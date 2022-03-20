@@ -71,7 +71,6 @@ public class PetActivity extends AppCompatActivity
         bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
         soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
         moneyTextView.setText(Integer.toString(pet.getPoints()));
-
         setPetImage(user);
         progressBar();
         petPressed();
