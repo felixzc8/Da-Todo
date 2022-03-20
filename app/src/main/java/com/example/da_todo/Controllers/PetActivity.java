@@ -27,12 +27,9 @@ public class PetActivity extends AppCompatActivity
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
     User user;
-    Pet noNewUserPet;
-    Pet userPet;
     Pet pet;
     String currentAction = "";
     int counter = 0;
-    int passedPoints = 0;
     TextView petNameTextView, moneyTextView, teddyBearCountTextView, bananaCountTextView, soapCountTextView;
     ImageView petImageView, teddyBearImageView, bananaImageView, soapImageView;
     Button buyButton;
@@ -45,12 +42,9 @@ public class PetActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
-
         mAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         user = (User) getIntent().getSerializableExtra("user");
-//        userPet = (Pet) getIntent().getSerializableExtra("newUserPet");
-//        noNewUserPet = (Pet) getIntent().getSerializableExtra("noNewUserPet");
         pet = user.getPet();
 
         petNameTextView = findViewById(R.id.petName_TextView_RewardsActivity);

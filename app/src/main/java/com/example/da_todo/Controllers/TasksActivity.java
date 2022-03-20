@@ -33,25 +33,15 @@ public class TasksActivity extends AppCompatActivity
     private tasksRecyclerAdapter.RecyclerViewClickListener listener;
     private TextView noItems;
     private ImageView noItemsImage;
-
-    int passedPoints;
-
     tasksRecyclerAdapter adapter;
     Pet userPet;
-    Pet newUserPet;
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
     FirebaseUser mUser;
     User user;
     String intentTime;
     ImageView goPetActivityButton;
-
     boolean hasItems;
-    String imageURLString;
-    String nameString;
-    int timeInt;
-    int pointsRewardedInt;
-    String idString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -82,10 +72,7 @@ public class TasksActivity extends AppCompatActivity
                         if (task.isSuccessful())
                         {
                             user = ds.toObject(User.class);
-
                             userPet = user.getPet();
-//                            newUserPet = (Pet) getIntent().getSerializableExtra("newPet");
-
                             Log.d("USER OBJECT", "user name: " + user.getName());
                             taskList = user.getTasks();
 
@@ -188,8 +175,6 @@ public class TasksActivity extends AppCompatActivity
     {
         Intent goToRewardsActivity = new Intent(this, PetActivity.class);
         goToRewardsActivity.putExtra("user", user);
-//        goToRewardsActivity.putExtra("noNewUserPet", userPet);
-//        goToRewardsActivity.putExtra("newUserPet", newUserPet);
         startActivity(goToRewardsActivity);
     }
 

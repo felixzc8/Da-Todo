@@ -283,31 +283,13 @@ public class TimerActivity extends AppCompatActivity
         Long secondsLeft = PrefUtil.getSecondsRemaining(this);
         Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
 
-        System.out.println("TOTLA POINTS HERE");
         double secondsLeftInt = secondsLeft.intValue();
-        System.out.println(secondsLeftInt);
         double originalSecondsInt = originalSeconds.intValue();
-        System.out.println(originalSecondsInt);
         double taskPercentage = 1 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt));
-        System.out.println(taskPercentage);
-
-
-//        double pointsGiven = (taskPercentage + 1) * 50;
-//        System.out.println(pointsGiven);
-//        int originalPoints = Integer.parseInt(pointsRewarded);
-//        System.out.println(originalPoints);
-//        int pointsGivenInt = (int) pointsGiven + originalPoints;
-//        System.out.println(pointsGivenInt);
-
         int originalPoints = Integer.parseInt(pointsRewarded);
         double pointsGiven = taskPercentage * originalPoints;
         int pointsGivenInt = (int) pointsGiven + originalPoints;
-        System.out.println(pointsGivenInt);
-
         userPet.setPoints(pointsGivenInt);
-
-        System.out.println("POINTS GIVEN HERE");
-        System.out.println(userPet.getPoints());
 
         String taskID = (String) getIntent().getSerializableExtra("TaskID");
         for (com.example.da_todo.Task.Task t: user.getTasks())
@@ -320,7 +302,6 @@ public class TimerActivity extends AppCompatActivity
             }
         }
         Intent intent = new Intent(getApplicationContext(), TasksActivity.class);
-//        intent.putExtra("newPet", userPet);
         startActivity(intent);
     }
 
