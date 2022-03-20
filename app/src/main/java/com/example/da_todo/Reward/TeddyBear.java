@@ -11,7 +11,7 @@ public class TeddyBear implements Serializable
     public TeddyBear()
     {
         this.name = "teddy bear";
-        this.price = 100;
+        this.price = 50;
         this.amount = 0;
     }
 

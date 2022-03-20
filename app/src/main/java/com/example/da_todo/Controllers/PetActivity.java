@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
@@ -271,39 +272,50 @@ public class PetActivity extends AppCompatActivity
 
     public void buyTeddyBears()
     {
-        System.out.println("TEDDIES HERE");
-        System.out.println(pet.getPoints());
-
-        pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() + 1);
-        pet.minusPoints(pet.getTeddyBear().getPrice());
-
-        System.out.println(pet.getTeddyBear().getPrice());
-        System.out.println(pet.getPoints());
-
-        user.setPet(pet);
-
-        moneyTextView.setText("" + user.getPoints());
-        teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
+        if (pet.getPoints() - pet.getTeddyBear().getPrice() >= 0)
+        {
+            pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() + 1);
+            pet.minusPoints(pet.getTeddyBear().getPrice());
+            user.setPet(pet);
+            moneyTextView.setText("" + pet.getPoints());
+            teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "You don't have enough money!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void buyBananas()
     {
-        pet.getBanana().setAmount(pet.getBanana().getAmount() + 1);
-        user.setPoints(user.getPoints() - pet.getBanana().getPrice());
-        user.setPet(pet);
-
-        moneyTextView.setText("" + user.getPoints());
-        bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
+        if (pet.getPoints() - pet.getBanana().getPrice() >= 0)
+        {
+            pet.getBanana().setAmount(pet.getBanana().getAmount() + 1);
+            pet.minusPoints(pet.getBanana().getPrice());
+            user.setPet(pet);
+            moneyTextView.setText("" + pet.getPoints());
+            bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "You don't have enough money!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void buySoap()
     {
-        pet.getSoap().setAmount(pet.getSoap().getAmount() + 1);
-        user.setPoints(user.getPoints() - pet.getSoap().getPrice());
-        user.setPet(pet);
-
-        moneyTextView.setText("" + user.getPoints());
-        soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
+        if (pet.getPoints() - pet.getSoap().getPrice() >= 0)
+        {
+            pet.getSoap().setAmount(pet.getSoap().getAmount() + 1);
+            pet.minusPoints(pet.getSoap().getPrice());
+            user.setPet(pet);
+            moneyTextView.setText("" + pet.getPoints());
+            soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(), "You don't have enough money!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void progressBar()

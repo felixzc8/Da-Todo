@@ -11,7 +11,7 @@ public class Soap implements Serializable
     public Soap()
     {
         this.name = "soap";
-        this.price = 100;
+        this.price = 200;
         this.amount = 0;
     }
 
