@@ -1,43 +1,31 @@
 package com.example.da_todo.Controllers;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.da_todo.R;
 import com.example.da_todo.Reward.Pet;
 import com.example.da_todo.User.User;
 import com.example.da_todo.util.PrefUtil;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firestore.v1.WriteResult;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import me.zhanghai.android.materialprogressbar.MaterialProgressBar;
 
+/**
+ * Enable the Timer to run after click on a task
+ *
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
+ * @version 1.0
+ */
 public class TimerActivity extends AppCompatActivity
 {
     User user;
@@ -64,12 +52,9 @@ public class TimerActivity extends AppCompatActivity
     private TextView rewardTextView;
     private Intent intent;
 
-    //enum of the possible timer states
-    public enum TimerState
-    {
-        Stopped, Paused, Running
-    }
-
+    /**
+     * Takes in the inputs from TasksActivity
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -124,6 +109,17 @@ public class TimerActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Enum of the possible timer states
+     */
+    public enum TimerState
+    {
+        Stopped, Paused, Running
+    }
+
+    /**
+     * Resume timer function
+     */
     @Override
     protected void onResume()
     {
@@ -131,6 +127,9 @@ public class TimerActivity extends AppCompatActivity
         initTimer();
     }
 
+    /**
+     * Pause timer function
+     */
     @Override
     protected void onPause()
     {
@@ -146,6 +145,9 @@ public class TimerActivity extends AppCompatActivity
         PrefUtil.setTimerState(timerState, this);
     }
 
+    /**
+     * Initalize timer function
+     */
     private void initTimer()
     {
         //initiating the timer for a new task
@@ -171,6 +173,9 @@ public class TimerActivity extends AppCompatActivity
         updateCountdownUI();
     }
 
+    /**
+     * Finished timer function
+     */
     private void onTimerFinished()
     {
         //setting the countdown to end when the timer finishes
@@ -183,6 +188,9 @@ public class TimerActivity extends AppCompatActivity
         updateCountdownUI();
     }
 
+    /**
+     * Start timer function
+     */
     private void startTimer()
     {
         //set a new timer and calculate the number of seconds for the task
@@ -204,6 +212,9 @@ public class TimerActivity extends AppCompatActivity
         }.start();
     }
 
+    /**
+     * Set new timer function
+     */
     private void setNewTimerLength()
     {
         //taking in the time input for each task to be projected on the progress bar
@@ -219,12 +230,18 @@ public class TimerActivity extends AppCompatActivity
         progress_countdown.setMax(timerLengthSeconds.intValue());
     }
 
+    /**
+     * Continue the same timer when the user leaves the task
+     */
     private void setPreviousTimerLength()
     {
         timerLengthSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
         progress_countdown.setMax(timerLengthSeconds.intValue());
     }
 
+    /**
+     * Updating the timer progress bar
+     */
     private void updateCountdownUI()
     {
         int minutesUntilFinished = secondsRemaining.intValue() / 60;
@@ -236,6 +253,9 @@ public class TimerActivity extends AppCompatActivity
                 .setProgress((timerLengthSeconds.intValue() - secondsRemaining.intValue()));
     }
 
+    /**
+     * Setting the timer buttons to be displayed when clicked
+     */
     private void updateButtons()
     {
         switch (timerState)
@@ -260,6 +280,9 @@ public class TimerActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Calculating the users points after completing a task
+     */
     public void updateTotalPoints(View v)
     {
         initTimer();
