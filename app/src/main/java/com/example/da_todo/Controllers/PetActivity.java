@@ -74,6 +74,7 @@ public class PetActivity extends AppCompatActivity
     {
         switch (user.getSelectedPet())
         {
+            //depending on what pet the user selects, the image displayed is different
             case "dog":
                 petImageView.setImageResource(R.drawable.dogpet);
                 break;
@@ -99,6 +100,7 @@ public class PetActivity extends AppCompatActivity
     {
         switch (v.getId())
         {
+            //create a variable which shows what is selected
             case R.id.teddyBearImageView:
                 enlargeImage(findViewById(R.id.teddyBearImageView));
                 restoreImage();
@@ -126,6 +128,7 @@ public class PetActivity extends AppCompatActivity
     {
         switch (currentAction)
         {
+            //reduce the image to it's original size
             case "":
                 break;
             case "teddy bear":
@@ -206,6 +209,7 @@ public class PetActivity extends AppCompatActivity
 
     public void petPushinP()
     {
+        //Pushin P less goo (method for if an item is clicked and then the pet is clicked)
         switch (currentAction)
         {
             case "":
@@ -233,11 +237,15 @@ public class PetActivity extends AppCompatActivity
 
     public void updateUserTeddy()
     {
+        //make sure the user has one or more teddy bears
         if (pet.getTeddyBear().getAmount() >= 1)
         {
+            //increase progress of happinessProgressBar by 10 and remove 1 teddy bear from user
             happinessProgressBar.incrementProgressBy(10);
             pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() - 1);
             user.setPet(pet);
+
+            //remove 1 teddy bear from the counter on screen
             teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
         } else
         {
@@ -250,11 +258,15 @@ public class PetActivity extends AppCompatActivity
 
     public void updateUserBanana()
     {
+        //make sure the user has one or more bananas
         if (pet.getBanana().getAmount() >= 1)
         {
+            //increase progress of hungerProgressBar by 10 and remove 1 banana from user
             hungerProgressBar.incrementProgressBy(10);
             pet.getBanana().setAmount(pet.getBanana().getAmount() - 1);
             user.setPet(pet);
+
+            //remove 1 banana from the counter on screen
             bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
         } else
         {
@@ -267,11 +279,15 @@ public class PetActivity extends AppCompatActivity
 
     public void updateUserSoap()
     {
+        //make sure the user has one or more soaps
         if (pet.getSoap().getAmount() >= 1)
         {
+            //increase progress of cleanProgressBar by 10 and remove 1 soap from user
             cleanProgressBar.incrementProgressBy(10);
             pet.getSoap().setAmount(pet.getSoap().getAmount() - 1);
             user.setPet(pet);
+
+            //remove 1 soap from the counter on screen
             soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
         } else
         {
@@ -342,12 +358,14 @@ public class PetActivity extends AppCompatActivity
 
     public void progressBar()
     {
+        //initial setup of the progress bars
         final Timer timer = new Timer();
         TimerTask timerTask = new TimerTask()
         {
             @Override
             public void run()
             {
+                //the counter is constantly increasing and the bars move with it
                 counter++;
                 happinessProgressBar.setProgress(counter);
                 hungerProgressBar.setProgress(counter);
@@ -355,17 +373,22 @@ public class PetActivity extends AppCompatActivity
 
                 if (counter == 100)
                 {
+                    //stops when the bars are full
                     timer.cancel();
 
+                    //begin the decay of the bars
                     progressNuts();
                 }
             }
         };
+
+        //counter increases every 20 milliseconds
         timer.schedule(timerTask, 0, 20);
     }
 
     public void progressNuts()
     {
+        //setting the decay of the progress bars
         final Timer timer = new Timer();
         TimerTask timerTask = new TimerTask()
         {
@@ -379,11 +402,13 @@ public class PetActivity extends AppCompatActivity
                     {
                         try
                         {
+                            //starting the method 100 milliseconds after activity is launched
                             Thread.sleep(100);
                         } catch (InterruptedException e)
                         {
                             e.printStackTrace();
                         }
+                        //makes it so that it is a constant decay rate instead of setting to a var
                         happinessProgressBar.setProgress(happinessProgressBar.getProgress() - 1);
                         hungerProgressBar.setProgress(hungerProgressBar.getProgress() - 1);
                         cleanProgressBar.setProgress(cleanProgressBar.getProgress() - 1);
@@ -392,6 +417,8 @@ public class PetActivity extends AppCompatActivity
                 thread.start();
             }
         };
+
+        //the decay only occurs once every 10 seconds
         timer.schedule(timerTask, 0, 10000);
     }
 
