@@ -22,7 +22,8 @@ public class PetCreateActivity extends AppCompatActivity
     Pet userPet;
     String selectedPet = "";
     EditText petNameEditText;
-    ImageView dogImageView, catImageView, unicornImageView, dragonImageView, hamsterImageView, pandaImageView;
+    ImageView dogImageView, catImageView, unicornImageView, dragonImageView,
+            hamsterImageView, pandaImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

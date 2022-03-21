@@ -66,13 +66,15 @@ public class AddAllTaskActivity extends AppCompatActivity
 
             Task task = new Task(image, name, timeRequired, pointsRewarded, taskUUID);
             System.out.println(user.getID());
-            firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
+            firestore.collection("users").document(user.getID()).update("tasks",
+                    FieldValue.arrayUnion(task));
             Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
             clearPage();
         } catch (Exception err)
         {
             err.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Incorrect input. Only input numbers", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Incorrect input. Only input numbers",
+                    Toast.LENGTH_LONG).show();
             taskTime.setText(null);
             taskPoints.setText(null);
         }

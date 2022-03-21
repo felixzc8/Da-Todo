@@ -63,7 +63,8 @@ public class AllTaskActivity extends AppCompatActivity
     {
         listener = (view, position) ->
         {
-            Intent goToAddAllTaskActivity = new Intent(getApplicationContext(), AddAllTaskActivity.class);
+            Intent goToAddAllTaskActivity = new Intent(getApplicationContext(),
+                    AddAllTaskActivity.class);
             goToAddAllTaskActivity.putExtra("image", taskList.get(position).getImage());
             goToAddAllTaskActivity.putExtra("name", taskList.get(position).getName());
             goToAddAllTaskActivity.putExtra("user", user);
@@ -73,20 +74,34 @@ public class AllTaskActivity extends AppCompatActivity
 
     private void setTaskInfo()
     {
-        taskList.add(new Task(brushTeethImageURL, "Brush Teeth", 0, 0, null));
-        taskList.add(new Task(eatBreakfastURL, "Eat Breakfast", 0, 0, null));
-        taskList.add(new Task(packSchoolBagURL, "Pack School Bag", 0, 0, null));
-        taskList.add(new Task(changeClothesURL, "Change Clothes", 0, 0, null));
-        taskList.add(new Task(doChoresURL, "Do Chores", 0, 0, null));
-        taskList.add(new Task(doHomeworkURL, "Do Homework", 0, 0, null));
-        taskList.add(new Task(makeBedURL, "Make Bed", 0, 0, null));
-        taskList.add(new Task(readBookURL, "Read Book", 0, 0, null));
-        taskList.add(new Task(takeShowerURL, "Take Shower", 0, 0, null));
-        taskList.add(new Task(tidyUpURL, "Tidy Up", 0, 0, null));
-        taskList.add(new Task(turnLightsOnOffURL, "Turn Lights On/Off", 0, 0, null));
-        taskList.add(new Task(washHandsURL, "Wash Hands", 0, 0, null));
-        taskList.add(new Task(washFaceURL, "Wash Face", 0, 0, null));
-        taskList.add(new Task(useToiletURL, "Use Toilet", 0, 0, null));
+        taskList.add(new Task(brushTeethImageURL, "Brush Teeth", 0,
+                0, null));
+        taskList.add(new Task(eatBreakfastURL, "Eat Breakfast", 0,
+                0, null));
+        taskList.add(new Task(packSchoolBagURL, "Pack School Bag", 0,
+                0, null));
+        taskList.add(new Task(changeClothesURL, "Change Clothes", 0,
+                0, null));
+        taskList.add(new Task(doChoresURL, "Do Chores", 0,
+                0, null));
+        taskList.add(new Task(doHomeworkURL, "Do Homework", 0,
+                0, null));
+        taskList.add(new Task(makeBedURL, "Make Bed", 0,
+                0, null));
+        taskList.add(new Task(readBookURL, "Read Book", 0,
+                0, null));
+        taskList.add(new Task(takeShowerURL, "Take Shower", 0,
+                0, null));
+        taskList.add(new Task(tidyUpURL, "Tidy Up", 0,
+                0, null));
+        taskList.add(new Task(turnLightsOnOffURL, "Turn Lights On/Off", 0,
+                0, null));
+        taskList.add(new Task(washHandsURL, "Wash Hands", 0,
+                0, null));
+        taskList.add(new Task(washFaceURL, "Wash Face", 0,
+                0, null));
+        taskList.add(new Task(useToiletURL, "Use Toilet", 0,
+                0, null));
     }
 
     public void goToAddTaskActivity(View v)

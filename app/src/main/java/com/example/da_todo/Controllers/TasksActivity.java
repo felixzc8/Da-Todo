@@ -123,8 +123,10 @@ public class TasksActivity extends AppCompatActivity
         listener = (v, position) ->
         {
             Intent intent = new Intent(getApplicationContext(), TimerActivity.class);
-            intent.putExtra("Time", String.valueOf(taskList.get(position).getTimeRequired()));
-            intent.putExtra("Reward", String.valueOf(taskList.get(position).getPointsRewarded()));
+            intent.putExtra("Time", String.valueOf(taskList.get(position)
+                    .getTimeRequired()));
+            intent.putExtra("Reward", String.valueOf(taskList.get(position)
+                    .getPointsRewarded()));
             intent.putExtra("Name", taskList.get(position).getName());
             intent.putExtra("Image", taskList.get(position).getImage());
             intent.putExtra("TaskID", taskList.get(position).getTaskUUID());

@@ -33,13 +33,15 @@ public class AddTaskPinActivity extends AppCompatActivity
             pinInt = Integer.parseInt(pinInput.getText().toString());
             if (pinInt == Integer.valueOf(user.getPin()))
             {
-                Toast.makeText(getApplicationContext(), "Correct Pin", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Correct Pin",
+                        Toast.LENGTH_SHORT).show();
                 Intent goToAllTaskActivity = new Intent(this, AllTaskActivity.class);
                 goToAllTaskActivity.putExtra("user", user);
                 startActivity(goToAllTaskActivity);
             } else
             {
-                Toast.makeText(getApplicationContext(), "Wrong Pin, Please Retry", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Wrong Pin, Please Retry",
+                        Toast.LENGTH_LONG).show();
                 pinInput.setText(null);
             }
         } catch (Exception err)

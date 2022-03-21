@@ -157,31 +157,31 @@ public class PetActivity extends AppCompatActivity
     @SuppressLint("ClickableViewAccessibility")
     public void petPressed()
     {
-        petImageView.setOnTouchListener(new View.OnTouchListener()
+        petImageView.setOnTouchListener((view, motionEvent) ->
         {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent)
+            Log.i("TouchEvent", "touch detected");
+
+            int eventType = motionEvent.getActionMasked();
+
+            switch (eventType)
             {
-                Log.i("TouchEvent", "touch detected");
+                case MotionEvent.ACTION_DOWN:
+                    petImageView.requestLayout();
+                    petImageView.getLayoutParams().height =
+                            petImageView.getLayoutParams().height + 100;
+                    petImageView.getLayoutParams().width =
+                            petImageView.getLayoutParams().height + 100;
+                    petPushinP();
+                    break;
 
-                int eventType = motionEvent.getActionMasked();
-
-                switch (eventType)
-                {
-                    case MotionEvent.ACTION_DOWN:
-                        petImageView.requestLayout();
-                        petImageView.getLayoutParams().height = petImageView.getLayoutParams().height + 100;
-                        petImageView.getLayoutParams().width = petImageView.getLayoutParams().height + 100;
-                        petPushinP();
-                        break;
-
-                    case MotionEvent.ACTION_UP:
-                        petImageView.requestLayout();
-                        petImageView.getLayoutParams().height = petImageView.getLayoutParams().height - 100;
-                        petImageView.getLayoutParams().width = petImageView.getLayoutParams().height - 100;
-                }
-                return true;
+                case MotionEvent.ACTION_UP:
+                    petImageView.requestLayout();
+                    petImageView.getLayoutParams().height =
+                            petImageView.getLayoutParams().height - 100;
+                    petImageView.getLayoutParams().width =
+                            petImageView.getLayoutParams().height - 100;
             }
+            return true;
         });
     }
 
@@ -241,7 +241,8 @@ public class PetActivity extends AppCompatActivity
             teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
         } else
         {
-            Toast.makeText(getApplicationContext(), "You don't have enough teddy bears!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "You don't have enough teddy bears!",
+                    Toast.LENGTH_LONG).show();
         }
 
         updateUser();
@@ -257,7 +258,8 @@ public class PetActivity extends AppCompatActivity
             bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
         } else
         {
-            Toast.makeText(getApplicationContext(), "You don't have enough bananas", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "You don't have enough bananas",
+                    Toast.LENGTH_LONG).show();
         }
 
         updateUser();
@@ -273,7 +275,8 @@ public class PetActivity extends AppCompatActivity
             soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
         } else
         {
-            Toast.makeText(getApplicationContext(), "You don't have enough soap!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "You don't have enough soap!",
+                    Toast.LENGTH_LONG).show();
         }
 
         updateUser();
@@ -294,7 +297,8 @@ public class PetActivity extends AppCompatActivity
             teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
         } else
         {
-            Toast.makeText(getApplicationContext(), "You don't have enough money!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "You don't have enough money!",
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -312,7 +316,8 @@ public class PetActivity extends AppCompatActivity
             bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
         } else
         {
-            Toast.makeText(getApplicationContext(), "You don't have enough money!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "You don't have enough money!",
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -330,7 +335,8 @@ public class PetActivity extends AppCompatActivity
             soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
         } else
         {
-            Toast.makeText(getApplicationContext(), "You don't have enough money!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "You don't have enough money!",
+                    Toast.LENGTH_LONG).show();
         }
     }
 

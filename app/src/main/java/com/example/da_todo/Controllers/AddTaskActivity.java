@@ -144,7 +144,8 @@ public class AddTaskActivity extends AppCompatActivity
             {
                 taskUUID = UUID.randomUUID().toString();
 
-                final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
+                final ProgressBar progressBar = new ProgressBar(this, null,
+                        android.R.attr.progressBarStyleLarge);
                 progressBar.setVisibility(View.VISIBLE);
 
                 final String randomKey = UUID.randomUUID().toString();
@@ -154,12 +155,15 @@ public class AddTaskActivity extends AppCompatActivity
                         .addOnSuccessListener(taskSnapshot ->
                         {
                             progressBar.setVisibility(View.INVISIBLE);
-                            Snackbar.make(findViewById(android.R.id.content), "Image Uploaded.", Snackbar.LENGTH_SHORT).show();
+                            Snackbar.make(findViewById(android.R.id.content),
+                                    "Image Uploaded.", Snackbar.LENGTH_SHORT).show();
 
                             riversRef.getDownloadUrl().addOnSuccessListener(uri ->
                             {
                                 testURI = String.valueOf(uri);
-                                firestore.collection("tasks").document(taskUUID).update("image", testURI);
+                                firestore.collection("tasks").
+                                        document(taskUUID)
+                                        .update("image", testURI);
 
                                 for (Task t : user.getTasks())
                                 {
@@ -169,21 +173,28 @@ public class AddTaskActivity extends AppCompatActivity
                                     }
                                 }
 
-                                Task task = new Task(testURI, nameString, timeInt, rewardInt, taskUUID);
-                                firestore.collection("tasks").document(task.getTaskUUID()).set(task);
-                                firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
-                                Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
+                                Task task = new
+                                        Task(testURI, nameString, timeInt, rewardInt, taskUUID);
+                                firestore.collection("tasks")
+                                        .document(task.getTaskUUID()).set(task);
+                                firestore.collection("users")
+                                        .document(user.getID())
+                                        .update("tasks", FieldValue.arrayUnion(task));
+                                Toast.makeText(getApplicationContext(), "Added task",
+                                        Toast.LENGTH_LONG).show();
                                 clearPage();
                             });
                         })
                         .addOnFailureListener(e ->
                         {
                             progressBar.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getApplicationContext(), "Failed to upload", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Failed to upload",
+                                    Toast.LENGTH_SHORT).show();
                         })
                         .addOnProgressListener(snapshot ->
                         {
-                            double progressPercent = (100 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                            double progressPercent = (100 * snapshot.getBytesTransferred() /
+                                    snapshot.getTotalByteCount());
                             int progress = (int) progressPercent;
                             progressBar.setProgress(progress, true);
                         });
@@ -194,7 +205,8 @@ public class AddTaskActivity extends AppCompatActivity
             }
         } else
         {
-            Toast.makeText(getApplicationContext(), "Fill in all fields correctly", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Fill in all fields correctly",
+                    Toast.LENGTH_LONG).show();
         }
 
     }

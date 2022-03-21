@@ -232,7 +232,8 @@ public class TimerActivity extends AppCompatActivity
         String secondsStr = Integer.toString(secondsInMinuteUntilFinished);
         String newStr = secondsStr.length() == 2 ? secondsStr : "0" + secondsStr;
         textView_countdown.setText(minutesUntilFinished + ":" + newStr);
-        progress_countdown.setProgress((timerLengthSeconds.intValue() - secondsRemaining.intValue()));
+        progress_countdown
+                .setProgress((timerLengthSeconds.intValue() - secondsRemaining.intValue()));
     }
 
     private void updateButtons()
