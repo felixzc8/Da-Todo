@@ -110,34 +110,22 @@ public class TimerActivity extends AppCompatActivity
         rewardTextView = findViewById(R.id.points_TextView_TimerActivity);
         rewardTextView.setText(pointsRewarded);
 
-        start_button.setOnClickListener(new View.OnClickListener()
+        start_button.setOnClickListener(view ->
         {
-            @Override
-            public void onClick(View view)
-            {
-                startTimer();
-                timerState = TimerState.Running;
-                updateButtons();
-            }
+            startTimer();
+            timerState = TimerState.Running;
+            updateButtons();
         });
-        pause_button.setOnClickListener(new View.OnClickListener()
+        pause_button.setOnClickListener(view ->
         {
-            @Override
-            public void onClick(View view)
-            {
-                timer.cancel();
-                timerState = TimerState.Paused;
-                updateButtons();
-            }
+            timer.cancel();
+            timerState = TimerState.Paused;
+            updateButtons();
         });
-        stop_button.setOnClickListener(new View.OnClickListener()
+        stop_button.setOnClickListener(view ->
         {
-            @Override
-            public void onClick(View view)
-            {
-                timer.cancel();
-                onTimerFinished();
-            }
+            timer.cancel();
+            onTimerFinished();
         });
     }
 

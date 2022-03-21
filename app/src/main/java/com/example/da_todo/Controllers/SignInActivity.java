@@ -74,8 +74,7 @@ public class SignInActivity extends AppCompatActivity
                                         Toast.LENGTH_SHORT).show();
                             }
                         });
-            }
-            catch (Exception e)
+            } catch (Exception e)
             {
                 e.printStackTrace();
             }

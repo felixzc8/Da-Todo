@@ -61,17 +61,13 @@ public class AllTaskActivity extends AppCompatActivity
 
     private void setOnClickListener()
     {
-        listener = new allTaskRecyclerAdapter.RecyclerViewClickListener()
+        listener = (view, position) ->
         {
-            @Override
-            public void onClick(View view, int position)
-            {
-                Intent goToAddAllTaskActivity = new Intent(getApplicationContext(), AddAllTaskActivity.class);
-                goToAddAllTaskActivity.putExtra("image", taskList.get(position).getImage());
-                goToAddAllTaskActivity.putExtra("name", taskList.get(position).getName());
-                goToAddAllTaskActivity.putExtra("user", user);
-                startActivity(goToAddAllTaskActivity);
-            }
+            Intent goToAddAllTaskActivity = new Intent(getApplicationContext(), AddAllTaskActivity.class);
+            goToAddAllTaskActivity.putExtra("image", taskList.get(position).getImage());
+            goToAddAllTaskActivity.putExtra("name", taskList.get(position).getName());
+            goToAddAllTaskActivity.putExtra("user", user);
+            startActivity(goToAddAllTaskActivity);
         };
     }
 

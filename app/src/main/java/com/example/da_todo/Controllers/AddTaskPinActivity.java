@@ -42,8 +42,7 @@ public class AddTaskPinActivity extends AppCompatActivity
                 Toast.makeText(getApplicationContext(), "Wrong Pin, Please Retry", Toast.LENGTH_LONG).show();
                 pinInput.setText(null);
             }
-        }
-        catch (Exception err)
+        } catch (Exception err)
         {
             err.printStackTrace();
         }

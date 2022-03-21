@@ -89,8 +89,7 @@ public class TasksActivity extends AppCompatActivity
                             setPetImage(user);
                         }
                     });
-        }
-        catch (Exception e)
+        } catch (Exception e)
         {
             e.printStackTrace();
             Toast.makeText(this, "error getting user", Toast.LENGTH_SHORT).show();

@@ -369,8 +369,7 @@ public class PetActivity extends AppCompatActivity
                         try
                         {
                             Thread.sleep(100);
-                        }
-                        catch (InterruptedException e)
+                        } catch (InterruptedException e)
                         {
                             e.printStackTrace();
                         }

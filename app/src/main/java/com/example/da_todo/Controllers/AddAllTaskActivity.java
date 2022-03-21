@@ -69,8 +69,7 @@ public class AddAllTaskActivity extends AppCompatActivity
             firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
             Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
             clearPage();
-        }
-        catch (Exception err)
+        } catch (Exception err)
         {
             err.printStackTrace();
             Toast.makeText(getApplicationContext(), "Incorrect input. Only input numbers", Toast.LENGTH_LONG).show();

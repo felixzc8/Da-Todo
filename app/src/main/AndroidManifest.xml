@@ -48,9 +48,6 @@
         <activity
             android:name=".Controllers.AddTaskActivity"
             android:exported="false" />
-        <activity
-            android:name=".Controllers.MainActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"
