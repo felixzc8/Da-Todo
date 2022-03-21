@@ -19,17 +19,32 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 
+/**
+ * RecyclerView adapter of the AllTaskActivity page, displaying the list of default task objects
+ * the user can choose from
+ *
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
+ * @version 1.0
+ */
 public class allTaskRecyclerAdapter extends RecyclerView.Adapter<allTaskRecyclerAdapter.MyViewHolder>
 {
     private ArrayList<Task> taskList;
     private RecyclerViewClickListener listener;
 
+    /**
+     * Receives the tasklist to be displayed from the previous AllTaskActivity page
+     * @param taskList list of default task objects
+     * @param listener onclick listener
+     */
     public allTaskRecyclerAdapter(ArrayList<Task> taskList, RecyclerViewClickListener listener)
     {
         this.taskList = taskList;
         this.listener = listener;
     }
 
+    /**
+     * Sets the XML items and onclick listener
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         private TextView nameText;
@@ -50,6 +65,12 @@ public class allTaskRecyclerAdapter extends RecyclerView.Adapter<allTaskRecycler
         }
     }
 
+    /**
+     * Creates the recycler view
+     * @param parent
+     * @param viewType
+     * @return ViewHolder
+     */
     @NonNull
     @Override
     public allTaskRecyclerAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
@@ -58,6 +79,12 @@ public class allTaskRecyclerAdapter extends RecyclerView.Adapter<allTaskRecycler
         return new MyViewHolder(itemView);
     }
 
+    /**
+     * Sets the various characteristics of the task to the correct places to be displayed on the
+     * recyclerView
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(@NonNull allTaskRecyclerAdapter.MyViewHolder holder, int position)
     {
@@ -67,12 +94,19 @@ public class allTaskRecyclerAdapter extends RecyclerView.Adapter<allTaskRecycler
         Glide.with(holder.taskImage.getContext()).load(imageString).centerCrop().into(holder.taskImage);
     }
 
+    /**
+     * Gets the # of items in tasklist
+     * @return int of taskList size
+     */
     @Override
     public int getItemCount()
     {
         return taskList.size();
     }
 
+    /**
+     * Checks for onclick
+     */
     public interface RecyclerViewClickListener
     {
         void onClick(View view, int position);
