@@ -16,13 +16,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Allows users to sign up with a new email and password
+ *
+ * @author Felix Chen
+ * @version 1.0
+ */
 public class SignUpActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
     EditText nameInput, emailInput, passwordInput, pinInput;
     User user;
-    Pet userPet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -40,6 +45,11 @@ public class SignUpActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Signs up using their name, email, password, and their parent pin
+     *
+     * @param v button click
+     */
     public void signUp(View v)
     {
         String name = nameInput.getText().toString();
@@ -63,7 +73,7 @@ public class SignUpActivity extends AppCompatActivity
 
                                 user = new User(uid, name, email, pin);
                                 firestore.collection("/users").document(uid).set(user);
-                                goPetNamingActivity(user);
+                                goPetCreateActivity(user);
                             } else
                             {
                                 Log.w("SIGN UP", "createUserWithEmail:failure",
@@ -83,13 +93,21 @@ public class SignUpActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Goes to the sign in page
+     * @param v button click
+     */
     public void goSignInActivity(View v)
     {
         Intent intent = new Intent(this, SignInActivity.class);
         startActivity(intent);
     }
 
-    public void goPetNamingActivity(User user)
+    /**
+     * Goes to the start up page for new accounts, creating their pet
+     * @param user User object needed
+     */
+    public void goPetCreateActivity(User user)
     {
         Intent intent = new Intent(this, PetCreateActivity.class);
         intent.putExtra("user", user);

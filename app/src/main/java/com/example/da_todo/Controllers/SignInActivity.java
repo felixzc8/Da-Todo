@@ -15,6 +15,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * This class allows users to sign in to the app with their email and password
+ *
+ * @author Felix Chen
+ * @version 1.0
+ */
+
 public class SignInActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
@@ -46,6 +53,11 @@ public class SignInActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Signs user into firebase with their email and password
+     *
+     * @param v button click
+     */
     public void signIn(View v)
     {
         String email = emailInput.getText().toString();
@@ -84,12 +96,20 @@ public class SignInActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Goes to sign up
+     *
+     * @param view button click
+     */
     public void goToSignUpActivity(View view)
     {
         Intent goToSignUpActivity = new Intent(this, SignUpActivity.class);
         startActivity(goToSignUpActivity);
     }
 
+    /**
+     * Goes to the tasks main page
+     */
     public void goTaskActivity()
     {
         Intent goToTasksActivity = new Intent(this, TasksActivity.class);

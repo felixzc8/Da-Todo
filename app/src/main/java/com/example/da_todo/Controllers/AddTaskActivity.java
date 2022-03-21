@@ -84,16 +84,12 @@ public class AddTaskActivity extends AppCompatActivity
 
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>()
+            result ->
             {
-                @Override
-                public void onActivityResult(ActivityResult result)
+                if (result.getResultCode() == Activity.RESULT_OK)
                 {
-                    if (result.getResultCode() == Activity.RESULT_OK)
-                    {
-                        // There are no request codes
-                        Intent data = result.getData();
-                    }
+                    // There are no request codes
+                    Intent data = result.getData();
                 }
             });
 
