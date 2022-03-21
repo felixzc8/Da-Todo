@@ -19,6 +19,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.UUID;
 
+/**
+ * Allows users to add a default task to their list of tasks
+ *
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
+ * @version 1.0
+ */
 public class AddAllTaskActivity extends AppCompatActivity
 {
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -39,6 +45,7 @@ public class AddAllTaskActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_all_task);
+
         user = (User) getIntent().getSerializableExtra("user");
 
         Bundle extras = getIntent().getExtras();
@@ -47,13 +54,22 @@ public class AddAllTaskActivity extends AppCompatActivity
             image = extras.getString("image");
             inputName = extras.getString("name");
         }
+
         taskName = findViewById(R.id.taskName_TextView_AddAllTaskActivity);
         taskTime = findViewById(R.id.taskTimeInputEditText);
         taskPoints = findViewById(R.id.taskPointsInputEditText);
         taskPhoto = findViewById(R.id.taskImage_ImageView_AddAllTaskActivity);
         taskName.setText(inputName);
+
         Glide.with(taskPhoto.getContext()).load(image).centerCrop().into(taskPhoto);
+
     }
+
+    /**
+     * When button is pressed, user's input is retrieved and a new task is created using parameters,
+     * and then task is added to firestore under the user's list of tasks
+     * @param view button onclick method
+     */
 
     public void addTask(View view)
     {
@@ -80,6 +96,9 @@ public class AddAllTaskActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Clears the page once the button is clicked
+     */
     public void clearPage()
     {
         taskTime.setText(null);
@@ -88,6 +107,9 @@ public class AddAllTaskActivity extends AppCompatActivity
         back();
     }
 
+    /**
+     * Sends the page back to previous AllTaskActivity page after addTask button is clicked
+     */
     private void back()
     {
         Intent goBack = new Intent(this, AllTaskActivity.class);
@@ -95,6 +117,10 @@ public class AddAllTaskActivity extends AppCompatActivity
         startActivity(goBack);
     }
 
+    /**
+     * Sends the page back to previous AllTaskActivity
+     * @param view
+     */
     public void backButton(View view)
     {
         Intent goBack = new Intent(this, AllTaskActivity.class);

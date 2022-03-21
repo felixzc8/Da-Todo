@@ -25,6 +25,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
+/**
+ * Shows a recyclerview of all the tasks in the user's tasklist
+ *
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
+ * @version 1.0
+ */
+
 public class TasksActivity extends AppCompatActivity
 {
     private ArrayList<Task> taskList;
@@ -61,6 +68,9 @@ public class TasksActivity extends AppCompatActivity
         getUser();
     }
 
+    /**
+     * When user logs in, their user object is retrieved
+     */
     public void getUser()
     {
         try
@@ -96,6 +106,9 @@ public class TasksActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * If user has no tasks in list, then a task appears indicating that
+     */
     public void showNoItems()
     {
         if (hasItems == false)
@@ -107,6 +120,9 @@ public class TasksActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Sets the recyclerview adapter with the list of tasks the user has and a listener
+     */
     private void setAdapter()
     {
         setOnClickListener();
@@ -118,6 +134,9 @@ public class TasksActivity extends AppCompatActivity
 //        setUpListViewListerner();
     }
 
+    /**
+     * When a task in their recyclerview is clicked, page turns into the TimerActivity page
+     */
     private void setOnClickListener()
     {
         listener = (v, position) ->
@@ -140,6 +159,10 @@ public class TasksActivity extends AppCompatActivity
         };
     }
 
+    /**
+     * Sets the pet images shown on screen
+     * @param user object
+     */
     public void setPetImage(User user)
     {
         switch (user.getSelectedPet())
@@ -165,6 +188,10 @@ public class TasksActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * When button is clicked, user can go to the pin-protected AddTask pages
+     * @param view button onclick
+     */
     public void goToAddTaskPinActivity(View view)
     {
         Intent goToAddTaskPinActivity = new Intent(this, AddTaskPinActivity.class);
@@ -172,6 +199,10 @@ public class TasksActivity extends AppCompatActivity
         startActivity(goToAddTaskPinActivity);
     }
 
+    /**
+     * When button is clicked, user can go to the pet pages
+     * @param view button onclick
+     */
     public void goPetActivity(View view)
     {
         Intent goToRewardsActivity = new Intent(this, PetActivity.class);
@@ -179,6 +210,11 @@ public class TasksActivity extends AppCompatActivity
         startActivity(goToRewardsActivity);
     }
 
+    /**
+     * When button is clicked, user can sign out of the main application and return to the
+     * SignInActivity page and be logged out of this account
+     * @param v button onclick
+     */
     public void signOut(View v)
     {
         mAuth.signOut();

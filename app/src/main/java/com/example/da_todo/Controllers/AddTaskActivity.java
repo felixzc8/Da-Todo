@@ -34,6 +34,12 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
+/**
+ * Allows users to add a customisable task to their list of tasks
+ *
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
+ * @version 1.0
+ */
 public class AddTaskActivity extends AppCompatActivity
 {
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -93,6 +99,9 @@ public class AddTaskActivity extends AppCompatActivity
                 }
             });
 
+    /**
+     * When photo is clicked, page is changed to the photo page
+     */
     private void choosePicture()
     {
         Intent intent = new Intent();
@@ -101,6 +110,12 @@ public class AddTaskActivity extends AppCompatActivity
         someActivityResultLauncher.launch(intent);
     }
 
+    /**
+     * Collects the imageURI and sets the current photo's image URL to that URI
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
     {
@@ -113,6 +128,10 @@ public class AddTaskActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Checks if user input is valid
+     * @return boolean to see if the user's input is valid
+     */
     public boolean formValid()
     {
         nameString = taskName.getText().toString();
@@ -129,6 +148,12 @@ public class AddTaskActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * When button is clicked, the input values and image URI is used to create a task and add
+     * it to the user's list of tasks. If task is uploaded with image URL, it is updated. A progress
+     * bar tracks how far along the task is to completing
+     * @param view button onclick
+     */
     public void addTask(View view)
     {
         if (formValid())
@@ -207,6 +232,9 @@ public class AddTaskActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Clears page when task is added
+     */
     public void clearPage()
     {
         taskName.setText(null);
@@ -216,6 +244,9 @@ public class AddTaskActivity extends AppCompatActivity
         back();
     }
 
+    /**
+     * When task is added, page goes back to AllTaskActivity
+     */
     public void back()
     {
         Intent goBackIntent = new Intent(this, AllTaskActivity.class);
@@ -223,6 +254,10 @@ public class AddTaskActivity extends AppCompatActivity
         startActivity(goBackIntent);
     }
 
+    /**
+     * When back button is clicked, page goes back to AllTaskActivity
+     * @param v
+     */
     public void backButton(View v)
     {
         Intent goBackIntent = new Intent(this, AllTaskActivity.class);

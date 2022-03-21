@@ -16,6 +16,13 @@ import com.example.da_todo.allTaskRecyclerAdapter;
 
 import java.util.ArrayList;
 
+/**
+ * Displays a recycler view of all the default tasks that we have created. User can click into the
+ * tasks to add them to their lists
+ *
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
+ * @version 1.0
+ */
 public class AllTaskActivity extends AppCompatActivity
 {
     private ArrayList<Task> taskList;
@@ -49,6 +56,9 @@ public class AllTaskActivity extends AppCompatActivity
         setAdapter();
     }
 
+    /**
+     * Sets the recyclerview adapter using the list of tasks we created and a listner
+     */
     private void setAdapter()
     {
         setOnClickListener();
@@ -59,6 +69,10 @@ public class AllTaskActivity extends AppCompatActivity
         recyclerView.setAdapter(adapter);
     }
 
+    /**
+     * When a recyclerview item is selected, the page goes into the AddAllTaskActivity page
+     * for users to add task to their list
+     */
     private void setOnClickListener()
     {
         listener = (view, position) ->
@@ -72,6 +86,9 @@ public class AllTaskActivity extends AppCompatActivity
         };
     }
 
+    /**
+     * Adds all the default tasks to the arrayList
+     */
     private void setTaskInfo()
     {
         taskList.add(new Task(brushTeethImageURL, "Brush Teeth", 0,
@@ -104,6 +121,10 @@ public class AllTaskActivity extends AppCompatActivity
                 0, null));
     }
 
+    /**
+     * When button is clicked, page goes to AddTaskActivity
+     * @param v button onclick
+     */
     public void goToAddTaskActivity(View v)
     {
         Intent goToAddTaskActivity = new Intent(this, AddTaskActivity.class);
@@ -111,6 +132,10 @@ public class AllTaskActivity extends AppCompatActivity
         startActivity(goToAddTaskActivity);
     }
 
+    /**
+     * When button is clicked, page goes back to TasksActivity
+     * @param v button onclick
+     */
     public void backButton(View v)
     {
         Intent goBackIntent = new Intent(this, TasksActivity.class);

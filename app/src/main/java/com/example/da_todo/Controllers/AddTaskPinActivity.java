@@ -11,6 +11,14 @@ import android.widget.Toast;
 import com.example.da_todo.R;
 import com.example.da_todo.User.User;
 
+/**
+ * When users try to enter the AddTask pages, they have to input a parent pin. If correct,
+ * user can enter the restricted pages and can start adding tasks. This prevents kids from
+ * accessing the restricted pages without permission
+ *
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
+ * @version 1.0
+ */
 public class AddTaskPinActivity extends AppCompatActivity
 {
     private EditText pinInput;
@@ -26,6 +34,10 @@ public class AddTaskPinActivity extends AppCompatActivity
         pinInput = findViewById(R.id.pinNumber_EditText_AddTaskPinActivity);
     }
 
+    /**
+     * If inputted pin is correct, page goes to AllTaskActivity. If not, user can't continue
+     * @param view button onclick
+     */
     public void goToAllTaskActivity(View view)
     {
         try
@@ -50,6 +62,10 @@ public class AddTaskPinActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * User can go back to TasksActivity page
+     * @param v onclick
+     */
     public void backButton(View v)
     {
         Intent goBackIntent = new Intent(this, TasksActivity.class);
