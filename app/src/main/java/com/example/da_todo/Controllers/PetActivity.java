@@ -231,11 +231,6 @@ public class PetActivity extends AppCompatActivity
         });
     }
 
-    public void updatePoints()
-    {
-        user.getPoints();
-    }
-
     public void updateUserTeddy()
     {
         if (pet.getTeddyBear().getAmount() >= 1)
@@ -286,12 +281,16 @@ public class PetActivity extends AppCompatActivity
 
     public void buyTeddyBears()
     {
+        //get the users points
         if (pet.getPoints() - pet.getTeddyBear().getPrice() >= 0)
         {
+            //increase the amount of bears
             pet.getTeddyBear().setAmount(pet.getTeddyBear().getAmount() + 1);
+            //subtract money from the user
             pet.minusPoints(pet.getTeddyBear().getPrice());
             user.setPet(pet);
             moneyTextView.setText("" + pet.getPoints());
+            //display the new money view
             teddyBearCountTextView.setText(String.valueOf(pet.getTeddyBear().getAmount()));
         } else
         {
@@ -301,12 +300,15 @@ public class PetActivity extends AppCompatActivity
 
     public void buyBananas()
     {
+        //get the users points
         if (pet.getPoints() - pet.getBanana().getPrice() >= 0)
         {
+            //increase the amount of bananas
             pet.getBanana().setAmount(pet.getBanana().getAmount() + 1);
             pet.minusPoints(pet.getBanana().getPrice());
             user.setPet(pet);
             moneyTextView.setText("" + pet.getPoints());
+            //display the new money view
             bananaCountTextView.setText(String.valueOf(pet.getBanana().getAmount()));
         } else
         {
@@ -316,12 +318,15 @@ public class PetActivity extends AppCompatActivity
 
     public void buySoap()
     {
+        //get the users points
         if (pet.getPoints() - pet.getSoap().getPrice() >= 0)
         {
+            //increase the amount of soaps
             pet.getSoap().setAmount(pet.getSoap().getAmount() + 1);
             pet.minusPoints(pet.getSoap().getPrice());
             user.setPet(pet);
             moneyTextView.setText("" + pet.getPoints());
+            //display the new money view
             soapCountTextView.setText(String.valueOf(pet.getSoap().getAmount()));
         } else
         {

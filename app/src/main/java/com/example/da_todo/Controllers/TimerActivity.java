@@ -64,6 +64,7 @@ public class TimerActivity extends AppCompatActivity
     private TextView rewardTextView;
     private Intent intent;
 
+    //enum of the possible timer states
     public enum TimerState
     {
         Stopped, Paused, Running
@@ -83,16 +84,12 @@ public class TimerActivity extends AppCompatActivity
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
 
+        //take in information from TasksActivity about the task
         taskID = (String) getIntent().getSerializableExtra("TaskID");
         id = (String) getIntent().getSerializableExtra("userID");
         user = (User) getIntent().getSerializableExtra("user");
-//        userPet = (Pet) getIntent().getSerializableExtra("pet");
         position = (int) getIntent().getSerializableExtra("position");
-
         userPet = user.getPet();
-
-//        System.out.println("HEY ORIGINAL POINTS HERE");
-//        userPet.getPoints();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null)
@@ -103,10 +100,8 @@ public class TimerActivity extends AppCompatActivity
         }
         nameTextView = findViewById(R.id.taskName_TextView_TimerActivity);
         nameTextView.setText(name);
-
         imageView = findViewById(R.id.imageView_timerActivity);
         Glide.with(getApplicationContext()).load(imageURL).centerCrop().into(imageView);
-
         rewardTextView = findViewById(R.id.points_TextView_TimerActivity);
         rewardTextView.setText(pointsRewarded);
 
@@ -145,6 +140,7 @@ public class TimerActivity extends AppCompatActivity
         {
             timer.cancel();
         }
+        //allow the timer to continue from the original time after leaving the app
         PrefUtil.setPreviousTimerLengthSeconds(timerLengthSeconds, this);
         PrefUtil.setSecondsRemaining(secondsRemaining, this);
         PrefUtil.setTimerState(timerState, this);
@@ -152,8 +148,8 @@ public class TimerActivity extends AppCompatActivity
 
     private void initTimer()
     {
+        //initiating the timer for a new task
         timerState = PrefUtil.getTimerState(this);
-
         if (timerState == TimerState.Stopped)
         {
             setNewTimerLength();
@@ -164,7 +160,6 @@ public class TimerActivity extends AppCompatActivity
 
         secondsRemaining = (timerState == TimerState.Running || timerState == TimerState.Paused) ?
                 PrefUtil.getSecondsRemaining(this) : timerLengthSeconds;
-
         if (secondsRemaining <= 0)
         {
             onTimerFinished();
@@ -178,6 +173,7 @@ public class TimerActivity extends AppCompatActivity
 
     private void onTimerFinished()
     {
+        //setting the countdown to end when the timer finishes
         timerState = TimerState.Stopped;
         setNewTimerLength();
         progress_countdown.setProgress(0);
@@ -189,6 +185,7 @@ public class TimerActivity extends AppCompatActivity
 
     private void startTimer()
     {
+        //set a new timer and calculate the number of seconds for the task
         timerState = TimerState.Running;
         timer = new CountDownTimer(secondsRemaining * 1000, 1000)
         {
@@ -209,6 +206,7 @@ public class TimerActivity extends AppCompatActivity
 
     private void setNewTimerLength()
     {
+        //taking in the time input for each task to be projected on the progress bar
         String time = "0";
         Bundle extras = getIntent().getExtras();
         if (extras != null)
@@ -219,10 +217,6 @@ public class TimerActivity extends AppCompatActivity
         }
         timerLengthSeconds = (timeInt * 60L);
         progress_countdown.setMax(timerLengthSeconds.intValue());
-
-//        int lengthInMinutes = PrefUtil.getTimerLength(this);
-//        timerLengthSeconds = (lengthInMinutes * 60L);
-//        progress_countdown.setMax(timerLengthSeconds.intValue());
     }
 
     private void setPreviousTimerLength()
@@ -268,17 +262,21 @@ public class TimerActivity extends AppCompatActivity
     public void updateTotalPoints(View v)
     {
         initTimer();
+        //take the number of seconds left & original seconds of the task
         Long secondsLeft = PrefUtil.getSecondsRemaining(this);
         Long originalSeconds = PrefUtil.getPreviousTimerLengthSeconds(this);
-
+        //convert the time into a decimal
         double secondsLeftInt = secondsLeft.intValue();
         double originalSecondsInt = originalSeconds.intValue();
         double taskPercentage = 1 - (((originalSecondsInt - secondsLeftInt) / originalSecondsInt));
+        //multiply it by the original number of points
         int originalPoints = Integer.parseInt(pointsRewarded);
         double pointsGiven = taskPercentage * originalPoints;
+        //add the points multiplier to the original number of points
         int pointsGivenInt = (int) pointsGiven + originalPoints;
         userPet.setPoints(pointsGivenInt);
 
+        //go through the database and remove the task that has been finished
         String taskID = (String) getIntent().getSerializableExtra("TaskID");
         for (com.example.da_todo.Task.Task t : user.getTasks())
         {
