@@ -34,36 +34,31 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.UUID;
 
-public class AddTaskActivity extends AppCompatActivity {
+public class AddTaskActivity extends AppCompatActivity
+{
     private FirebaseFirestore firestore = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
     User user;
-
     private EditText taskName, taskTime, taskPoints;
-
     private String userID, userEmail, userPin;
-
     String nameString, timeString, rewardString;
-
     private ImageView taskPhoto;
     public Uri imageUri;
     public String testURI;
-
     private String taskUUID;
     private FirebaseStorage storage;
     private StorageReference storageReference;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-
         user = (User) getIntent().getSerializableExtra("user");
 
-
         Bundle intentInfo = getIntent().getExtras();
-        if (intentInfo != null) {
+        if (intentInfo != null)
+        {
             userID = intentInfo.getString("userID");
             userEmail = intentInfo.getString("parentEmail");
             userPin = intentInfo.getString("parentPin");
@@ -77,51 +72,33 @@ public class AddTaskActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        taskPhoto.setOnClickListener(new View.OnClickListener() {
+        taskPhoto.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 choosePicture();
             }
         });
     }
 
-//    public void addTask(View view){
-//        String nameString = taskName.getText().toString();
-//        int timeInt = Integer.parseInt(taskTime.getText().toString());
-//        int rewardInt = Integer.parseInt(taskPoints.getText().toString());
-//        taskUUID = UUID.randomUUID().toString();
-
-//        Task task = new Task(null, nameString, timeInt, rewardInt, taskUUID);
-
-//        uploadPicture();
-
-//        user.addTask(task);
-//        System.out.println("User ID" + user.getID());
-//
-////        firestore.collection("tasks").document(task.getTaskUUID()).set(task);
-//        System.out.println("Checkkkk" + user.toString());
-//        System.out.println(user.getID() + "Ttttt");
-
-
-//        firestore.collection("users").document(user.getID()).update("tasks",
-//                FieldValue.arrayUnion(task);
-
-//        clearPage();
-//    }
-
     ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
-            new ActivityResultCallback<ActivityResult>() {
+            new ActivityResultCallback<ActivityResult>()
+            {
                 @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result.getResultCode() == Activity.RESULT_OK) {
+                public void onActivityResult(ActivityResult result)
+                {
+                    if (result.getResultCode() == Activity.RESULT_OK)
+                    {
                         // There are no request codes
                         Intent data = result.getData();
                     }
                 }
             });
 
-    private void choosePicture() {
+    private void choosePicture()
+    {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -129,10 +106,12 @@ public class AddTaskActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+        if (resultCode == RESULT_OK && data != null && data.getData() != null)
+        {
             imageUri = data.getData();
             taskPhoto.setImageURI(imageUri);
         }
@@ -144,9 +123,11 @@ public class AddTaskActivity extends AppCompatActivity {
         timeString = taskTime.getText().toString();
         rewardString = taskPoints.getText().toString();
 
-        if (!nameString.equals("") && !timeString.equals("") && !rewardString.equals("")) {
+        if (!nameString.equals("") && !timeString.equals("") && !rewardString.equals(""))
+        {
             return true;
-        } else {
+        } else
+        {
             Toast.makeText(this, "missing info", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -154,12 +135,13 @@ public class AddTaskActivity extends AppCompatActivity {
 
     public void addTask(View view)
     {
-        if(formValid())
+        if (formValid())
         {
             Integer timeInt = Integer.parseInt(timeString);
             Integer rewardInt = Integer.parseInt(rewardString);
 
-            try {
+            try
+            {
                 taskUUID = UUID.randomUUID().toString();
 
                 final ProgressBar progressBar = new ProgressBar(this, null, android.R.attr.progressBarStyleLarge);
@@ -169,20 +151,26 @@ public class AddTaskActivity extends AppCompatActivity {
                 StorageReference riversRef = storageReference.child("task_images/" + randomKey);
 
                 riversRef.putFile(imageUri)
-                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>()
+                        {
                             @Override
-                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
+                            {
                                 progressBar.setVisibility(View.INVISIBLE);
                                 Snackbar.make(findViewById(android.R.id.content), "Image Uploaded.", Snackbar.LENGTH_SHORT).show();
 
-                                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                riversRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>()
+                                {
                                     @Override
-                                    public void onSuccess(Uri uri) {
+                                    public void onSuccess(Uri uri)
+                                    {
                                         testURI = String.valueOf(uri);
                                         firestore.collection("tasks").document(taskUUID).update("image", testURI);
 
-                                        for (Task t : user.getTasks()) {
-                                            if (t.getTaskUUID().equals(taskUUID)) {
+                                        for (Task t : user.getTasks())
+                                        {
+                                            if (t.getTaskUUID().equals(taskUUID))
+                                            {
                                                 t.setImage(testURI);
                                             }
                                         }
@@ -192,39 +180,44 @@ public class AddTaskActivity extends AppCompatActivity {
                                         firestore.collection("users").document(user.getID()).update("tasks", FieldValue.arrayUnion(task));
                                         Toast.makeText(getApplicationContext(), "Added task", Toast.LENGTH_LONG).show();
                                         clearPage();
-//                                firestore.collection("users").document(user.getID()).set(user);
                                     }
                                 });
                             }
                         })
-                        .addOnFailureListener(new OnFailureListener() {
+                        .addOnFailureListener(new OnFailureListener()
+                        {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
+                            public void onFailure(@NonNull Exception e)
+                            {
                                 progressBar.setVisibility(View.INVISIBLE);
                                 Toast.makeText(getApplicationContext(), "Failed to upload", Toast.LENGTH_SHORT).show();
                             }
                         })
-                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>()
+                        {
                             @Override
-                            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot)
+                            {
                                 double progressPercent = (100 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
                                 int progress = (int) progressPercent;
                                 progressBar.setProgress(progress, true);
                             }
                         });
-            } catch (Exception err) {
+            }
+            catch (Exception err)
+            {
                 err.printStackTrace();
                 Toast.makeText(getApplicationContext(), "ERROR", Toast.LENGTH_LONG).show();
             }
-        }
-        else
+        } else
         {
             Toast.makeText(getApplicationContext(), "Fill in all fields correctly", Toast.LENGTH_LONG).show();
         }
 
     }
 
-    public void clearPage() {
+    public void clearPage()
+    {
         taskName.setText(null);
         taskTime.setText(null);
         taskPoints.setText(null);
@@ -232,13 +225,15 @@ public class AddTaskActivity extends AppCompatActivity {
         back();
     }
 
-    public void back() {
+    public void back()
+    {
         Intent goBackIntent = new Intent(this, AllTaskActivity.class);
         goBackIntent.putExtra("user", user);
         startActivity(goBackIntent);
     }
 
-    public void backButton(View v) {
+    public void backButton(View v)
+    {
         Intent goBackIntent = new Intent(this, AllTaskActivity.class);
         goBackIntent.putExtra("user", user);
         startActivity(goBackIntent);

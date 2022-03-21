@@ -19,7 +19,6 @@ public class SignInActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
     FirebaseFirestore firestore;
-    User user;
     EditText emailInput, passwordInput;
 
     @Override

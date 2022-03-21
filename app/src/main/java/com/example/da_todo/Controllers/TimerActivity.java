@@ -292,7 +292,7 @@ public class TimerActivity extends AppCompatActivity
         userPet.setPoints(pointsGivenInt);
 
         String taskID = (String) getIntent().getSerializableExtra("TaskID");
-        for (com.example.da_todo.Task.Task t: user.getTasks())
+        for (com.example.da_todo.Task.Task t : user.getTasks())
         {
             if (taskID.equals(t.getTaskUUID()))
             {

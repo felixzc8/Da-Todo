@@ -104,7 +104,7 @@ public class PetCreateActivity extends AppCompatActivity
 
     public void restoreImage()
     {
-        switch(selectedPet)
+        switch (selectedPet)
         {
             case "":
                 break;

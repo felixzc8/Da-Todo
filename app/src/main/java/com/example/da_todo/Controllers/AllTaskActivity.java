@@ -16,11 +16,11 @@ import com.example.da_todo.allTaskRecyclerAdapter;
 
 import java.util.ArrayList;
 
-public class AllTaskActivity extends AppCompatActivity {
+public class AllTaskActivity extends AppCompatActivity
+{
     private ArrayList<Task> taskList;
     private RecyclerView recyclerView;
     private allTaskRecyclerAdapter.RecyclerViewClickListener listener;
-
     private String brushTeethImageURL = "https://firebasestorage.googleapis.com/v0/b/da-todo.appspot.com/o/default_task_images%2Fbrush-teeth.png?alt=media&token=b123da70-8537-4952-a400-4dcfc557e983";
     private String eatBreakfastURL = "https://firebasestorage.googleapis.com/v0/b/da-todo.appspot.com/o/default_task_images%2Feat-breakfast.png?alt=media&token=e0e1ac3c-c0bc-48d2-b01c-50e4f05170b5";
     private String packSchoolBagURL = "https://firebasestorage.googleapis.com/v0/b/da-todo.appspot.com/o/default_task_images%2Fpack-school-bag.png?alt=media&token=e14dfa80-29b0-4d7d-8141-504a37c1e1b9";
@@ -35,24 +35,22 @@ public class AllTaskActivity extends AppCompatActivity {
     private String washHandsURL = "https://firebasestorage.googleapis.com/v0/b/da-todo.appspot.com/o/default_task_images%2Fwash-hands.png?alt=media&token=7e5943bc-33a7-4bb1-805d-d6bb4fad8157";
     private String washFaceURL = "https://firebasestorage.googleapis.com/v0/b/da-todo.appspot.com/o/default_task_images%2Fwash-face.png?alt=media&token=c3ba309b-e787-45f3-be5e-dd1986b7dcb7";
     private String useToiletURL = "https://firebasestorage.googleapis.com/v0/b/da-todo.appspot.com/o/default_task_images%2Fuse-toilet.png?alt=media&token=bb3360b1-1fac-4632-8b4c-8d4b6a790501";
-
     User user;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_task);
         recyclerView = findViewById(R.id.recyclerView_allTaskActivity);
-
         user = (User) getIntent().getSerializableExtra("user");
-
         taskList = new ArrayList<>();
-
         setTaskInfo();
         setAdapter();
     }
 
-    private void setAdapter() {
+    private void setAdapter()
+    {
         setOnClickListener();
         allTaskRecyclerAdapter adapter = new allTaskRecyclerAdapter(taskList, listener);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -61,10 +59,13 @@ public class AllTaskActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void setOnClickListener() {
-        listener = new allTaskRecyclerAdapter.RecyclerViewClickListener() {
+    private void setOnClickListener()
+    {
+        listener = new allTaskRecyclerAdapter.RecyclerViewClickListener()
+        {
             @Override
-            public void onClick(View view, int position) {
+            public void onClick(View view, int position)
+            {
                 Intent goToAddAllTaskActivity = new Intent(getApplicationContext(), AddAllTaskActivity.class);
                 goToAddAllTaskActivity.putExtra("image", taskList.get(position).getImage());
                 goToAddAllTaskActivity.putExtra("name", taskList.get(position).getName());
@@ -92,13 +93,15 @@ public class AllTaskActivity extends AppCompatActivity {
         taskList.add(new Task(useToiletURL, "Use Toilet", 0, 0, null));
     }
 
-    public void goToAddTaskActivity(View v){
+    public void goToAddTaskActivity(View v)
+    {
         Intent goToAddTaskActivity = new Intent(this, AddTaskActivity.class);
         goToAddTaskActivity.putExtra("user", user);
         startActivity(goToAddTaskActivity);
     }
 
-    public void backButton(View v){
+    public void backButton(View v)
+    {
         Intent goBackIntent = new Intent(this, TasksActivity.class);
         goBackIntent.putExtra("user", user);
         startActivity(goBackIntent);
