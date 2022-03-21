@@ -23,6 +23,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ * Activity showing the user's pet
+ *
+ * @author @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
+ * @version 1.0
+ */
+
 public class PetActivity extends AppCompatActivity
 {
     FirebaseAuth mAuth;
@@ -70,6 +77,11 @@ public class PetActivity extends AppCompatActivity
         petPressed();
     }
 
+    /**
+     *Finds which pet the user selected and displays it accordingly
+     *
+     * @param user User object
+     */
     public void setPetImage(User user)
     {
         switch (user.getSelectedPet())
@@ -96,6 +108,11 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Finds which action the user has selected
+     *
+     * @param v icon clicked (teddy bear, banana, soap)
+     */
     public void selectedAction(View v)
     {
         switch (v.getId())
@@ -124,6 +141,9 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Finds which image to restore to the original size
+     */
     public void restoreImage()
     {
         switch (currentAction)
@@ -143,6 +163,10 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Increases the size of the icon
+     * @param v icon view
+     */
     public void enlargeImage(View v)
     {
         v.requestLayout();
@@ -150,6 +174,10 @@ public class PetActivity extends AppCompatActivity
         v.getLayoutParams().width = 200;
     }
 
+    /**
+     * Decreases the size of the icon
+     * @param v icon view
+     */
     public void reduceImage(View v)
     {
         v.requestLayout();
@@ -157,6 +185,10 @@ public class PetActivity extends AppCompatActivity
         v.getLayoutParams().width = 100;
     }
 
+    /**
+     * Reads the user's touch on the pet. It will increase the size of the pet when it is pressed,
+     * and decrease the size when it is released.
+     */
     @SuppressLint("ClickableViewAccessibility")
     public void petPressed()
     {
@@ -188,6 +220,11 @@ public class PetActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Buys the correct item that the user has selected
+     *
+     * @param v buy button clicked
+     */
     public void buyItem(View v)
     {
         switch (currentAction)
@@ -207,9 +244,14 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * PUSHIN P
+     *
+     * method for if an item is clicked and then the pet is clicked
+     */
     public void petPushinP()
     {
-        //Pushin P less goo (method for if an item is clicked and then the pet is clicked)
+        //Pushin P less goo
         switch (currentAction)
         {
             case "":
@@ -226,6 +268,9 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Updates the user object on firebase
+     */
     public void updateUser()
     {
         firestore.collection("users")
@@ -235,6 +280,10 @@ public class PetActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Updates the amount of teddy bears that the user has, given that the user has enough, and
+     * purchases the teddy bear and updates the progress bar
+     */
     public void updateUserTeddy()
     {
         //make sure the user has one or more teddy bears
@@ -256,6 +305,10 @@ public class PetActivity extends AppCompatActivity
         updateUser();
     }
 
+    /**
+     * Updates the amount of bananas that the user has, given that the user has enough, and
+     * purchases the teddy bear and updates the progress bar
+     */
     public void updateUserBanana()
     {
         //make sure the user has one or more bananas
@@ -277,6 +330,10 @@ public class PetActivity extends AppCompatActivity
         updateUser();
     }
 
+    /**
+     * Updates the amount of soap that the user has, given that the user has enough, and
+     * purchases the teddy bear and updates the progress bar
+     */
     public void updateUserSoap()
     {
         //make sure the user has one or more soaps
@@ -298,6 +355,9 @@ public class PetActivity extends AppCompatActivity
         updateUser();
     }
 
+    /**
+     * Adds the amount of teddy bears that the user has by 1 given that the user has enough money
+     */
     public void buyTeddyBears()
     {
         //get the users points
@@ -318,6 +378,9 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Adds the amount of bananas that the user has by 1 given that the user has enough money
+     */
     public void buyBananas()
     {
         //get the users points
@@ -337,6 +400,9 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Adds the amount ofsoap that the user has by 1 given that the user has enough money
+     */
     public void buySoap()
     {
         //get the users points
@@ -356,6 +422,9 @@ public class PetActivity extends AppCompatActivity
         }
     }
 
+    /**
+     * Sets up the progress bar
+     */
     public void progressBar()
     {
         //initial setup of the progress bars
@@ -386,6 +455,9 @@ public class PetActivity extends AppCompatActivity
         timer.schedule(timerTask, 0, 20);
     }
 
+    /**
+     * Decreases the progress bar over time
+     */
     public void progressNuts()
     {
         //setting the decay of the progress bars
@@ -395,24 +467,20 @@ public class PetActivity extends AppCompatActivity
             @Override
             public void run()
             {
-                Thread thread = new Thread(new Runnable()
+                Thread thread = new Thread(() ->
                 {
-                    @Override
-                    public void run()
+                    try
                     {
-                        try
-                        {
-                            //starting the method 100 milliseconds after activity is launched
-                            Thread.sleep(100);
-                        } catch (InterruptedException e)
-                        {
-                            e.printStackTrace();
-                        }
-                        //makes it so that it is a constant decay rate instead of setting to a var
-                        happinessProgressBar.setProgress(happinessProgressBar.getProgress() - 1);
-                        hungerProgressBar.setProgress(hungerProgressBar.getProgress() - 1);
-                        cleanProgressBar.setProgress(cleanProgressBar.getProgress() - 1);
+                        //starting the method 100 milliseconds after activity is launched
+                        Thread.sleep(100);
+                    } catch (InterruptedException e)
+                    {
+                        e.printStackTrace();
                     }
+                    //makes it so that it is a constant decay rate instead of setting to a var
+                    happinessProgressBar.setProgress(happinessProgressBar.getProgress() - 1);
+                    hungerProgressBar.setProgress(hungerProgressBar.getProgress() - 1);
+                    cleanProgressBar.setProgress(cleanProgressBar.getProgress() - 1);
                 });
                 thread.start();
             }
@@ -422,6 +490,9 @@ public class PetActivity extends AppCompatActivity
         timer.schedule(timerTask, 0, 10000);
     }
 
+    /**
+     * Brings the user back to their task list on click
+     */
     public void backButton(View v)
     {
         Intent backButton = new Intent(this, TasksActivity.class);

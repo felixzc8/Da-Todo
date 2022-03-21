@@ -19,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 /**
  * Allows users to sign up with a new email and password
  *
- * @author Felix Chen
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
  * @version 1.0
  */
 public class SignUpActivity extends AppCompatActivity

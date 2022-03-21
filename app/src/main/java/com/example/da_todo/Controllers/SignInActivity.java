@@ -18,7 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 /**
  * This class allows users to sign in to the app with their email and password
  *
- * @author Felix Chen
+ * @author Felix Chen, Daniel Yang, Lucas Yan, Aidan Yu
  * @version 1.0
  */
 
