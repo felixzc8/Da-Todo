@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.AddTaskActivity">
+    tools:context="da.todo.da_todo.Controllers.AddTaskActivity">
 
     <ImageButton
         android:id="@+id/backButton3"

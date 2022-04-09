@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controllers.TasksActivity">
+    tools:context="da.todo.da_todo.Controllers.TasksActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_allTaskActivity"

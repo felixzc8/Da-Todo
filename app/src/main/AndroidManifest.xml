@@ -13,28 +13,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DaTodo">
         <activity
-            android:name=".Controllers.AddTaskPinActivity"
+            android:name="da.todo.da_todo.Controllers.AddTaskPinActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.AddAllTaskActivity"
+            android:name="da.todo.da_todo.Controllers.AddAllTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.AllTaskActivity"
+            android:name="da.todo.da_todo.Controllers.AllTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.PetCreateActivity"
+            android:name="da.todo.da_todo.Controllers.PetCreateActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.TimerActivity"
+            android:name="da.todo.da_todo.Controllers.TimerActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.TasksActivity"
+            android:name="da.todo.da_todo.Controllers.TasksActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.SignUpActivity"
+            android:name="da.todo.da_todo.Controllers.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.SignInActivity"
+            android:name="da.todo.da_todo.Controllers.SignInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,10 +43,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controllers.PetActivity"
+            android:name="da.todo.da_todo.Controllers.PetActivity"
             android:exported="false" />
         <activity
-            android:name=".Controllers.AddTaskActivity"
+            android:name="da.todo.da_todo.Controllers.AddTaskActivity"
             android:exported="false" />
 
         <meta-data
