@@ -10,10 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.da_todo.R;
-
+import da.todo.da_todo.R;
 import da.todo.da_todo.Task.Task;
-
 import java.util.ArrayList;
 
 /**

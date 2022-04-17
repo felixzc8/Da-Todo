@@ -8,7 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.da_todo.R;
+//import com.example.da_todo.R;
+import da.todo.da_todo.R;
 import da.todo.da_todo.User.User;
 
 /**

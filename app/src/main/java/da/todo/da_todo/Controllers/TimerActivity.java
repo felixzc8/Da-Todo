@@ -10,7 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.da_todo.R;
+import da.todo.da_todo.R;
+//import com.example.da_todo.R;
 import da.todo.da_todo.Reward.Pet;
 import da.todo.da_todo.User.User;
 import da.todo.da_todo.util.PrefUtil;
